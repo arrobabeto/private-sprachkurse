@@ -9,6 +9,12 @@ node_modules
 .cache
 .output
 .env
+.env.*
+!.env.example
 dist
+.cursor/projects/
+*.pem
+*.key
+*.p12
 playwright-report
 test-results

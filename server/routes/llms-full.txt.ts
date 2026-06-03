@@ -55,8 +55,7 @@ export default defineEventHandler(async (event) => {
   const baseUrl = normalizeBaseUrl(
     process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   )
-  const siteName =
-    process.env.NUXT_PUBLIC_SITE_NAME ?? "Orbitype Headless CMS Template"
+  const siteName = process.env.NUXT_PUBLIC_SITE_NAME ?? "Private Sprachkurse"
   const siteDescription =
     process.env.NUXT_PUBLIC_SITE_DESCRIPTION ??
     "A production-ready starter for Orbitype-powered websites."

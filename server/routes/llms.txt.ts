@@ -45,12 +45,10 @@ export default defineEventHandler(async (event) => {
   ])
 
   const lines: string[] = []
-  lines.push(
-    `# ${process.env.NUXT_PUBLIC_SITE_NAME ?? "Orbitype Headless CMS Template"}`,
-  )
+  lines.push(`# ${process.env.NUXT_PUBLIC_SITE_NAME ?? "Private Sprachkurse"}`)
   lines.push("")
   lines.push(
-    `> ${process.env.NUXT_PUBLIC_SITE_DESCRIPTION ?? "A production-ready starter for Orbitype-powered websites."}`,
+    `> ${process.env.NUXT_PUBLIC_SITE_DESCRIPTION ?? "One-to-one language lessons tailored to your goals, schedule, and level."}`,
   )
   lines.push("")
 

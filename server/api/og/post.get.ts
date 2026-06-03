@@ -3,8 +3,7 @@ import { defineEventHandler, getQuery } from "h3"
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
-  const siteName =
-    process.env.NUXT_PUBLIC_SITE_NAME ?? "Orbitype Headless CMS Template"
+  const siteName = process.env.NUXT_PUBLIC_SITE_NAME ?? "Private Sprachkurse"
   const logoPath =
     process.env.NUXT_PUBLIC_OG_LOGO_PATH ??
     "https://www.orbitype.com/assets/images/svg/orbitype-logo-hero.svg"

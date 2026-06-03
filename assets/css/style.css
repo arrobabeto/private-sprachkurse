@@ -4,17 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .ps-container {
+    @apply mx-auto w-[95%] max-w-[1300px];
+  }
+}
+
 /* global */
 /******************************************************************************/
 body {
-  @apply bg-[#fefefe] text-base font-normal leading-6 text-[#010101] dark:bg-[#191a22] dark:text-[#fefefe];
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    @apply bg-[#191a22] text-[#fefefe];
-  }
+  @apply bg-white text-base font-normal leading-6 text-ps-dark;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 *,
@@ -29,6 +29,7 @@ body {
 
 html {
   -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 label,
@@ -40,11 +41,6 @@ button {
   display: block;
   width: 100%;
   flex-basis: max-content;
-}
-
-select {
-  /*-webkit-appearance: none;*/
-  /*-moz-appearance: none;*/
 }
 
 button {
@@ -79,5 +75,5 @@ th {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-700;
+  @apply rounded-full bg-gray-700;
 }

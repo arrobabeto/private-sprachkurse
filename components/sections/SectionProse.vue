@@ -13,7 +13,7 @@
 
 <template>
   <section
-    class="max-w-3xl mx-auto my-6 w-full rounded-2xl border border-[#e0e0e0] bg-[#fefefe]/95 p-5 shadow-sm dark:border-[#282a36] dark:bg-[#191a22]/95"
+    class="ps-container my-6 w-full rounded-2xl border border-[#e0e0e0] bg-[#fefefe]/95 p-5 shadow-sm dark:border-[#282a36] dark:bg-[#191a22]/95"
   >
     <h2 class="mb-3 text-xl font-semibold text-[#010101] dark:text-[#fefefe]">
       {{ t(title) }}

@@ -12,7 +12,9 @@
   }>()
 
   function isComponentMatch(component: any) {
-    return [component.__name, component.name].includes(p.data._orbi.component)
+    const name = p.data?._orbi?.component
+    if (!name) return false
+    return [component.__name, component.name].includes(name)
   }
 
   const sectionComponent = computed(() =>
@@ -31,7 +33,7 @@
 
   <section
     v-else
-    class="max-w-5xl mx-auto my-6 w-full overflow-hidden rounded-lg border border-[#e5e7eb] bg-white shadow-sm dark:border-[#282a36] dark:bg-[#191a22]"
+    class="ps-container my-6 w-full overflow-hidden rounded-lg border border-[#e5e7eb] bg-white shadow-sm dark:border-[#282a36] dark:bg-[#191a22]"
   >
     <div
       class="flex flex-wrap items-center gap-2 border-b border-[#e5e7eb] px-4 py-3 dark:border-[#282a36]"

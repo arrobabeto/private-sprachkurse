@@ -5,6 +5,11 @@ export const CREATE_PAGES_TABLE_SQL = `CREATE TABLE pages (
                     "de": "..."
                 }'::json,
   slug text DEFAULT '...'::text,
+  lead json DEFAULT '{
+                    "en": "...",
+                    "de": "..."
+                }'::json,
+  img text DEFAULT ''::text,
   sections json DEFAULT '[
                     {
                         "height": 0,
@@ -70,6 +75,22 @@ export const CREATE_SETTINGS_TABLE_SQL = `CREATE TABLE settings (
   data json DEFAULT '{ "key": "value" }'::json
 );`
 
+export const CREATE_CONTACTS_TABLE_SQL = `CREATE TABLE contacts (
+  id varchar(255) DEFAULT uid() PRIMARY KEY,
+  first_name text DEFAULT '...'::text,
+  last_name text DEFAULT '...'::text,
+  email text DEFAULT '...'::text,
+  phone text DEFAULT ''::text,
+  interest text DEFAULT ''::text,
+  learner_type text DEFAULT ''::text,
+  message text DEFAULT ''::text,
+  created_at timestamptz DEFAULT CURRENT_TIMESTAMP
+);`
+
+export const MIGRATE_CONTACTS_TABLE_SQL = `ALTER TABLE contacts ADD COLUMN IF NOT EXISTS interest text DEFAULT ''::text;
+ALTER TABLE contacts ADD COLUMN IF NOT EXISTS learner_type text DEFAULT ''::text;
+ALTER TABLE contacts ADD COLUMN IF NOT EXISTS message text DEFAULT ''::text;`
+
 function toIdempotentSql(sql: string) {
   return sql.replace("CREATE TABLE ", "CREATE TABLE IF NOT EXISTS ")
 }
@@ -78,12 +99,14 @@ export const CMS_SCHEMA_SQL = {
   pages: CREATE_PAGES_TABLE_SQL,
   posts: CREATE_POSTS_TABLE_SQL,
   settings: CREATE_SETTINGS_TABLE_SQL,
+  contacts: CREATE_CONTACTS_TABLE_SQL,
 } as const
 
 export const CMS_SCHEMA_SQL_SAFE = {
   pages: toIdempotentSql(CREATE_PAGES_TABLE_SQL),
   posts: toIdempotentSql(CREATE_POSTS_TABLE_SQL),
   settings: toIdempotentSql(CREATE_SETTINGS_TABLE_SQL),
+  contacts: toIdempotentSql(CREATE_CONTACTS_TABLE_SQL),
 } as const
 
 export type TCmsSchemaTable = keyof typeof CMS_SCHEMA_SQL

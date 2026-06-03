@@ -10,7 +10,7 @@ const tailwind = {
 
   theme: {
     fontFamily: {
-      sans: ["Inter var", "sans-serif"],
+      sans: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
       serif: ["Merriweather", "serif"],
     },
     colors: ({ colors }) => ({
@@ -20,9 +20,19 @@ const tailwind = {
       white: colors.white,
       gray: colors.gray,
       cyan: {
-        ['400']: "#67e8f9",
-        ['500']: "#06b6d4",
-        ['600']: "#0e7490",
+        ["400"]: "#67e8f9",
+        ["500"]: "#06b6d4",
+        ["600"]: "#0e7490",
+      },
+      ps: {
+        green: "#1B4C2E",
+        orange: "#FF9F1C",
+        blue: "#0D94C0",
+        cream: "#FFF7E4",
+        "cream-alt": "#F2F1EC",
+        muted: "#746E66",
+        gray: "#444444",
+        dark: "#000000",
       },
     }),
     maxWidth: ({ theme, breakpoints }) => ({
@@ -52,11 +62,8 @@ const tailwind = {
   },
 
   plugins: [
-    // polyfill for future pseudo selector :enter that combines :hover and :focus
     ({ addVariant }) => addVariant("enter", ["&:hover", "&:focus"]),
-    // lowers specifity to allow overrides
     ({ addVariant }) => addVariant("base", "html :where(&)"),
-    // style direct children
     ({ addVariant }) => addVariant("children", "& > *"),
   ],
 }

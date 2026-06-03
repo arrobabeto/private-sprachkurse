@@ -1,0 +1,19 @@
+{
+  "slug": "kontakt",
+  "title": "Kontakt",
+  "pageName": "Kontakt",
+  "pageIdConst": "KONTAKT_PAGE_ID",
+  "seedFile": "server/utils/kontaktSeed.ts",
+  "seedBuilder": "buildKontaktSeed",
+  "nav": {
+    "topLevel": true,
+    "order": 100,
+    "path": "/kontakt",
+    "label": { "de": "Kontakt", "en": "Contact" }
+  },
+  "footer": {
+    "include": true,
+    "group": "Angebote",
+    "label": { "de": "Kontakt", "en": "Contact" }
+  }
+}

@@ -30,26 +30,26 @@ export default defineNuxtConfig({
     domains: ["localhost", "s3.eu-central-2.amazonaws.com"],
   },
   i18n: {
-    defaultLocale: "en",
-    locales: ["en", "de"],
+    defaultLocale: "de",
+    locales: ["de", "en"],
     strategy: "prefix_except_default",
     detectBrowserLanguage: false,
   },
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-      siteName:
-        process.env.NUXT_PUBLIC_SITE_NAME ?? "Orbitype Headless CMS Template",
+      siteName: process.env.NUXT_PUBLIC_SITE_NAME ?? "Private Sprachkurse",
       siteDescription:
         process.env.NUXT_PUBLIC_SITE_DESCRIPTION ??
-        "A production-ready starter for Orbitype-powered websites.",
-      organizationName: process.env.NUXT_PUBLIC_ORGANIZATION_NAME ?? "Orbitype",
+        "Persönlicher Sprachunterricht für Alltag und Beruf – individuell, flexibel und mit Freude am Lernen.",
+      organizationName:
+        process.env.NUXT_PUBLIC_ORGANIZATION_NAME ?? "Private Sprachkurse",
       organizationLogo:
         process.env.NUXT_PUBLIC_ORGANIZATION_LOGO ?? "/favicon.svg",
       defaultLocale:
         process.env.NUXT_PUBLIC_DEFAULT_LOCALE ??
         process.env.NUXT_PUBLIC_SITE_LOCALE ??
-        "en_US",
+        "de_DE",
       twitterSite: process.env.NUXT_PUBLIC_TWITTER_SITE ?? "@orbitype",
       twitterCreator: process.env.NUXT_PUBLIC_TWITTER_CREATOR ?? "@orbitype",
       ogImageEnabled: process.env.NUXT_PUBLIC_OG_IMAGE_ENABLED !== "false",
@@ -95,7 +95,8 @@ export default defineNuxtConfig({
     },
   },
   experimental: {
-    typedPages: true,
+    // CMS-driven paths (e.g. /angebote) are not in the generated route map.
+    typedPages: false,
   },
   build: {
     transpile: [],
@@ -108,6 +109,21 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      link: [
+        {
+          rel: "preconnect",
+          href: "https://fonts.googleapis.com",
+        },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
+        },
+      ],
       script: gtmId
         ? [
             {

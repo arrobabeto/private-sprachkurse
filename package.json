@@ -14,6 +14,10 @@
     "build": "nuxt build",
     "preview": "nuxt preview",
     "setup": "node _scripts/setup.mjs && nuxt prepare && husky install",
+    "mcp:env": "node _scripts/print-mcp-env.mjs",
+    "mcp:verify": "node _scripts/verify-orbitype-mcp.mjs",
+    "figma:verify": "node _scripts/verify-figma-mcp.mjs",
+    "seed": "curl -s -X POST http://localhost:3000/api/setup/seed",
     "eslint": "eslint \"./**/*.{js,ts,vue}\" --max-warnings=0",
     "typecheck": "nuxi typecheck .",
     "test:e2e": "playwright test",
@@ -22,7 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
-    "@nuxtjs/i18n": "^8.5.6",
+    "@nuxtjs/i18n": "^9.5.6",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@playwright/test": "^1.59.1",
     "@types/eslint__js": "9.14.0",
@@ -47,8 +51,9 @@
     "vue-tsc": "^3.1.5"
   },
   "dependencies": {
-    "@vercel/og": "^0.8.5",
     "@nuxt/image": "^1.11.0",
+    "@vercel/og": "^0.8.5",
+    "ipx": "^2.1.1",
     "luxon": "3.7.2",
     "qs": "6.15.1",
     "remeda": "2.34.0",

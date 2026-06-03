@@ -3,8 +3,10 @@ import { defineEventHandler, readBody } from "h3"
 export default defineEventHandler(async (event) => {
   const bindings = await readBody(event)
 
-  let sql = "INSERT INTO contacts (first_name, last_name, email, phone)"
-  sql += " VALUES (:first_name, :last_name, :email, :phone) RETURNING *"
+  let sql =
+    "INSERT INTO contacts (first_name, last_name, email, phone, interest, learner_type, message)"
+  sql +=
+    " VALUES (:first_name, :last_name, :email, :phone, :interest, :learner_type, :message) RETURNING *"
 
   const rows: any[] = await $fetch(import.meta.env.ORBITYPE_API_SQL_URL, {
     method: "POST",

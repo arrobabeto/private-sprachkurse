@@ -12,6 +12,7 @@
   import { fn } from "~/functions/fn"
   import type { IPage } from "~/types/dto/IPage"
   import { generateOGImageUrl } from "~/utils/ogImageGenerator"
+  import { normalizeSections } from "~/utils/normalizeSections"
 
   const t = useTranslate()
   const { locale } = useI18n()
@@ -23,18 +24,22 @@
     ? routeSlug[0] || "home"
     : routeSlug || "home"
   const slug =
-    route.path === "/de" && currentSlug === "de" ? "home" : currentSlug
+    route.path === "/en" && currentSlug === "en" ? "home" : currentSlug
 
   const page: IPage = await $fetch("/api/pages", { query: { slug } })
   if (!page)
     throw showError({ statusCode: 404, statusMessage: "Page not found" })
 
+  const sections = normalizeSections(page.sections)
+
   const title = fn.truncateText(t(page.title), 60)
   const description = fn.truncateText(fn.removeHtml(t(page.lead)), 160)
   const keywords = Array.isArray(page.keywords) ? page.keywords.join(", ") : ""
-  const isGermanPage = route.path === "/de" || route.path.startsWith("/de/")
-  const enPath = page.slug === "home" ? "/" : `/${page.slug}`
-  const dePath = page.slug === "home" ? "/de" : `/de/${page.slug}`
+  const isGermanPage =
+    route.path === "/" ||
+    (!route.path.startsWith("/en") && !route.path.startsWith("/en/"))
+  const dePath = page.slug === "home" ? "/" : `/${page.slug}`
+  const enPath = page.slug === "home" ? "/en" : `/en/${page.slug}`
   const canonicalPath = isGermanPage ? dePath : enPath
   const canonicalUrl = `${config.public.siteUrl}${canonicalPath}`
   const ogImage = config.public.ogImageEnabled
@@ -72,7 +77,7 @@
       canonicalPath,
       enPath,
       dePath,
-      xDefaultPath: enPath,
+      xDefaultPath: dePath,
     }),
     script: [
       {
@@ -127,10 +132,6 @@
 <template>
   <main v-if="page">
     <span class="sr-only">{{ t(page.title) }}</span>
-    <AnySection
-      v-for="(section, i) of page.sections"
-      :key="i"
-      :data="section"
-    />
+    <AnySection v-for="(section, i) of sections" :key="i" :data="section" />
   </main>
 </template>

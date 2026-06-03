@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test"
 
 test.describe("Homepage smoke", () => {
-  test("renders home, supports /de, and expands next steps", async ({
+  test("renders home, supports /en, and shows hero content", async ({
     page,
   }) => {
     await page.route("**/api/pages**", async (route) => {
@@ -11,37 +11,30 @@ test.describe("Homepage smoke", () => {
         body: JSON.stringify({
           id: "smoke-home",
           title: {
-            en: "Orbitype Headless CMS Template",
-            de: "Orbitype Headless CMS Template",
+            en: "Private Sprachkurse",
+            de: "Private Sprachkurse",
           },
           slug: "home",
           img: "",
-          keywords: ["orbitype", "smoke"],
+          keywords: ["sprachkurse", "smoke"],
           lead: {
-            en: "Smoke test lead",
-            de: "Smoke test lead",
+            en: "Personal language lessons",
+            de: "Persönlicher Sprachunterricht",
           },
           sections: [
             {
-              _orbi: { component: "SectionWelcome" },
-              title: {
-                en: "Welcome to the Orbitype Headless CMS Template",
-                de: "Welcome to the Orbitype Headless CMS Template",
+              _orbi: { component: "SectionHero" },
+              tagline: {
+                en: "Personal language lessons",
+                de: "Persönlicher Sprachunterricht",
               },
-              lead: {
-                en: "Start here",
-                de: "Start here",
-              },
-              capabilities: [
+              image: "/images/home/hero.png",
+              cards: [
                 {
-                  title: { en: "Smoke capability", de: "Smoke capability" },
-                  text: { en: "Smoke text", de: "Smoke text" },
-                },
-              ],
-              steps: [
-                {
-                  title: { en: "Step one", de: "Step one" },
-                  text: { en: "Step one details", de: "Step one details" },
+                  text: {
+                    en: "We define your goals together",
+                    de: "Wir bestimmen gemeinsam Ihre Ziele",
+                  },
                 },
               ],
             },
@@ -55,19 +48,10 @@ test.describe("Homepage smoke", () => {
 
     await page.goto("/")
 
-    const homeHeading = page.getByRole("heading", {
-      name: /Orbitype Headless CMS Template/i,
-    })
-    await expect(homeHeading).toBeVisible()
+    await expect(page.getByText("Persönlicher Sprachunterricht")).toBeVisible()
 
-    await page.goto("/de")
-    await expect(homeHeading).toBeVisible()
-
-    const firstStep = page.locator("details").first()
-    await expect(firstStep).not.toHaveAttribute("open", "")
-
-    await firstStep.locator("summary").click()
-    await expect(firstStep).toHaveAttribute("open", "")
+    await page.goto("/en")
+    await expect(page.getByText("Personal language lessons")).toBeVisible()
   })
 
   test("serves robots, sitemaps, and llms routes", async ({
@@ -90,7 +74,7 @@ test.describe("Homepage smoke", () => {
     const llmsResponse = await request.get("/llms.txt")
     expect(llmsResponse.ok()).toBeTruthy()
     const llmsBody = await llmsResponse.text()
-    expect(llmsBody).toContain("# Orbitype Headless CMS Template")
+    expect(llmsBody).toContain("# Private Sprachkurse")
 
     const llmsFullResponse = await request.get("/llms-full.txt")
     expect(llmsFullResponse.ok()).toBeTruthy()

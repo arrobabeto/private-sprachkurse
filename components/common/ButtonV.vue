@@ -1,9 +1,10 @@
 <script setup lang="ts">
   defineOptions({ inheritAttrs: false })
 
-  const p = defineProps<{
+  defineProps<{
     disabled?: boolean
     submit?: boolean
+    variant?: "primary" | "orange" | "green" | "blue"
   }>()
 </script>
 
@@ -12,7 +13,13 @@
     v-bind="$attrs"
     :type="submit ? 'submit' : 'button'"
     :disabled="disabled"
-    class="h-10 rounded-xl border border-[#e0e0e0] bg-[#fefefe] px-3 text-center text-sm font-medium text-[#010101] transition hover:bg-[#f6f6f6] disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#282a36] dark:bg-[#191a22] dark:text-[#fefefe] dark:hover:bg-[#22232b]"
+    class="inline-flex h-auto min-h-10 w-auto items-center justify-center rounded-full px-6 py-2.5 text-center text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60"
+    :class="{
+      'bg-ps-green text-white hover:bg-ps-green/90':
+        !variant || variant === 'primary' || variant === 'green',
+      'bg-ps-orange text-white hover:bg-ps-orange/90': variant === 'orange',
+      'bg-ps-blue text-white hover:bg-ps-blue/90': variant === 'blue',
+    }"
   >
     <slot />
   </button>

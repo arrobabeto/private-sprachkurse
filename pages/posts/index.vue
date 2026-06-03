@@ -52,7 +52,7 @@
   }
 
   async function switchLocale(code: string) {
-    await setLocale(code)
+    await setLocale(code as "de" | "en")
   }
 
   await load()
@@ -62,7 +62,7 @@
 </script>
 
 <template>
-  <main class="max-w-3xl mx-auto w-full space-y-5 p-4 sm:py-8">
+  <main class="ps-container w-full space-y-5 py-4 sm:py-8">
     <header class="space-y-1">
       <p
         class="text-xs font-semibold uppercase tracking-[0.2em] text-[#1384ff]"

@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "figma": {
+      "command": "npx",
+      "args": ["-y", "figma-developer-mcp", "--stdio"],
+      "env": {
+        "FIGMA_API_KEY": "${env:FIGMA_API_KEY}"
+      }
+    },
+    "orbitype-sql-private-sprachkurse": {
+      "url": "https://core.orbitype.com/api/mcp/v1",
+      "headers": {
+        "X-API-KEY": "${env:ORBITYPE_SQL_API_KEY_PRIVATE_SPRACHKURSE}"
+      }
+    },
+    "orbitype-s3-private-sprachkurse": {
+      "url": "https://core.orbitype.com/api/mcp/v1",
+      "headers": {
+        "X-API-KEY": "${env:ORBITYPE_S3_API_KEY_PRIVATE_SPRACHKURSE}"
+      }
+    }
+  }
+}

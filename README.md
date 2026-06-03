@@ -1,4 +1,4 @@
-# Orbitype Headless CMS Template
+# Private Sprachkurse
 
 Production-ready Nuxt starter for Orbitype-powered websites with section-driven pages, i18n (`en` + `de`), and server-rendered SEO metadata.
 
@@ -43,6 +43,40 @@ Then run:
 ```bash
 npm run dev
 ```
+
+## Orbitype MCP (Cursor)
+
+Connect Cursor directly to your Orbitype database and storage so content can be read/written without leaving the IDE.
+
+1. Create SQL (and optional S3) API keys at [Orbitype API keys](https://app.orbitype.com/settings/api-keys).
+2. Print MCP export commands from your local `.env`:
+
+```bash
+npm run mcp:env
+```
+
+3. Add the exports to `~/.zshrc` and restart Cursor.
+4. MCP config lives in `.cursor/mcp.json` (keys stay in env vars, safe to commit).
+5. In a new chat, verify with `orbitype_get_context`.
+
+Verify API connectivity locally:
+
+```bash
+npm run mcp:verify
+```
+
+Full guide: [`docs/orbitype-cms-mcp.md`](docs/orbitype-cms-mcp.md)
+
+## Figma MCP (Cursor)
+
+Token-based design-to-code via [`figma-developer-mcp`](https://www.npmjs.com/package/figma-developer-mcp) — no OAuth.
+
+1. Create a personal access token at [Figma settings](https://www.figma.com/settings).
+2. Add to `.env`: `FIGMA_API_KEY="figd_..."` and `FIGMA_FILE_KEY="..."` (from your Figma URL).
+3. Run `npm run mcp:env` and add exports to `~/.zshrc`, then restart Cursor.
+4. Verify: `npm run figma:verify`
+
+Full guide: [`docs/figma-mcp.md`](docs/figma-mcp.md)
 
 ## What to edit first
 
@@ -98,4 +132,5 @@ Current smoke coverage:
   - Run `npx playwright install` once.
 - **Port 3000 is already taken**
   - Start on another port: `npx nuxi dev --port 3001`.
+
 # orbitype-cms-template

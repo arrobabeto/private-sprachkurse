@@ -17,7 +17,7 @@
     steps: {
       title: I18nString
       text: I18nString
-      kind?: "wizard"
+      kind?: "wizard" | "seed"
       code?: string
     }[]
     hasSqlKeyConfigured?: boolean
@@ -35,6 +35,8 @@
   const pendingInstall = ref<"all" | "pages" | "posts" | "settings" | null>(
     null,
   )
+  const seedStatus = ref<"idle" | "loading" | "success" | "error">("idle")
+  const seedMessage = ref("Seed the homepage into your Orbitype workspace.")
 
   function installLabel(table: "all" | "pages" | "posts" | "settings") {
     return table === "all" ? "all tables" : `${table} table`
@@ -98,6 +100,51 @@
         error?.message ??
         "Installation failed."
       pendingInstall.value = null
+    }
+  }
+
+  async function seedHomepage(force = false) {
+    if (!p.hasSqlKeyConfigured) {
+      seedStatus.value = "error"
+      seedMessage.value =
+        "Set ORBITYPE_API_SQL_KEY in .env before seeding the homepage."
+      return
+    }
+
+    const label = force
+      ? "overwrite the existing homepage"
+      : "seed the homepage"
+    const confirmed = window.confirm(
+      `Do you want to ${label} in your Orbitype workspace now?`,
+    )
+    if (!confirmed) {
+      seedStatus.value = "idle"
+      seedMessage.value = "Homepage seeding canceled."
+      return
+    }
+
+    seedStatus.value = "loading"
+    seedMessage.value = "Seeding homepage..."
+
+    try {
+      const response = await $fetch<{
+        ok: boolean
+        skipped?: boolean
+        message: string
+      }>("/api/setup/seed", {
+        method: "POST",
+        body: { force },
+      })
+
+      seedStatus.value = response.skipped ? "idle" : "success"
+      seedMessage.value = response.message
+    } catch (error: any) {
+      seedStatus.value = "error"
+      seedMessage.value =
+        error?.data?.statusMessage ??
+        error?.statusMessage ??
+        error?.message ??
+        "Homepage seeding failed."
     }
   }
 </script>
@@ -382,6 +429,68 @@
                       </span>
                     </li>
                   </ul>
+                </div>
+                <div
+                  v-else-if="s.kind === 'seed'"
+                  class="mt-3 rounded-xl border border-[#e0e0e0] bg-[#f6f6f6] p-3 dark:border-[#282a36] dark:bg-[#22232b]"
+                >
+                  <div
+                    class="mb-3 flex flex-wrap items-center justify-between gap-3"
+                  >
+                    <div>
+                      <h3
+                        class="text-sm font-semibold text-[#010101] dark:text-[#fefefe]"
+                      >
+                        Homepage seed
+                      </h3>
+                      <p
+                        class="mt-1 text-xs text-[#4e4e4e] dark:text-[#cbcbcb]"
+                      >
+                        Inserts bilingual homepage content into the pages table.
+                      </p>
+                    </div>
+                  </div>
+
+                  <template v-if="p.hasSqlKeyConfigured">
+                    <div class="grid gap-2 sm:grid-cols-2">
+                      <ButtonV
+                        :disabled="seedStatus === 'loading'"
+                        @click="seedHomepage(false)"
+                      >
+                        Seed homepage
+                      </ButtonV>
+                      <ButtonV
+                        :disabled="seedStatus === 'loading'"
+                        @click="seedHomepage(true)"
+                      >
+                        Overwrite homepage
+                      </ButtonV>
+                    </div>
+                  </template>
+                  <div
+                    v-else
+                    class="rounded-xl border border-[#f3d7a6] bg-[#fff8eb] px-3 py-2 text-xs text-[#7c4a03] dark:border-[#5a3b1f] dark:bg-[#2d2417] dark:text-[#f5d9b2]"
+                  >
+                    Seeding is hidden until
+                    <code>ORBITYPE_API_SQL_KEY</code>
+                    is set in
+                    <code>.env</code>
+                    .
+                  </div>
+
+                  <p
+                    class="mt-3 text-xs"
+                    :class="{
+                      'text-[#4e4e4e] dark:text-[#cbcbcb]':
+                        seedStatus === 'idle' || seedStatus === 'loading',
+                      'text-[#0b7b69] dark:text-[#a4f4e7]':
+                        seedStatus === 'success',
+                      'text-[#b91c1c] dark:text-[#fda4af]':
+                        seedStatus === 'error',
+                    }"
+                  >
+                    {{ seedMessage }}
+                  </p>
                 </div>
                 <pre
                   v-if="s.code"
