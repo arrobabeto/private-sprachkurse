@@ -23,8 +23,8 @@
         :src="backgroundImage"
         alt=""
         class="absolute inset-0 h-full w-full object-cover"
-        width="1272"
-        height="318"
+        width="2544"
+        height="636"
         loading="lazy"
       />
       <div class="absolute inset-0 bg-black/40" />
