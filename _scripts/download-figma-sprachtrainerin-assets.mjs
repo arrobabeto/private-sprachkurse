@@ -22,14 +22,18 @@ const outDir = path.resolve(process.cwd(), "public/images/sprachtrainerin")
 fs.mkdirSync(outDir, { recursive: true })
 
 const pngNodes = {
-  "hero-bg": "2209:3039",
-  "philosophy-1": "2221:1362",
-  "philosophy-2": "2223:237",
-  "philosophy-3": "2223:243",
-  "philosophy-4": "2223:247",
+  "hero-bg": "2412:649",
   "cert-sveb1": "2209:3155",
   "cert-eurolta": "2209:3164",
   "cert-fce": "2209:3173",
+}
+
+// Carousel backgrounds: export source image fills (not rendered frames with text).
+const philosophyNodes = {
+  "philosophy-1": "2412:657",
+  "philosophy-2": "2381:571",
+  "philosophy-3": "2381:575",
+  "philosophy-4": "2381:582",
 }
 
 const svgNodes = {
@@ -68,6 +72,55 @@ async function downloadBatch(nodes, format, ext) {
   }
 }
 
+async function downloadPhilosophyBackgrounds() {
+  const ids = Object.values(philosophyNodes).join(",")
+  const nodesRes = await fetch(
+    `https://api.figma.com/v1/files/${figmaFileKey}/nodes?ids=${encodeURIComponent(ids)}`,
+    { headers: { "X-Figma-Token": figmaApiKey } },
+  )
+  if (!nodesRes.ok) {
+    console.error("Figma nodes lookup failed:", nodesRes.status)
+    return
+  }
+  const nodesJson = await nodesRes.json()
+
+  const fillsRes = await fetch(
+    `https://api.figma.com/v1/files/${figmaFileKey}/images`,
+    { headers: { "X-Figma-Token": figmaApiKey } },
+  )
+  if (!fillsRes.ok) {
+    console.error("Figma image fills lookup failed:", fillsRes.status)
+    return
+  }
+  const { meta } = await fillsRes.json()
+  const imageMap = meta?.images ?? {}
+
+  for (const [name, nodeId] of Object.entries(philosophyNodes)) {
+    const doc = nodesJson.nodes?.[nodeId]?.document
+    const imageRef = (doc?.fills ?? []).find(
+      (f) => f.type === "IMAGE",
+    )?.imageRef
+    if (!imageRef) {
+      console.warn(`No image fill for ${name} (${nodeId})`)
+      continue
+    }
+    const imageUrl = imageMap[imageRef]
+    if (!imageUrl) {
+      console.warn(`No source URL for ${name} (${imageRef})`)
+      continue
+    }
+    const fileRes = await fetch(imageUrl)
+    if (!fileRes.ok) continue
+    const filePath = path.join(outDir, `${name}.png`)
+    await pipeline(
+      Readable.fromWeb(fileRes.body),
+      fs.createWriteStream(filePath),
+    )
+    console.log("Saved", filePath)
+  }
+}
+
 await downloadBatch(pngNodes, "png", "png")
+await downloadPhilosophyBackgrounds()
 await downloadBatch(svgNodes, "svg", "svg")
 console.log("Sprachtrainerin asset export complete.")

@@ -208,8 +208,7 @@ export function buildSprachtrainerinSeed(): IPage {
             },
           },
         ],
-        arrowImage: IMG.arrow,
-        arrowImage2: IMG.arrow2,
+        arrowImage: IMG.arrow2,
       },
       {
         _orbi: { component: "SectionTrainerQualifications" },

@@ -21,17 +21,26 @@
   const viewportRef = ref<HTMLElement | null>(null)
   const viewportWidth = ref(654)
   const isDesktop = ref(false)
+  const touchStartX = ref<number | null>(null)
 
   const CARD_WIDTH_DESKTOP = 654
-  const SLIDE_GAP = 58
-  const desktopStep = CARD_WIDTH_DESKTOP + SLIDE_GAP
+  const SLIDE_GAP_DESKTOP = 58
+  const desktopStep = CARD_WIDTH_DESKTOP + SLIDE_GAP_DESKTOP
+  const SWIPE_THRESHOLD_PX = 48
+
+  const slideCount = computed(() => props.languages.length)
+
+  const cardWidth = computed(() =>
+    isDesktop.value ? CARD_WIDTH_DESKTOP : viewportWidth.value,
+  )
+
+  const slideStep = computed(() =>
+    isDesktop.value ? desktopStep : viewportWidth.value,
+  )
 
   const trackOffset = computed(() => {
-    if (isDesktop.value) {
-      const center = viewportWidth.value / 2
-      return center - (active.value * desktopStep + CARD_WIDTH_DESKTOP / 2)
-    }
-    return -active.value * viewportWidth.value
+    const center = viewportWidth.value / 2
+    return center - (active.value * slideStep.value + cardWidth.value / 2)
   })
 
   let resizeObserver: ResizeObserver | null = null
@@ -60,13 +69,48 @@
   })
 
   function goTo(i: number) {
-    active.value = i
+    const total = slideCount.value
+    if (total === 0) return
+    active.value = ((i % total) + total) % total
   }
 
-  function slideClasses(i: number) {
-    return i === active.value
-      ? "opacity-100 z-10"
-      : "pointer-events-none opacity-0"
+  function goPrev() {
+    goTo(active.value - 1)
+  }
+
+  function goNext() {
+    goTo(active.value + 1)
+  }
+
+  function onTouchStart(event: TouchEvent) {
+    touchStartX.value = event.touches[0]?.clientX ?? null
+  }
+
+  function onTouchEnd(event: TouchEvent) {
+    if (touchStartX.value === null) return
+    const endX = event.changedTouches[0]?.clientX
+    if (endX === undefined) return
+    const delta = endX - touchStartX.value
+    touchStartX.value = null
+    if (Math.abs(delta) < SWIPE_THRESHOLD_PX) return
+    if (delta < 0) goNext()
+    else goPrev()
+  }
+
+  function onCarouselKeydown(event: KeyboardEvent) {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault()
+      goPrev()
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault()
+      goNext()
+    } else if (event.key === "Home") {
+      event.preventDefault()
+      goTo(0)
+    } else if (event.key === "End") {
+      event.preventDefault()
+      goTo(slideCount.value - 1)
+    }
   }
 </script>
 
@@ -89,75 +133,153 @@
           class="relative flex flex-col items-center gap-8 px-4 py-12 md:gap-10 md:px-8 md:py-16"
         >
           <h2
+            id="sprachkurse-heading"
             class="max-w-[664px] text-center text-2xl font-bold text-white md:text-4xl"
           >
             {{ t(overlayTitle) }}
           </h2>
 
-          <div ref="viewportRef" class="w-full max-w-[654px] overflow-hidden">
-            <div
-              class="flex transition-transform duration-300 ease-out md:gap-[58px]"
-              :style="{ transform: `translateX(${trackOffset}px)` }"
+          <div
+            class="relative w-full max-w-[654px]"
+            role="region"
+            aria-roledescription="carousel"
+            aria-labelledby="sprachkurse-heading"
+            tabindex="0"
+            @keydown="onCarouselKeydown"
+          >
+            <button
+              type="button"
+              class="absolute left-0 top-1/2 z-20 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-white/20 text-white backdrop-blur-sm transition hover:bg-white/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:h-11 md:w-11"
+              aria-label="Previous language"
+              @click="goPrev"
             >
-              <article
-                v-for="(lang, i) of languages"
-                :key="i"
-                class="flex w-full shrink-0 flex-col gap-4 rounded-[20px] border border-white/40 bg-white/15 p-5 text-white backdrop-blur-md transition-opacity duration-300 md:w-[654px] md:p-6"
-                :class="slideClasses(i)"
-                :style="isDesktop ? undefined : { width: `${viewportWidth}px` }"
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
               >
-                <div
-                  class="flex items-center justify-center gap-4 md:justify-start"
+                <path
+                  d="M15 6L9 12L15 18"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              class="absolute right-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-white/30 bg-white/20 text-white backdrop-blur-sm transition hover:bg-white/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:h-11 md:w-11"
+              aria-label="Next language"
+              @click="goNext"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 6L15 12L9 18"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <div
+              ref="viewportRef"
+              class="overflow-hidden"
+              aria-live="polite"
+              aria-atomic="true"
+              @touchstart.passive="onTouchStart"
+              @touchend.passive="onTouchEnd"
+            >
+              <div
+                class="flex transition-transform duration-300 ease-out will-change-transform md:gap-[58px]"
+                :style="{ transform: `translateX(${trackOffset}px)` }"
+              >
+                <article
+                  v-for="(lang, i) of languages"
+                  :id="`sprachkurse-slide-${i}`"
+                  :key="i"
+                  role="group"
+                  aria-roledescription="slide"
+                  :aria-label="`${i + 1} of ${languages.length}`"
+                  :aria-hidden="i !== active"
+                  class="flex shrink-0 flex-col gap-4 rounded-[20px] border border-white/40 bg-white/15 p-5 text-white backdrop-blur-md transition-[opacity,transform] duration-300 md:w-[654px] md:p-6"
+                  :class="
+                    i === active
+                      ? 'z-10 opacity-100'
+                      : 'pointer-events-none opacity-40 md:opacity-60'
+                  "
+                  :style="{ width: `${cardWidth}px` }"
                 >
                   <div
-                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white/20 p-1 md:h-20 md:w-20"
+                    class="flex items-center justify-center gap-4 md:justify-start"
                   >
-                    <NuxtImg
-                      :src="lang.icon"
-                      :alt="t(lang.name)"
-                      class="h-full w-full rounded-full object-contain"
-                      width="80"
-                      height="80"
-                    />
+                    <div
+                      class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white/20 p-1 md:h-20 md:w-20"
+                    >
+                      <NuxtImg
+                        :src="lang.icon"
+                        :alt="t(lang.name)"
+                        class="h-full w-full rounded-full object-contain"
+                        width="80"
+                        height="80"
+                      />
+                    </div>
+                    <h3 class="text-xl font-bold md:text-2xl">
+                      {{ t(lang.name) }}
+                    </h3>
                   </div>
-                  <h3 class="text-xl font-bold md:text-2xl">
-                    {{ t(lang.name) }}
-                  </h3>
-                </div>
 
-                <p class="text-center text-sm leading-relaxed text-white/90">
-                  {{ t(lang.description) }}
-                </p>
+                  <p class="text-center text-sm leading-relaxed text-white/90">
+                    {{ t(lang.description) }}
+                  </p>
 
-                <p
-                  v-if="lang.availability"
-                  class="text-center text-xs italic text-white/80"
-                >
-                  {{ t(lang.availability) }}
-                </p>
+                  <p
+                    v-if="lang.availability"
+                    class="text-center text-xs italic text-white/80"
+                  >
+                    {{ t(lang.availability) }}
+                  </p>
 
-                <div class="mt-1 flex justify-center">
-                  <ButtonV variant="orange">
-                    {{ t(lang.cta) }}
-                  </ButtonV>
-                </div>
-              </article>
+                  <div class="mt-1 flex justify-center">
+                    <ButtonV variant="orange">
+                      {{ t(lang.cta) }}
+                    </ButtonV>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
 
-          <div class="flex justify-center gap-2">
+          <div
+            class="flex justify-center gap-2"
+            role="tablist"
+            aria-label="Language slides"
+          >
             <button
               v-for="(_, i) of languages"
               :key="i"
               type="button"
+              role="tab"
               class="h-2.5 rounded-full bg-white transition-all"
               :class="
                 i === active
                   ? 'w-8 opacity-100'
                   : 'w-2.5 opacity-50 hover:opacity-70'
               "
-              :aria-label="`Slide ${i + 1}`"
-              :aria-current="i === active ? 'true' : undefined"
+              :aria-label="`Go to slide ${i + 1}`"
+              :aria-selected="i === active"
+              :aria-controls="`sprachkurse-slide-${i}`"
               @click="goTo(i)"
             />
           </div>

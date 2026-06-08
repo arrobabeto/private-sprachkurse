@@ -22,9 +22,9 @@
       <NuxtImg
         :src="backgroundImage"
         alt=""
-        class="absolute inset-0 h-full w-full object-cover"
-        width="1416"
-        height="773"
+        class="absolute inset-0 h-full w-full object-cover object-[center_35%] md:object-center"
+        width="2540"
+        height="1340"
       />
       <div
         class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/10 md:bg-gradient-to-r md:from-black/55 md:via-black/30 md:to-transparent"
