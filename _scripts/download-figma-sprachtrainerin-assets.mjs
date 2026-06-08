@@ -39,6 +39,7 @@ const philosophyNodes = {
 const svgNodes = {
   "arrow-1": "2221:1356",
   "arrow-2": "2223:273",
+  "cta-circle": "2226:238",
 }
 
 if (!figmaApiKey) {

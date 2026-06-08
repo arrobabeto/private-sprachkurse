@@ -199,8 +199,8 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
           en: "Stories from our students",
         },
         subtitle: {
-          de: "Was Meine Kursteilnehmer Sagen: Echte Stimmen Über Lernerfolge, Vertrauen Und Motivation",
-          en: "What my students say: Real voices about learning success, trust, and motivation",
+          de: "Was meine Kursteilnehmer sagen:\nEchte Stimmen über Lernerfolge, Vertrauen und Motivation",
+          en: "What my students say:\nReal voices about learning success, trust, and motivation",
         },
         items: [
           {

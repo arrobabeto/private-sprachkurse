@@ -74,9 +74,9 @@
             <NuxtImg
               src="/images/home/loop-orange.svg"
               alt=""
-              class="pointer-events-none absolute -bottom-1 left-1/2 z-0 h-7 w-[115%] max-w-none -translate-x-1/2 md:-bottom-2 md:h-9"
-              width="180"
-              height="50"
+              class="pointer-events-none absolute left-1/2 top-[58%] z-0 w-[13.5rem] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[17.5rem]"
+              width="350"
+              height="148"
             />
           </span>
           {{ splitTitle(t(title), t(titleHighlight)).after }}

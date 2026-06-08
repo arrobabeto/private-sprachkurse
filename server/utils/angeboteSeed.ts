@@ -213,7 +213,7 @@ export function buildAngeboteSeed(): IPage {
             layout: "image-right",
             showBookingAction: false,
             imageTilt: "right",
-            decorativeArrow: "offer-arrow-2",
+            decorativeArrow: "offer-arrow-3",
           },
           {
             tagline: { de: "Sprechen üben", en: "Practise speaking" },
@@ -259,7 +259,7 @@ export function buildAngeboteSeed(): IPage {
             layout: "image-left",
             showBookingAction: true,
             imageTilt: "left",
-            decorativeArrow: "offer-arrow-3",
+            decorativeArrow: "offer-arrow-2",
           },
           {
             tagline: { de: "Material", en: "Materials" },
