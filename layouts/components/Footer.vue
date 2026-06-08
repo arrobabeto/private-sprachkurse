@@ -16,10 +16,26 @@
       en: "© 2026 Private Sprachkurse",
     },
     social: [
-      { label: "Facebook", href: "https://facebook.com", icon: "f" },
-      { label: "Instagram", href: "https://instagram.com", icon: "ig" },
-      { label: "LinkedIn", href: "https://linkedin.com", icon: "in" },
-      { label: "YouTube", href: "https://youtube.com", icon: "yt" },
+      {
+        label: "Facebook",
+        href: "https://facebook.com",
+        icon: "/images/footer/icon-facebook.svg",
+      },
+      {
+        label: "Instagram",
+        href: "https://instagram.com",
+        icon: "/images/footer/icon-instagram.svg",
+      },
+      {
+        label: "YouTube",
+        href: "https://youtube.com",
+        icon: "/images/footer/icon-youtube.svg",
+      },
+      {
+        label: "LinkedIn",
+        href: "https://linkedin.com",
+        icon: "/images/footer/icon-linkedin.svg",
+      },
     ],
   }
 </script>
@@ -42,10 +58,16 @@
             :href="s.href"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xs font-bold uppercase text-ps-orange transition hover:bg-white/90"
+            class="transition hover:opacity-80"
             :aria-label="s.label"
           >
-            {{ s.icon }}
+            <NuxtImg
+              :src="s.icon"
+              alt=""
+              class="h-9 w-9"
+              width="36"
+              height="36"
+            />
           </a>
         </div>
 

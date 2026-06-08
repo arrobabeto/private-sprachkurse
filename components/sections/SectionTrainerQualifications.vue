@@ -171,7 +171,7 @@
               <NuxtImg
                 :src="qual.image"
                 alt=""
-                class="mx-auto h-auto w-full min-w-0 max-w-[544px] rounded-[30px] object-cover"
+                class="h-auto w-full min-w-0 max-w-[544px] self-start rounded-[30px] object-cover"
                 width="544"
                 height="400"
               />

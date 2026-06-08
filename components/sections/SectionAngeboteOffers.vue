@@ -30,6 +30,19 @@
 
   const t = useTranslate()
 
+  /** Figma Frame 483 (2420:627) — fixed positions for connector arrows. */
+  const offerArrowLayout: Record<
+    NonNullable<Offer["decorativeArrow"]>,
+    string
+  > = {
+    "offer-arrow-1":
+      "top-[18%] right-0 lg:-right-6 xl:-right-10 h-[220px] w-[114px] lg:h-[248px] lg:w-[131px]",
+    "offer-arrow-3":
+      "top-[41%] -left-1 h-[130px] w-[58px] md:-left-6 md:h-[148px] md:w-[66px] lg:-left-12",
+    "offer-arrow-2":
+      "top-[67%] right-0 lg:-right-6 xl:-right-10 h-[220px] w-[114px] lg:h-[248px] lg:w-[131px]",
+  }
+
   function tiltClass(tilt?: "left" | "right") {
     if (tilt === "right") return "rotate-[4deg]"
     return "-rotate-[4deg]"
@@ -37,22 +50,30 @@
 </script>
 
 <template>
-  <section class="bg-ps-green py-12 md:py-20">
+  <section class="relative overflow-x-visible bg-ps-green py-12 md:py-20">
     <div class="relative mx-auto w-[95%] max-w-[1200px]">
+      <div
+        class="pointer-events-none absolute inset-0 z-10 hidden md:block"
+        aria-hidden="true"
+      >
+        <template v-for="(offer, i) of offers" :key="`arrow-${i}`">
+          <NuxtImg
+            v-if="offer.decorativeArrow && i < offers.length - 1"
+            :src="`/images/angebote/${offer.decorativeArrow}.svg`"
+            alt=""
+            class="absolute max-w-none"
+            :class="offerArrowLayout[offer.decorativeArrow]"
+            :width="offer.decorativeArrow === 'offer-arrow-3' ? 112 : 175"
+            :height="offer.decorativeArrow === 'offer-arrow-3' ? 248 : 264"
+          />
+        </template>
+      </div>
+
       <article
         v-for="(offer, i) of offers"
         :key="i"
         class="relative pb-16 last:pb-0 md:pb-28 md:last:pb-0"
       >
-        <NuxtImg
-          v-if="offer.decorativeArrow && i < offers.length - 1"
-          :src="`/images/angebote/${offer.decorativeArrow}.svg`"
-          alt=""
-          class="pointer-events-none absolute -bottom-6 left-0 z-10 hidden h-[180px] w-[114px] md:block lg:h-[220px] lg:w-[140px]"
-          width="175"
-          height="264"
-        />
-
         <div
           class="grid items-center gap-8 md:gap-12"
           :class="

@@ -13,6 +13,7 @@ const IMG = {
   certFce: "/images/sprachtrainerin/cert-fce.png",
   arrow: "/images/sprachtrainerin/arrow-1.svg",
   arrow2: "/images/sprachtrainerin/arrow-2.svg",
+  ctaCircle: "/images/sprachtrainerin/cta-circle.svg",
 }
 
 export function buildSprachtrainerinSeed(): IPage {
@@ -267,6 +268,11 @@ export function buildSprachtrainerinSeed(): IPage {
           de: "Ich freue mich darauf, Sie auf Ihrem Weg zu begleiten.",
           en: "I look forward to accompanying you on your journey.",
         },
+        titleHighlight: {
+          de: "zu begleiten.",
+          en: "on your journey.",
+        },
+        circleImage: IMG.ctaCircle,
         subtitle: {
           de: "Bereit mit dem Unterricht zu beginnen?",
           en: "Ready to start lessons?",

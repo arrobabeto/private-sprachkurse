@@ -1,8 +1,9 @@
 <script setup lang="ts">
+  import { computed } from "vue"
   import type { I18nString } from "~/types/util/I18nString"
   import { useTranslate } from "~/composables/useTranslate"
 
-  defineProps<{
+  const props = defineProps<{
     title: I18nString
     subtitle: I18nString
     items: {
@@ -15,6 +16,18 @@
   }>()
 
   const t = useTranslate()
+
+  const subtitleParts = computed(() => {
+    const text = t(props.subtitle).replace(/\s+/g, " ").trim()
+    const colonIndex = text.indexOf(":")
+    if (colonIndex === -1) {
+      return { head: text, tail: "" }
+    }
+    return {
+      head: text.slice(0, colonIndex + 1),
+      tail: text.slice(colonIndex + 1).trimStart(),
+    }
+  })
 
   function tiltClass(tilt?: "left" | "right") {
     if (tilt === "left") return "-rotate-2 md:-rotate-[2.5deg]"
@@ -38,7 +51,11 @@
           <p
             class="mt-5 text-sm leading-relaxed text-ps-dark/75 md:text-base md:leading-7"
           >
-            {{ t(subtitle) }}
+            {{ subtitleParts.head }}
+            <template v-if="subtitleParts.tail">
+              <br />
+              {{ subtitleParts.tail }}
+            </template>
           </p>
         </div>
 
