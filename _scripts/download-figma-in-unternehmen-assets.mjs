@@ -21,11 +21,12 @@ const figmaFileKey = readEnvValue("FIGMA_FILE_KEY") || "2rqbuJLu15PDpWwopZoC3E"
 const outDir = path.resolve(process.cwd(), "public/images/in-unternehmen")
 fs.mkdirSync(outDir, { recursive: true })
 
+// Background rectangles from "In unternehmen • Desktop" (2226:240).
 const pngNodes = {
-  "offer-sprachkurse-bg": "2331:605",
-  "offer-praesentation-bg": "2331:606",
-  "offer-wortschatz-bg": "2331:607",
-  "contact-cta-bg": "2209:2597",
+  "offer-sprachkurse-bg": "2412:794",
+  "offer-praesentation-bg": "2412:809",
+  "offer-wortschatz-bg": "2412:871",
+  "contact-cta-bg": "2412:884",
 }
 
 const svgNodes = {

@@ -21,12 +21,42 @@ const figmaFileKey = readEnvValue("FIGMA_FILE_KEY") || "2rqbuJLu15PDpWwopZoC3E"
 const outDir = path.resolve(process.cwd(), "public/images/ubersetzungen")
 fs.mkdirSync(outDir, { recursive: true })
 
+// Split-block photos (image-only rectangles).
 const pngNodes = {
-  "hero-bg": "2226:808",
   business: "2209:1970",
   private: "2209:2025",
   advisory: "2209:2029",
-  "cta-bg": "2226:715",
+}
+
+// Hero + CTA: crop source image fills to frame aspect (Figma scaleMode FILL).
+const backgroundFillNodes = {
+  "hero-bg": { nodeId: "2226:808", width: 1288, height: 564 },
+  "cta-bg": { nodeId: "2226:715", width: 1272, height: 318 },
+}
+
+const EXPORT_SCALE = 2
+
+function cropFillRect(srcW, srcH, frameW, frameH) {
+  const frameAspect = frameW / frameH
+  const srcAspect = srcW / srcH
+  if (srcAspect > frameAspect) {
+    const cropH = srcH
+    const cropW = Math.round(srcH * frameAspect)
+    return {
+      left: Math.round((srcW - cropW) / 2),
+      top: 0,
+      width: cropW,
+      height: cropH,
+    }
+  }
+  const cropW = srcW
+  const cropH = Math.round(srcW / frameAspect)
+  return {
+    left: 0,
+    top: Math.round((srcH - cropH) / 2),
+    width: cropW,
+    height: cropH,
+  }
 }
 
 const svgNodes = {
@@ -81,6 +111,67 @@ async function downloadBatch(nodes, format, ext) {
   }
 }
 
+async function downloadBackgroundFills() {
+  const sharp = (await import("sharp")).default
+  const ids = Object.values(backgroundFillNodes)
+    .map((spec) => spec.nodeId)
+    .join(",")
+  const nodesRes = await fetch(
+    `https://api.figma.com/v1/files/${figmaFileKey}/nodes?ids=${encodeURIComponent(ids)}`,
+    { headers: { "X-Figma-Token": figmaApiKey } },
+  )
+  if (!nodesRes.ok) {
+    console.error("Figma nodes lookup failed:", nodesRes.status)
+    return
+  }
+  const nodesJson = await nodesRes.json()
+
+  const fillsRes = await fetch(
+    `https://api.figma.com/v1/files/${figmaFileKey}/images`,
+    { headers: { "X-Figma-Token": figmaApiKey } },
+  )
+  if (!fillsRes.ok) {
+    console.error("Figma image fills lookup failed:", fillsRes.status)
+    return
+  }
+  const { meta } = await fillsRes.json()
+  const imageMap = meta?.images ?? {}
+
+  for (const [name, spec] of Object.entries(backgroundFillNodes)) {
+    const doc = nodesJson.nodes?.[spec.nodeId]?.document
+    const imageRef = (doc?.fills ?? []).find(
+      (f) => f.type === "IMAGE",
+    )?.imageRef
+    if (!imageRef) {
+      console.warn(`No image fill for ${name} (${spec.nodeId})`)
+      continue
+    }
+    const imageUrl = imageMap[imageRef]
+    if (!imageUrl) {
+      console.warn(`No source URL for ${name} (${imageRef})`)
+      continue
+    }
+    const fileRes = await fetch(imageUrl)
+    if (!fileRes.ok) continue
+    const source = Buffer.from(await fileRes.arrayBuffer())
+    const metaImg = await sharp(source).metadata()
+    const crop = cropFillRect(
+      metaImg.width,
+      metaImg.height,
+      spec.width,
+      spec.height,
+    )
+    const filePath = path.join(outDir, `${name}.png`)
+    await sharp(source)
+      .extract(crop)
+      .resize(spec.width * EXPORT_SCALE, spec.height * EXPORT_SCALE)
+      .png()
+      .toFile(filePath)
+    console.log("Saved", filePath)
+  }
+}
+
 await downloadBatch(pngNodes, "png", "png")
+await downloadBackgroundFills()
 await downloadBatch(svgNodes, "svg", "svg")
 console.log("Übersetzungen asset export complete.")

@@ -25,8 +25,8 @@
         :src="backgroundImage"
         alt=""
         class="absolute inset-0 h-full w-full object-cover"
-        width="1272"
-        height="318"
+        width="2544"
+        height="636"
         sizes="(max-width: 768px) 100vw, 1272px"
         loading="lazy"
       />
