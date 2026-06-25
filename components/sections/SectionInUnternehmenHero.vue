@@ -44,8 +44,19 @@
         class="mt-4 text-[32px] font-bold leading-[1.12] text-ps-dark md:text-[56px] md:leading-[1.1]"
       >
         <span>{{ titleParts.before }}</span>
-        <span v-if="titleParts.highlight" class="text-ps-orange">
+        <span
+          v-if="titleParts.highlight"
+          class="relative inline-block text-ps-orange"
+        >
           {{ titleParts.highlight }}
+          <NuxtImg
+            v-if="circleImage"
+            :src="circleImage"
+            alt=""
+            class="pointer-events-none absolute left-1/2 top-1/2 w-[118%] max-w-none -translate-x-1/2 -translate-y-1/2"
+            width="456"
+            height="134"
+          />
         </span>
         <span>{{ titleParts.after }}</span>
       </h1>
@@ -61,14 +72,6 @@
       </div>
     </div>
 
-    <NuxtImg
-      v-if="circleImage"
-      :src="circleImage"
-      alt=""
-      class="pointer-events-none absolute left-1/2 top-[140px] hidden w-[min(456px,40vw)] max-w-none -translate-x-1/2 md:block"
-      width="456"
-      height="134"
-    />
     <NuxtImg
       v-if="arrowImage"
       :src="arrowImage"

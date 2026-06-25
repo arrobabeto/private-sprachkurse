@@ -44,11 +44,11 @@
             {{ t(body) }}
           </p>
           <div class="flex flex-wrap items-center gap-4">
-            <NuxtLinkLocale :to="primaryCtaUrl">
+            <a :href="primaryCtaUrl">
               <ButtonV variant="blue" class="min-w-[12rem]">
                 {{ t(primaryCtaLabel) }}
               </ButtonV>
-            </NuxtLinkLocale>
+            </a>
             <a
               :href="secondaryCtaUrl"
               class="inline-flex min-h-10 min-w-[9rem] items-center justify-center rounded-[37px] border border-white px-6 py-2.5 text-base text-white transition hover:bg-white/10"

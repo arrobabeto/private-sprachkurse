@@ -156,10 +156,6 @@ export function buildUbersetzungenSeed(): IPage {
           },
         ],
         primaryCta: { label: { de: "Buchen", en: "Book" }, url: "/#kontakt" },
-        secondaryCta: {
-          label: { de: "Mehr erfahren", en: "Learn more" },
-          url: "/#kontakt",
-        },
       },
       {
         _orbi: { component: "SectionUbersetzungenAdvisory" },
@@ -266,7 +262,7 @@ export function buildUbersetzungenSeed(): IPage {
           en: "Call me or send your documents and sample texts by email. I will get back to you promptly with a non-binding quote for scope and cost.",
         },
         primaryCtaLabel: { de: "Anfragen", en: "Inquire" },
-        primaryCtaUrl: "/#kontakt",
+        primaryCtaUrl: "mailto:info@privatesprachkurse.ch",
         secondaryCtaLabel: { de: "Anrufen", en: "Call" },
         secondaryCtaUrl: "tel:+41789433963",
       },

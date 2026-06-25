@@ -49,7 +49,7 @@
             i === current ? 'opacity-100' : 'pointer-events-none opacity-0'
           "
         >
-          <div class="w-full px-6 py-12 md:px-12 md:py-16 lg:px-16">
+          <div class="w-full px-20 py-12 md:px-24 md:py-16">
             <div class="max-w-[775px] text-white">
               <h2 class="text-3xl font-bold md:text-[48px] md:leading-tight">
                 {{ t(slide.title) }}

@@ -9,7 +9,7 @@
     body: I18nString
     items: { icon: string; label: I18nString }[]
     primaryCta: { label: I18nString; url: string }
-    secondaryCta: { label: I18nString; url: string }
+    secondaryCta?: { label: I18nString; url: string }
   }>()
 </script>
 

@@ -66,7 +66,7 @@ export function buildAngeboteSeed(): IPage {
       {
         _orbi: { component: "SectionAngeboteCategories" },
         languages: {
-          de: "Deutsch  |  Englisch  Italienisch | Spanisch |  Französisch",
+          de: "Deutsch | Englisch | Italienisch | Spanisch | Französisch",
           en: "German | English | Italian | Spanish | French",
         },
         categories: [

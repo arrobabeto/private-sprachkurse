@@ -1,0 +1,19 @@
+{
+  "slug": "impressum",
+  "title": "Impressum",
+  "pageName": "Impressum",
+  "pageIdConst": "IMPRESSUM_PAGE_ID",
+  "seedFile": "server/utils/impressumSeed.ts",
+  "seedBuilder": "buildImpressumSeed",
+  "nav": {
+    "topLevel": false,
+    "order": 900,
+    "path": "/impressum",
+    "label": { "de": "Impressum", "en": "Imprint" }
+  },
+  "footer": {
+    "include": false,
+    "group": "Rechtliches",
+    "label": { "de": "Impressum", "en": "Imprint" }
+  }
+}

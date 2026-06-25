@@ -37,7 +37,7 @@
 <template>
   <section class="px-[2.5%] py-4 md:py-6">
     <div
-      class="mx-auto max-w-[1272px] rounded-[40px] bg-ps-green px-6 py-12 md:rounded-[53px] md:px-16 md:py-16 lg:px-24"
+      class="mx-auto max-w-[1272px] rounded-[40px] bg-ps-blue px-6 py-12 md:rounded-[53px] md:px-16 md:py-16 lg:px-24"
     >
       <div class="mx-auto max-w-[900px] text-center text-white">
         <p class="text-sm font-semibold text-ps-orange md:text-base">

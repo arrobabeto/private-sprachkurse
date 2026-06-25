@@ -10,6 +10,7 @@
       ...siteNavLinks,
       // AUTO-FOOTER:START
       // AUTO-FOOTER:END
+      { name: { de: "Impressum", en: "Imprint" }, url: "/impressum" },
     ] satisfies { name: I18nString; url: string }[],
     copyright: {
       de: "© 2026 PrivateSprachkurse",

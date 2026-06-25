@@ -190,16 +190,16 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
           de: "Mich und meine Methoden kennenlernen",
           en: "Get to know me and my methods",
         },
-        ctaUrl: "/#ueber-mich",
+        ctaUrl: "/sprachtrainerin",
       },
       {
         _orbi: { component: "SectionTestimonials" },
         title: {
-          de: "Geschichten Unserer Schüler",
+          de: "Geschichten unserer Schüler",
           en: "Stories from our students",
         },
         subtitle: {
-          de: "Was meine Kursteilnehmer sagen:\nEchte Stimmen über Lernerfolge, Vertrauen und Motivation",
+          de: "Was meine Kursteilnehmer sagen:\nEchte Stimmen über Lernerfolge, Vertrauen und Motivation.",
           en: "What my students say:\nReal voices about learning success, trust, and motivation",
         },
         items: [

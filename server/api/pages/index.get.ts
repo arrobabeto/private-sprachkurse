@@ -15,6 +15,10 @@ import {
   buildUbersetzungenSeed,
   UBERSETZUNGEN_PAGE_ID,
 } from "~/server/utils/ubersetzungenSeed"
+import {
+  buildImpressumSeed,
+  IMPRESSUM_PAGE_ID,
+} from "~/server/utils/impressumSeed"
 import { normalizeSections } from "~/utils/normalizeSections"
 
 type QueryValue = string | string[] | null | undefined
@@ -42,6 +46,7 @@ function getFallbackPage(bindings: QueryBindings) {
   const sprachtrainerin = buildSprachtrainerinSeed()
   const inUnternehmen = buildInUnternehmenSeed()
   const ubersetzungen = buildUbersetzungenSeed()
+  const impressum = buildImpressumSeed()
   const id = bindings["id"]
   const slug = bindings["slug"]
 
@@ -52,6 +57,7 @@ function getFallbackPage(bindings: QueryBindings) {
     return inUnternehmen
   if (slug === "ubersetzungen" || id === UBERSETZUNGEN_PAGE_ID)
     return ubersetzungen
+  if (slug === "impressum" || id === IMPRESSUM_PAGE_ID) return impressum
   // AUTO-PAGES:START
   const kontakt = buildKontaktSeed()
   if (slug === "kontakt" || id === KONTAKT_PAGE_ID) return kontakt
@@ -63,6 +69,7 @@ function getFallbackPage(bindings: QueryBindings) {
     id !== SPRACHTRAINERIN_ID &&
     id !== IN_UNTERNEHMEN_PAGE_ID &&
     id !== UBERSETZUNGEN_PAGE_ID &&
+    id !== IMPRESSUM_PAGE_ID &&
     id !== KONTAKT_PAGE_ID
   )
     return null
@@ -73,7 +80,8 @@ function getFallbackPage(bindings: QueryBindings) {
     slug !== "kontakt" &&
     slug !== "sprachtrainerin" &&
     slug !== "in-unternehmen" &&
-    slug !== "ubersetzungen"
+    slug !== "ubersetzungen" &&
+    slug !== "impressum"
   )
     return null
 
@@ -85,6 +93,7 @@ function getFallbackPage(bindings: QueryBindings) {
         sprachtrainerin,
         inUnternehmen,
         ubersetzungen,
+        impressum,
         // AUTO-PAGES:START
         kontakt,
         // AUTO-PAGES:END

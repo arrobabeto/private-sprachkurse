@@ -25,7 +25,7 @@
   <section id="kontakt" class="scroll-mt-24 py-12 md:py-16">
     <div class="ps-container">
       <div
-        class="max-w-xl mx-auto rounded-[20px] bg-white p-6 shadow-lg md:p-8"
+        class="mx-auto w-[90%] max-w-[800px] rounded-[20px] bg-white p-6 shadow-lg md:p-8"
       >
         <ContactFormBody
           :title="title"
