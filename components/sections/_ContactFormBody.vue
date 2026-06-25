@@ -169,6 +169,7 @@
         v-if="submitVariant === 'default'"
         submit
         variant="primary"
+        class="self-start px-[35px]"
         :disabled="status === 'loading'"
       >
         {{ t(labels.submit) }}
@@ -177,7 +178,7 @@
         v-else
         type="submit"
         :disabled="status === 'loading'"
-        class="inline-flex min-h-12 min-w-[147px] items-center justify-center gap-2 rounded-[20px] bg-ps-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-ps-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-ps-blue focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+        class="inline-flex min-h-12 items-center justify-center gap-2 self-start rounded-[20px] bg-ps-blue px-[35px] py-2 text-sm font-semibold text-white transition hover:bg-ps-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-ps-blue focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {{ t(labels.submit) }}
         <NuxtImg

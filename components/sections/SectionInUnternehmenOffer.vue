@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed } from "vue"
-  import BookingAction from "~/components/common/BookingAction.vue"
+  import ButtonV from "~/components/common/ButtonV.vue"
   import type { I18nString } from "~/types/util/I18nString"
   import { useTranslate } from "~/composables/useTranslate"
 
@@ -64,11 +64,9 @@
             </p>
           </div>
           <div class="mt-8 md:mt-10">
-            <BookingAction
-              :label="t(ctaLabel)"
-              :url="ctaUrl"
-              variant="orange"
-            />
+            <NuxtLinkLocale :to="ctaUrl">
+              <ButtonV variant="orange">{{ t(ctaLabel) }}</ButtonV>
+            </NuxtLinkLocale>
           </div>
         </div>
       </div>

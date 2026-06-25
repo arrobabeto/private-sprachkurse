@@ -93,7 +93,7 @@
             <NuxtLinkLocale :to="ctaUrl">
               <ButtonV
                 variant="blue"
-                class="w-full px-8 py-3 text-base font-semibold md:w-full"
+                class="px-[35px] py-3 text-base font-semibold"
               >
                 {{ t(ctaLabel) }}
               </ButtonV>

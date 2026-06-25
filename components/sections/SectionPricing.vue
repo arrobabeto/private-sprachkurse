@@ -146,17 +146,16 @@
           </h3>
         </div>
 
-        <div
-          class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
-          :class="
-            cat.plans.length === 2 ? 'max-w-2xl mx-auto lg:grid-cols-2' : ''
-          "
-        >
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <article
             v-for="(plan, pi) of cat.plans"
             :key="pi"
-            class="flex min-h-[220px] flex-col rounded-[27px] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-transform md:min-h-[240px] md:p-6"
-            :class="[cardClass(plan), tiltClass(plan.tilt, pi)]"
+            class="flex min-h-[220px] flex-col rounded-[27px] p-5 text-center shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-transform md:min-h-[240px] md:p-6"
+            :class="[
+              cardClass(plan),
+              tiltClass(plan.tilt, pi),
+              cat.plans.length === 2 && pi === 0 ? 'lg:col-start-2' : '',
+            ]"
           >
             <div class="flex flex-col gap-1">
               <p
@@ -176,7 +175,7 @@
               </p>
             </div>
 
-            <div class="my-4 flex items-baseline gap-1.5">
+            <div class="my-4 flex items-baseline justify-center gap-1.5">
               <span class="text-sm font-semibold md:text-base">
                 {{ plan.currency ?? "CHF" }}
               </span>

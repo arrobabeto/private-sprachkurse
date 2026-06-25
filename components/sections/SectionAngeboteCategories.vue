@@ -22,7 +22,7 @@
   <section id="kurse" class="scroll-mt-24 bg-ps-cream-alt py-12 md:py-16">
     <div class="mx-auto w-[95%] max-w-[1200px]">
       <p
-        class="mb-10 text-center text-lg font-medium text-ps-muted md:mb-12 md:text-xl"
+        class="mb-10 text-center text-[28px] font-bold leading-snug text-ps-muted md:mb-12 md:text-[40px]"
       >
         {{ t(languages) }}
       </p>

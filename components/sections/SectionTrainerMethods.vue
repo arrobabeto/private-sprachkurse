@@ -38,7 +38,7 @@
         </p>
         <div class="mt-8 space-y-6">
           <article v-for="(method, i) of methods" :key="i" class="flex gap-4">
-            <span class="shrink-0 text-4xl font-bold text-ps-orange">
+            <span class="shrink-0 text-5xl font-bold text-ps-orange">
               {{ method.number }}
             </span>
             <div class="min-w-0">
@@ -80,7 +80,7 @@
 
         <template v-for="(method, i) of methods" :key="`method-${i}`">
           <span
-            class="col-start-1 self-start text-5xl font-bold leading-none text-ps-orange"
+            class="col-start-1 self-start justify-self-center text-[64px] font-bold leading-none text-ps-orange"
             :style="{ gridRow: `${i + 2}` }"
           >
             {{ method.number }}

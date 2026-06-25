@@ -27,7 +27,7 @@
         height="636"
         loading="lazy"
       />
-      <div class="absolute inset-0 bg-black/40" />
+      <div class="absolute inset-0 bg-black/25" />
 
       <div
         class="relative flex w-full flex-col gap-6 px-8 py-12 md:flex-row md:items-center md:justify-between md:gap-12 md:px-16 md:py-14"

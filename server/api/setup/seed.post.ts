@@ -15,6 +15,10 @@ import {
   buildUbersetzungenSeed,
   UBERSETZUNGEN_PAGE_ID,
 } from "~/server/utils/ubersetzungenSeed"
+import {
+  buildImpressumSeed,
+  IMPRESSUM_PAGE_ID,
+} from "~/server/utils/impressumSeed"
 
 type TSeedBody = {
   force?: boolean
@@ -25,6 +29,7 @@ type TSeedBody = {
     | "sprachtrainerin"
     | "in-unternehmen"
     | "ubersetzungen"
+    | "impressum"
   )[]
 }
 
@@ -50,6 +55,11 @@ const SEED_PAGES = {
     id: UBERSETZUNGEN_PAGE_ID,
     slug: "ubersetzungen",
     build: buildUbersetzungenSeed,
+  },
+  impressum: {
+    id: IMPRESSUM_PAGE_ID,
+    slug: "impressum",
+    build: buildImpressumSeed,
   },
 } as const
 
@@ -183,6 +193,7 @@ export default defineEventHandler(async (event) => {
         "sprachtrainerin",
         "in-unternehmen",
         "ubersetzungen",
+        "impressum",
       ] as const)
 
   if (
