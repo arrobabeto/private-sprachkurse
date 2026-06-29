@@ -325,28 +325,6 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
               },
             ],
           },
-          {
-            title: { de: "Kommunikationskurs", en: "Communication course" },
-            plans: [
-              {
-                name: { de: "Privatunterricht", en: "Private lesson" },
-                price: "88",
-                unit: { de: "Pro Lektion", en: "Per lesson" },
-                duration: { de: "55 Min.", en: "55 min." },
-                cta: { de: "Termin buchen", en: "Book a session" },
-                tilt: "left",
-              },
-              {
-                subtitle: { de: "Ab 2 Personen", en: "From 2 people" },
-                price: "78",
-                unit: { de: "Pro Person", en: "Per person" },
-                duration: { de: "55 Min.", en: "55 min." },
-                variant: "green",
-                cta: { de: "Jetzt buchen", en: "Book now" },
-                tilt: "right",
-              },
-            ],
-          },
         ],
       },
       {
