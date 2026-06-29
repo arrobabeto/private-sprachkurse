@@ -5,7 +5,7 @@ export const HOMEPAGE_ID = "private-sprachkurse-home"
 const IMG = {
   hero: "/images/home/hero.png",
   portrait: "/images/home/portrait.png",
-  kurslokal: "/images/home/kurslokal.png",
+  kurslokal: "/images/home/kurslokal-2.jpeg",
   flagDe: "/images/home/flagDe.png",
   flagEn: "/images/home/flagEn.png",
   flagFr: "/images/home/flagFr.png",
