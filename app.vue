@@ -34,7 +34,7 @@
       },
       {
         name: "theme-color",
-        content: "#111827",
+        content: "#000000",
       },
     ],
     link: [
@@ -44,7 +44,7 @@
       },
       {
         rel: "apple-touch-icon",
-        href: config.public.organizationLogo,
+        href: "/apple-touch-icon.png",
       },
     ],
     script: [
@@ -84,7 +84,7 @@
 <template>
   <!--eslint-disable vue/no-multiple-template-root-->
   <Head>
-    <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <Link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
     <Link rel="preconnect" href="https://fonts.googleapis.com" />
     <Link
       rel="preconnect"

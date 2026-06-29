@@ -45,7 +45,7 @@ export default defineNuxtConfig({
       organizationName:
         process.env.NUXT_PUBLIC_ORGANIZATION_NAME ?? "Private Sprachkurse",
       organizationLogo:
-        process.env.NUXT_PUBLIC_ORGANIZATION_LOGO ?? "/favicon.svg",
+        process.env.NUXT_PUBLIC_ORGANIZATION_LOGO ?? "/favicon.png",
       defaultLocale:
         process.env.NUXT_PUBLIC_DEFAULT_LOCALE ??
         process.env.NUXT_PUBLIC_SITE_LOCALE ??
@@ -55,7 +55,7 @@ export default defineNuxtConfig({
       ogImageEnabled: process.env.NUXT_PUBLIC_OG_IMAGE_ENABLED !== "false",
       commentsEnabled: process.env.NUXT_PUBLIC_COMMENTS_ENABLED === "true",
       gtmId,
-      ogLogoPath: process.env.NUXT_PUBLIC_OG_LOGO_PATH ?? "/favicon.svg",
+      ogLogoPath: process.env.NUXT_PUBLIC_OG_LOGO_PATH ?? "/favicon.png",
     },
   },
   nitro: {
