@@ -37,6 +37,21 @@ const nodes = {
   iconPricingArrow: "2293:285",
 }
 
+const pngFileNames = {
+  hero: "hero-v2.png",
+  portrait: "portrait-v2.png",
+  kurslokal: "kurslokal-v2.png",
+  flagDe: "flagDe.png",
+  flagEn: "flagEn.png",
+  flagFr: "flagFr.png",
+  flagIt: "flagIt.png",
+  flagEs: "flagEs.png",
+  testimonialJanine: "testimonialJanine.png",
+  testimonialSarah: "testimonialSarah.png",
+  iconPricingCategory: "icon-pricing-category.png",
+  iconPricingArrow: "icon-pricing-arrow.png",
+}
+
 const svgNodes = {
   iconLocationOnline: "2227:276",
   iconLocationLiestal: "2227:281",
@@ -81,7 +96,7 @@ for (const [name, nodeId] of Object.entries(nodes)) {
     continue
   }
 
-  const filePath = path.join(outDir, `${name}.png`)
+  const filePath = path.join(outDir, pngFileNames[name] ?? `${name}.png`)
   await pipeline(Readable.fromWeb(res.body), fs.createWriteStream(filePath))
   console.log("Saved", filePath)
 }

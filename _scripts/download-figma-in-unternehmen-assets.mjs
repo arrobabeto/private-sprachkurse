@@ -23,8 +23,8 @@ fs.mkdirSync(outDir, { recursive: true })
 
 // Background rectangles from "In unternehmen • Desktop" (2226:240).
 const pngNodes = {
-  "offer-sprachkurse-bg": "2412:794",
-  "offer-praesentation-bg": "2412:809",
+  "offer-sprachkurse-bg-v2": "2412:794",
+  "offer-praesentation-bg-v2": "2412:809",
   "offer-wortschatz-bg": "2412:871",
   "contact-cta-bg": "2412:884",
 }

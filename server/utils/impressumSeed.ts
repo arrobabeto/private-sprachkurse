@@ -26,7 +26,7 @@ export function buildImpressumSeed(): IPage {
       de: "Alle notwendigen Informationen und Angaben zum Betreiber dieser Webseite.",
       en: "All required information and details about the operator of this website.",
     },
-    img: "/images/kontakt/hero.png",
+    img: "/images/kontakt/hero-v2.png",
     keywords: [
       "impressum",
       "rechtliches",

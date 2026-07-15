@@ -3,10 +3,10 @@ import type { IPage } from "~/types/dto/IPage"
 export const KONTAKT_PAGE_ID = "private-sprachkurse-kontakt"
 
 const IMG = {
-  hero: "/images/kontakt/hero.png",
-  portrait: "/images/kontakt/form-portrait.png",
+  hero: "/images/kontakt/hero-v2.png",
+  portrait: "/images/kontakt/form-portrait-v2.png",
   locationLiestal: "/images/kontakt/location-liestal.png",
-  locationOnline: "/images/home/kurslokal.png",
+  locationOnline: "/images/home/kurslokal-v2.png",
   dottedArc: "/images/kontakt/dotted-arc.svg",
   arrow: "/images/kontakt/arrow.svg",
 }

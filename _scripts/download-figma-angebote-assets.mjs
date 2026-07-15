@@ -22,9 +22,9 @@ const outDir = path.resolve(process.cwd(), "public/images/angebote")
 fs.mkdirSync(outDir, { recursive: true })
 
 const pngNodes = {
-  "angebote-einzel": "2221:546",
+  "angebote-einzel-v2": "2221:546",
   "angebote-kleingruppe": "2221:554",
-  "angebote-sprechtraining": "2221:558",
+  "angebote-sprechtraining-v2": "2221:558",
   "angebote-spezial": "2221:570",
   "angebote-tile-unterricht": "2218:568",
   "angebote-tile-sprech": "2218:570",

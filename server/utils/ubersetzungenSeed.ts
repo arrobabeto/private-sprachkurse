@@ -3,10 +3,10 @@ import type { IPage } from "~/types/dto/IPage"
 export const UBERSETZUNGEN_PAGE_ID = "private-sprachkurse-ubersetzungen"
 
 const IMG = {
-  hero: "/images/ubersetzungen/hero-bg.png",
-  business: "/images/ubersetzungen/business.png",
+  hero: "/images/ubersetzungen/hero-bg-v2.png",
+  business: "/images/ubersetzungen/business-v2.png",
   private: "/images/ubersetzungen/private.png",
-  advisory: "/images/ubersetzungen/advisory.png",
+  advisory: "/images/ubersetzungen/advisory-v2.png",
   cta: "/images/ubersetzungen/cta-bg.png",
   iconNews: "/images/ubersetzungen/icon-news.svg",
   iconOutgoingMail: "/images/ubersetzungen/icon-outgoing-mail.svg",

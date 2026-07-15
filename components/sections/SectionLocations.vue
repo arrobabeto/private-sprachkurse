@@ -149,14 +149,15 @@
       >
         <div class="flex items-center justify-center p-8 md:p-10 lg:p-12">
           <div
-            class="aspect-square w-full max-w-[511px] overflow-hidden rounded-full"
+            class="aspect-square w-full max-w-[511px] shrink-0 overflow-hidden rounded-full"
           >
             <NuxtImg
               :src="kurslokal.image"
               alt=""
-              class="h-full w-full object-cover"
+              class="aspect-square h-full w-full object-cover"
               width="511"
               height="511"
+              sizes="(max-width: 768px) 80vw, 511px"
             />
           </div>
         </div>
