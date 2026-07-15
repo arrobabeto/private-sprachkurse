@@ -23,16 +23,16 @@ fs.mkdirSync(outDir, { recursive: true })
 
 /** Hero fill requires Figma crop transform — use download_figma_images MCP or these params. */
 const heroCrop = {
-  imageRef: "310963007dbcc420530756883cbd82b6f3a3e419",
+  imageRef: "730be04781056ef5f5c709325a580a5604c359bd",
   cropTransform: [
-    [1, 0, -0.0006143642240203917],
-    [0, 0.41044434905052185, 0.35062214732170105],
+    [0.524748682975769, 0, 0.31586191058158875],
+    [0, 0.564307451248169, 0.2180921733379364],
   ],
-  filenameSuffix: "1f01c1",
+  filenameSuffix: "664040",
 }
 
 const pngNodes = {
-  "form-portrait": "2209:1515",
+  "form-portrait-v2": "2209:1515",
   "location-liestal": "2209:1551",
 }
 
@@ -74,7 +74,7 @@ async function downloadBatch(nodes, format, ext) {
 
 async function downloadHeroCropped() {
   const croppedPath = path.join(outDir, `hero-${heroCrop.filenameSuffix}.png`)
-  const heroPath = path.join(outDir, "hero.png")
+  const heroPath = path.join(outDir, "hero-v2.png")
   if (fs.existsSync(croppedPath)) {
     fs.copyFileSync(croppedPath, heroPath)
     console.log("Copied", croppedPath, "→", heroPath)

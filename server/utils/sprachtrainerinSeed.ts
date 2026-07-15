@@ -4,7 +4,7 @@ export const SPRACHTRAINERIN_ID = "private-sprachkurse-sprachtrainerin"
 
 const IMG = {
   hero: "/images/sprachtrainerin/hero-bg.png",
-  philosophy1: "/images/sprachtrainerin/philosophy-1.png",
+  philosophy1: "/images/sprachtrainerin/philosophy-1-v2.png",
   philosophy2: "/images/sprachtrainerin/philosophy-2.png",
   philosophy3: "/images/sprachtrainerin/philosophy-3.png",
   philosophy4: "/images/sprachtrainerin/philosophy-4.png",

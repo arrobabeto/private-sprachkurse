@@ -3,9 +3,9 @@ import type { IPage } from "~/types/dto/IPage"
 export const HOMEPAGE_ID = "private-sprachkurse-home"
 
 const IMG = {
-  hero: "/images/home/hero.png",
-  portrait: "/images/home/portrait.png",
-  kurslokal: "/images/home/kurslokal-2.jpeg",
+  hero: "/images/home/hero-v2.png",
+  portrait: "/images/home/portrait-v2.png",
+  kurslokal: "/images/home/kurslokal-v2.png",
   flagDe: "/images/home/flagDe.png",
   flagEn: "/images/home/flagEn.png",
   flagFr: "/images/home/flagFr.png",

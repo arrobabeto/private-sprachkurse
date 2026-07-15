@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test"
 
 const languagesSection = {
   _orbi: { component: "SectionLanguages" },
-  backgroundImage: "/images/home/hero.png",
+  backgroundImage: "/images/home/hero-v2.png",
   overlayTitle: {
     de: "Sprachen verbinden die Welt",
     en: "Languages connect the world",

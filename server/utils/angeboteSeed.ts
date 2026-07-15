@@ -3,9 +3,9 @@ import type { IPage } from "~/types/dto/IPage"
 export const ANGEBOTE_ID = "private-sprachkurse-angebote"
 
 const IMG = {
-  einzel: "/images/angebote/angebote-einzel.png",
+  einzel: "/images/angebote/angebote-einzel-v2.png",
   kleingruppe: "/images/angebote/angebote-kleingruppe.png",
-  sprechtraining: "/images/angebote/angebote-sprechtraining.png",
+  sprechtraining: "/images/angebote/angebote-sprechtraining-v2.png",
   spezial: "/images/angebote/angebote-spezial.png",
   tileUnterricht: "/images/angebote/angebote-tile-unterricht.png",
   tileSprech: "/images/angebote/angebote-tile-sprech.png",

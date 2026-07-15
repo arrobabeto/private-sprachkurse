@@ -23,14 +23,14 @@ fs.mkdirSync(outDir, { recursive: true })
 
 // Split-block photos (image-only rectangles).
 const pngNodes = {
-  business: "2209:1970",
+  "business-v2": "2209:1970",
   private: "2209:2025",
-  advisory: "2209:2029",
+  "advisory-v2": "2209:2029",
 }
 
 // Hero + CTA: crop source image fills to frame aspect (Figma scaleMode FILL).
 const backgroundFillNodes = {
-  "hero-bg": { nodeId: "2226:808", width: 1288, height: 564 },
+  "hero-bg-v2": { nodeId: "2226:808", width: 1288, height: 564 },
   "cta-bg": { nodeId: "2226:715", width: 1272, height: 318 },
 }
 

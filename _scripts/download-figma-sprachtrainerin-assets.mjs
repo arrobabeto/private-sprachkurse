@@ -30,7 +30,7 @@ const pngNodes = {
 
 // Carousel backgrounds: export source image fills (not rendered frames with text).
 const philosophyNodes = {
-  "philosophy-1": "2412:657",
+  "philosophy-1-v2": "2412:657",
   "philosophy-2": "2381:571",
   "philosophy-3": "2381:575",
   "philosophy-4": "2381:582",

@@ -28,7 +28,7 @@ test.describe("Homepage smoke", () => {
                 en: "Personal language lessons",
                 de: "Persönlicher Sprachunterricht",
               },
-              image: "/images/home/hero.png",
+              image: "/images/home/hero-v2.png",
               cards: [
                 {
                   text: {
