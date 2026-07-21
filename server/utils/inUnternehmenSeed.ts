@@ -10,7 +10,7 @@ const IMG = {
   iconGroups: "/images/in-unternehmen/icon-groups.svg",
   iconFlexible: "/images/in-unternehmen/icon-flexible.svg",
   offerSprachkurse: "/images/in-unternehmen/offer-sprachkurse-bg-v2.png",
-  offerPraesentation: "/images/in-unternehmen/offer-praesentation-bg-v2.png",
+  offerPraesentation: "/images/home/kurslokal-v2.png",
   offerWortschatz: "/images/in-unternehmen/offer-wortschatz-bg.png",
   contactCta: "/images/in-unternehmen/contact-cta-bg.png",
   statsArrow: "/images/in-unternehmen/stats-arrow.svg",
