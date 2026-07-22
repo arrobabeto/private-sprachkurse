@@ -40,7 +40,7 @@
           height="653"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/20 transition-opacity duration-500"
+          class="absolute inset-0 bg-black/55 transition-opacity duration-500 md:bg-transparent md:bg-gradient-to-r md:from-black/65 md:via-black/40 md:to-black/20"
           :class="i === current ? 'opacity-100' : 'opacity-0'"
         />
         <div
@@ -49,13 +49,15 @@
             i === current ? 'opacity-100' : 'pointer-events-none opacity-0'
           "
         >
-          <div class="w-full px-20 py-12 md:px-24 md:py-16">
+          <div class="w-full px-14 py-10 md:px-24 md:py-16">
             <div class="max-w-[775px] text-white">
-              <h2 class="text-3xl font-bold md:text-[48px] md:leading-tight">
+              <h2
+                class="text-[1.65rem] font-bold leading-snug drop-shadow-sm md:text-[48px] md:leading-tight md:drop-shadow-none"
+              >
                 {{ t(slide.title) }}
               </h2>
               <div
-                class="mt-5 space-y-4 text-base leading-relaxed text-white/95 md:mt-6 md:text-lg md:leading-7"
+                class="mt-4 space-y-3 text-[0.95rem] leading-relaxed text-white drop-shadow-sm md:mt-6 md:space-y-4 md:text-lg md:leading-7 md:text-white/95 md:drop-shadow-none"
               >
                 <p
                   v-for="(para, pi) of t(slide.body)

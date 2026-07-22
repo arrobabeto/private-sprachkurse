@@ -1,11 +1,14 @@
 <script setup lang="ts">
   import { useRoute } from "#app"
+  import { onBeforeUnmount, onMounted, ref, watch } from "vue"
   import { useTranslate } from "~/composables/useTranslate"
   import { siteNavLinks } from "~/layouts/config/siteNavLinks"
   import type { I18nString } from "~/types/util/I18nString"
 
   const t = useTranslate()
   const route = useRoute()
+  const menuOpen = ref(false)
+  const menuRoot = ref<HTMLElement | null>(null)
 
   const nav = {
     links: [
@@ -14,6 +17,36 @@
       // AUTO-NAV:END
     ] satisfies { name: I18nString; url: string }[],
   }
+
+  watch(
+    () => route.fullPath,
+    () => {
+      menuOpen.value = false
+    },
+  )
+
+  function closeMenu() {
+    menuOpen.value = false
+  }
+
+  function toggleMenu() {
+    menuOpen.value = !menuOpen.value
+  }
+
+  function handleDocumentClick(event: MouseEvent) {
+    if (!menuOpen.value || !menuRoot.value) return
+    if (!menuRoot.value.contains(event.target as Node)) {
+      closeMenu()
+    }
+  }
+
+  onMounted(() => {
+    document.addEventListener("click", handleDocumentClick)
+  })
+
+  onBeforeUnmount(() => {
+    document.removeEventListener("click", handleDocumentClick)
+  })
 
   function pathWithoutLocale() {
     const p = route.path
@@ -61,13 +94,19 @@
         </NuxtLinkLocale>
       </div>
 
-      <details class="relative md:hidden">
-        <summary
-          class="cursor-pointer list-none text-sm font-medium text-ps-dark [&::-webkit-details-marker]:hidden"
+      <div ref="menuRoot" class="relative md:hidden">
+        <button
+          type="button"
+          class="cursor-pointer text-sm font-medium text-ps-dark"
+          :aria-expanded="menuOpen"
+          aria-controls="mobile-nav-menu"
+          @click.stop="toggleMenu"
         >
           Menu
-        </summary>
+        </button>
         <div
+          v-show="menuOpen"
+          id="mobile-nav-menu"
           class="absolute right-0 top-full z-30 mt-2 min-w-[12rem] rounded-2xl border border-black/10 bg-white p-2 shadow-lg"
         >
           <NuxtLinkLocale
@@ -81,11 +120,12 @@
                 : 'text-ps-dark hover:bg-ps-cream'
             "
             :aria-current="isActive(l.url) ? 'page' : undefined"
+            @click="closeMenu"
           >
             {{ t(l.name) }}
           </NuxtLinkLocale>
         </div>
-      </details>
+      </div>
     </nav>
   </header>
 </template>

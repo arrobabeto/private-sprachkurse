@@ -18,6 +18,11 @@
 
   const t = useTranslate()
 
+  /** Keep "für Ihr" / "for your" together when the mobile line wraps. */
+  function titleForMobile(text: string) {
+    return text.replace(/für\n/, "\nfür\u00A0").replace(/for\n/, "\nfor\u00A0")
+  }
+
   function borderClass(accent: Stat["borderAccent"]) {
     return accent === "orange" ? "border-ps-orange" : "border-ps-blue"
   }
@@ -46,9 +51,14 @@
             {{ t(tagline) }}
           </p>
           <h2
-            class="mt-2 whitespace-pre-line text-[32px] font-bold leading-[1.2] text-ps-green md:text-[44px]"
+            class="mt-2 text-[32px] font-bold leading-[1.2] text-ps-green md:text-[44px]"
           >
-            {{ t(title) }}
+            <span class="whitespace-pre-line md:hidden">
+              {{ titleForMobile(t(title)) }}
+            </span>
+            <span class="hidden whitespace-pre-line md:inline">
+              {{ t(title) }}
+            </span>
           </h2>
           <p class="mt-4 max-w-[576px] text-lg leading-[1.5] text-ps-green">
             {{ t(body) }}
