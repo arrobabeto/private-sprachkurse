@@ -145,24 +145,26 @@
 
       <div
         v-if="showKurslokal && kurslokal"
-        class="mt-12 grid overflow-hidden rounded-[40px] bg-ps-green md:mt-14 md:min-h-[670px] md:grid-cols-[minmax(280px,511px)_1fr]"
+        class="mt-12 grid items-center overflow-hidden rounded-[40px] bg-ps-green md:mt-14 md:grid-cols-[minmax(240px,360px)_1fr]"
       >
-        <div class="flex items-center justify-center p-8 md:p-10 lg:p-12">
+        <div
+          class="flex items-center justify-center p-8 pl-[57px] md:p-10 md:pl-[65px]"
+        >
           <div
-            class="aspect-square w-full max-w-[511px] shrink-0 overflow-hidden rounded-full"
+            class="size-[240px] shrink-0 overflow-hidden rounded-full sm:size-[280px] md:size-[320px]"
           >
             <NuxtImg
               :src="kurslokal.image"
               alt=""
-              class="aspect-square h-full w-full object-cover"
-              width="511"
-              height="511"
-              sizes="(max-width: 768px) 80vw, 511px"
+              class="size-full object-cover"
+              width="320"
+              height="320"
+              sizes="(max-width: 768px) 280px, 320px"
             />
           </div>
         </div>
         <div
-          class="flex flex-col justify-center gap-5 p-8 text-white md:gap-6 md:p-10 lg:p-12"
+          class="flex flex-col justify-center gap-5 p-8 text-left text-white md:gap-6 md:p-10 md:pr-12"
         >
           <h3 class="text-2xl font-bold md:text-[32px]">
             {{ t(kurslokal.title) }}
@@ -174,7 +176,7 @@
               {{ para }}
             </p>
           </div>
-          <div class="mt-2 md:mt-auto md:self-end">
+          <div class="mt-2 md:self-end">
             <NuxtLinkLocale :to="kurslokal.ctaUrl">
               <ButtonV variant="blue">{{ t(kurslokal.ctaLabel) }}</ButtonV>
             </NuxtLinkLocale>
