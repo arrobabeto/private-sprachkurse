@@ -24,8 +24,8 @@ fs.mkdirSync(outDir, { recursive: true })
 const pngNodes = {
   "hero-bg": "2412:649",
   "cert-sveb1": "2209:3155",
-  "cert-eurolta": "2209:3164",
-  "cert-fce": "2209:3173",
+  // cert-eurolta / cert-fce: Figma exports are placeholders — keep
+  // hand-picked stand-ins from existing site photos instead.
 }
 
 // Carousel backgrounds: export source image fills (not rendered frames with text).

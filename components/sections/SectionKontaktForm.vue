@@ -32,7 +32,7 @@
       >
         <NuxtImg
           :src="portraitImage"
-          alt=""
+          alt="Sprachtrainerin Porträt"
           class="mx-auto h-auto w-full max-w-[400px] rounded-[46px] object-cover lg:mx-0 lg:min-h-[653px]"
           width="400"
           height="653"

@@ -53,6 +53,7 @@
       width="62"
       height="131"
       loading="lazy"
+      aria-hidden="true"
     />
   </section>
 </template>

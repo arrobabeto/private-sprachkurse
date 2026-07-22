@@ -41,6 +41,7 @@
         width="281"
         height="197"
         loading="lazy"
+        aria-hidden="true"
       />
 
       <div
@@ -96,7 +97,7 @@
           >
             <NuxtImg
               :src="tab.image"
-              alt=""
+              :alt="t(tab.title)"
               class="h-full min-h-[280px] w-full rounded-[27px] object-cover md:min-h-[400px]"
               width="732"
               height="500"

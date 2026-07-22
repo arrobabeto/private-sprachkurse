@@ -122,7 +122,7 @@
       >
         <NuxtImg
           :src="backgroundImage"
-          alt=""
+          :alt="t(overlayTitle)"
           class="absolute inset-0 h-full w-full object-cover"
           width="1200"
           height="600"

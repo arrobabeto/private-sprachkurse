@@ -21,11 +21,11 @@
 <template>
   <section id="kurse" class="scroll-mt-24 bg-ps-cream-alt py-12 md:py-16">
     <div class="mx-auto w-[95%] max-w-[1200px]">
-      <p
+      <h2
         class="mb-10 text-center text-[28px] font-bold leading-snug text-ps-muted md:mb-12 md:text-[40px]"
       >
         {{ t(languages) }}
-      </p>
+      </h2>
 
       <div class="mb-10 hidden grid-cols-4 gap-4 md:mb-12 md:grid">
         <div
@@ -40,7 +40,7 @@
           <NuxtImg
             v-if="cat.tileType === 'image' && cat.image"
             :src="cat.image"
-            alt=""
+            :alt="t(cat.title)"
             class="h-full w-full object-cover"
             width="300"
             height="139"
@@ -52,6 +52,7 @@
             class="h-12 w-12 brightness-0 invert md:h-14 md:w-14"
             width="67"
             height="67"
+            aria-hidden="true"
           />
         </div>
       </div>

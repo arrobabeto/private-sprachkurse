@@ -71,6 +71,7 @@
               :class="pillar.tabTheme === 'cream' ? '' : 'brightness-0 invert'"
               width="56"
               height="56"
+              aria-hidden="true"
             />
           </div>
 

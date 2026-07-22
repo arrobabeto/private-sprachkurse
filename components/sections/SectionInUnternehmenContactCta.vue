@@ -26,6 +26,7 @@
         width="2544"
         height="636"
         loading="lazy"
+        aria-hidden="true"
       />
       <div class="absolute inset-0 bg-black/25" />
 

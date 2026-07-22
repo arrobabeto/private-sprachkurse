@@ -22,7 +22,7 @@
       <div class="overflow-hidden">
         <NuxtImg
           :src="image"
-          alt=""
+          :alt="t(title)"
           class="h-full min-h-[16rem] w-full object-cover"
           width="600"
           height="400"

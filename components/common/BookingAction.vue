@@ -26,6 +26,7 @@
         class="h-5 w-5 brightness-0 invert"
         width="20"
         height="20"
+        aria-hidden="true"
       />
     </span>
   </NuxtLinkLocale>

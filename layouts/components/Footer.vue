@@ -68,6 +68,7 @@
               class="h-9 w-9"
               width="36"
               height="36"
+              aria-hidden="true"
             />
           </a>
         </div>

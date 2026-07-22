@@ -96,6 +96,7 @@
                 class="pointer-events-none absolute left-1/2 top-[42%] z-0 w-[min(100vw,22rem)] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[26rem]"
                 width="481"
                 height="124"
+                aria-hidden="true"
               />
             </span>
             <span>{{ t(resolvedHeadline.line1Tail) }}</span>
@@ -134,6 +135,7 @@
             class="h-11 w-11 object-contain"
             width="48"
             height="48"
+            aria-hidden="true"
           />
           <p class="text-xs font-semibold leading-snug">
             {{ t(card.text) }}
@@ -157,6 +159,7 @@
                 class="h-12 w-12 object-contain"
                 width="48"
                 height="48"
+                aria-hidden="true"
               />
               <p class="text-sm font-semibold leading-snug">
                 {{ t(card.text) }}
@@ -176,6 +179,7 @@
                 class="pointer-events-none absolute bottom-1 left-1/2 w-[8.25rem] max-w-none -translate-x-1/2"
                 width="132"
                 height="44"
+                aria-hidden="true"
               />
               <!-- Above cards 2→3: upward arc (Figma arrow 11:90) -->
               <NuxtImg
@@ -185,6 +189,7 @@
                 class="pointer-events-none absolute -top-1 left-1/2 w-[8.25rem] max-w-none -translate-x-1/2"
                 width="132"
                 height="44"
+                aria-hidden="true"
               />
             </div>
           </template>

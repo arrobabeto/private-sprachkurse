@@ -170,7 +170,7 @@
               </div>
               <NuxtImg
                 :src="qual.image"
-                alt=""
+                :alt="t(qual.title)"
                 class="h-auto w-full min-w-0 max-w-[544px] self-start rounded-[30px] object-cover"
                 width="544"
                 height="400"
@@ -227,7 +227,7 @@
             </p>
             <NuxtImg
               :src="qual.image"
-              alt=""
+              :alt="t(qual.title)"
               class="w-full rounded-2xl object-cover"
               width="544"
               height="400"

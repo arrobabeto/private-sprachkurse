@@ -48,6 +48,7 @@
             width="56"
             height="56"
             loading="lazy"
+            aria-hidden="true"
           />
           <h2 class="text-base font-bold leading-snug md:text-lg">
             {{ t(feature.title) }}

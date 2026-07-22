@@ -54,7 +54,7 @@
       >
         <NuxtImg
           :src="heroImage"
-          alt=""
+          :alt="t(title)"
           class="absolute inset-0 h-full w-full object-cover object-center"
           width="744"
           height="458"

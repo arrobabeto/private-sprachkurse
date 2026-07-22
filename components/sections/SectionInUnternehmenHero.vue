@@ -56,6 +56,7 @@
             class="pointer-events-none absolute left-1/2 top-1/2 w-[118%] max-w-none -translate-x-1/2 -translate-y-1/2"
             width="456"
             height="134"
+            aria-hidden="true"
           />
         </span>
         <span>{{ titleParts.after }}</span>
@@ -80,6 +81,7 @@
       width="280"
       height="266"
       loading="lazy"
+      aria-hidden="true"
     />
   </section>
 </template>
