@@ -37,6 +37,15 @@ const nodes = {
   iconPricingArrow: "2293:285",
 }
 
+// Testimonial photos added from the "Erfahrungen" carousel (node 2490:555).
+// These are imageRef fills, not renderable frames, so export them via the
+// Figma image-fill download (MCP `download_figma_images`) rather than this
+// node-render script:
+//   testimonialAnita.png  -> node 2490:559, imageRef 09fb47ca693ed492809d1d301df3d5ca1180e384
+//   testimonialMonika.png -> node 2490:580, imageRef c00b92fbbd4f503c147adbb1f8431d142587d882
+//   testimonialNadja.png  -> node 2490:587, imageRef a6d13fbe8c9325d634659be361efff349b75320a
+// Ramzi M. has no photo in the design.
+
 const pngFileNames = {
   hero: "hero-v2.png",
   portrait: "portrait-v2.png",

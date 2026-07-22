@@ -4,7 +4,7 @@ export const HOMEPAGE_ID = "private-sprachkurse-home"
 
 const IMG = {
   hero: "/images/home/hero-v2.png",
-  portrait: "/images/home/portrait-v3.png",
+  portrait: "/images/home/portrait-v4.png",
   kurslokal: "/images/in-unternehmen/offer-praesentation-bg-v2.png",
   flagDe: "/images/home/flagDe.png",
   flagEn: "/images/home/flagEn.png",
@@ -17,6 +17,9 @@ const IMG = {
   iconConfident: "/images/home/hero/iconCard4.svg",
   testimonialJanine: "/images/home/testimonialJanine.png",
   testimonialSarah: "/images/home/testimonialSarah.png",
+  testimonialAnita: "/images/home/testimonialAnita.png",
+  testimonialMonika: "/images/home/testimonialMonika.png",
+  testimonialNadja: "/images/home/testimonialNadja.png",
 }
 
 const LANGUAGES = [
@@ -204,24 +207,60 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
         },
         items: [
           {
-            name: { de: "Janine Helfrich", en: "Janine Helfrich" },
+            name: { de: "Anita Werren-Gasser", en: "Anita Werren-Gasser" },
             quote: {
-              de: "Mein Spanisch ist schon recht gut, Viviane hat mich jedoch super in den noch fehlenden Bausteinen unterstützt und kurzweilig und unterhaltsam unterrichtet…",
-              en: "My Spanish is already quite good, but Viviane wonderfully supported me with the missing pieces and taught in an engaging and entertaining way…",
+              de: "So macht Lernen richtig Spass. Mit abwechslungsreichen Stunden und viel Konversation bringe ich mein Schulitalienisch wieder auf Vordermann! Mille grazie Viviane!",
+              en: "So macht Lernen richtig Spass. Mit abwechslungsreichen Stunden und viel Konversation bringe ich mein Schulitalienisch wieder auf Vordermann! Mille grazie Viviane!",
             },
-            initial: "J",
-            image: IMG.testimonialJanine,
-            tilt: "left",
+            initial: "A",
+            image: IMG.testimonialAnita,
           },
           {
             name: { de: "Sarah Howourth", en: "Sarah Howourth" },
             quote: {
-              de: "Learning German with Viviane has given me the confidence to start to talk and integrate more with people in my city. Viviane is a great teacher, she teaches at the right pace for me and challenges me often. Every lesson flies by and I feel I am improving every week.",
-              en: "Learning German with Viviane has given me the confidence to start to talk and integrate more with people in my city. Viviane is a great teacher, she teaches at the right pace for me and challenges me often. Every lesson flies by and I feel I am improving every week.",
+              de: "Learning German with Viviane has given me the confidence to start to talk and integrate more with people in my city. Viviane is a great teacher, she teaches at the right pace for me and challenges me often. Every lesson flies by and I feel I am improving every week. I would recommend Viviane to anyone looking to improve their German.",
+              en: "Learning German with Viviane has given me the confidence to start to talk and integrate more with people in my city. Viviane is a great teacher, she teaches at the right pace for me and challenges me often. Every lesson flies by and I feel I am improving every week. I would recommend Viviane to anyone looking to improve their German.",
             },
             initial: "S",
             image: IMG.testimonialSarah,
-            tilt: "right",
+          },
+          {
+            name: { de: "Janine Helfrich", en: "Janine Helfrich" },
+            quote: {
+              de: "Mein Spanisch ist schon recht gut, Viviane hat mich jedoch super in den noch fehlenden Bausteinen unterstützt und kurzweilig und unterhaltsam unterrichtet…",
+              en: "Mein Spanisch ist schon recht gut, Viviane hat mich jedoch super in den noch fehlenden Bausteinen unterstützt und kurzweilig und unterhaltsam unterrichtet…",
+            },
+            initial: "J",
+            image: IMG.testimonialJanine,
+          },
+          {
+            name: { de: "Monika Biermann", en: "Monika Biermann" },
+            quote: {
+              de: "Ich bin seit ein paar Monaten dabei & I like it! Kompetent, unkompliziert, flexibel meinen Bedürfnissen angepasst und immer mit einer Menge Spass!!!",
+              en: "Ich bin seit ein paar Monaten dabei & I like it! Kompetent, unkompliziert, flexibel meinen Bedürfnissen angepasst und immer mit einer Menge Spass!!!",
+            },
+            initial: "M",
+            image: IMG.testimonialMonika,
+          },
+          {
+            name: {
+              de: "Nadja Kirschner – Ernährungsberaterin für Hunde & Katzen",
+              en: "Nadja Kirschner – Ernährungsberaterin für Hunde & Katzen",
+            },
+            quote: {
+              de: "Mein Spanisch ist Dank Viviane schon so gut, dass ich mich hier in Spanien allem stellen kann. Sogar bei Problemen mit der Bank reichte das Spanisch aus um es zu lösen. Ich war ganz stolz, es ohne andere Fremdsprache lösen zu können. Mit Vivi macht lernen richtig Spass und ist absolut professionell! Sie geht komplett auf meine Bedürfnisse ein. Noch nie habe ich eine Sprache so rasch gelernt! Danke Vivi.",
+              en: "Mein Spanisch ist Dank Viviane schon so gut, dass ich mich hier in Spanien allem stellen kann. Sogar bei Problemen mit der Bank reichte das Spanisch aus um es zu lösen. Ich war ganz stolz, es ohne andere Fremdsprache lösen zu können. Mit Vivi macht lernen richtig Spass und ist absolut professionell! Sie geht komplett auf meine Bedürfnisse ein. Noch nie habe ich eine Sprache so rasch gelernt! Danke Vivi.",
+            },
+            initial: "N",
+            image: IMG.testimonialNadja,
+          },
+          {
+            name: { de: "Ramzi M. - Novartis", en: "Ramzi M. - Novartis" },
+            quote: {
+              de: "It's been wonderful working with V. She is so professional, patient, and accommodating of my difficult schedule. The transition to teaching by video-conference during the pandemic was flawless. I have progressed rapidly, starting from speaking no German to passing the level B1 exam. I have also learned so much about the history and culture of Switzerland. I will continue learning from Viv and can highly recommend her to any prospective student.",
+              en: "It's been wonderful working with V. She is so professional, patient, and accommodating of my difficult schedule. The transition to teaching by video-conference during the pandemic was flawless. I have progressed rapidly, starting from speaking no German to passing the level B1 exam. I have also learned so much about the history and culture of Switzerland. I will continue learning from Viv and can highly recommend her to any prospective student.",
+            },
+            initial: "R",
           },
         ],
       },
