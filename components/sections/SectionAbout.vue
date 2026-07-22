@@ -43,9 +43,9 @@
             <NuxtImg
               :src="image"
               :alt="t(name)"
-              class="h-full w-full object-cover object-[40%_28%]"
-              width="543"
-              height="543"
+              class="h-full w-full object-cover object-[50%_22%]"
+              width="1024"
+              height="638"
             />
           </div>
           <div class="text-center md:text-left">
