@@ -69,6 +69,7 @@
             class="pointer-events-none absolute left-0 top-0 w-[11.375rem] max-w-none"
             width="182"
             height="271"
+            aria-hidden="true"
           />
         </div>
 

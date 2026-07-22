@@ -31,7 +31,7 @@
     >
       <NuxtImg
         :src="backgroundImage"
-        alt=""
+        :alt="t(title)"
         class="absolute inset-0 h-full w-full object-cover"
         width="2540"
         height="1340"

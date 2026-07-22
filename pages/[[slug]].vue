@@ -131,7 +131,6 @@
 
 <template>
   <main v-if="page">
-    <span class="sr-only">{{ t(page.title) }}</span>
     <AnySection v-for="(section, i) of sections" :key="i" :data="section" />
   </main>
 </template>

@@ -29,6 +29,7 @@
         height="636"
         sizes="(max-width: 768px) 100vw, 1272px"
         loading="lazy"
+        aria-hidden="true"
       />
       <div class="absolute inset-0 bg-black/40" />
       <div

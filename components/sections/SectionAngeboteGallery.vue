@@ -32,7 +32,7 @@
         v-for="(img, i) of images"
         :key="img"
         :src="img"
-        alt=""
+        :alt="`Unterrichtsraum ${i + 1}`"
         class="absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
         :class="
           i === current

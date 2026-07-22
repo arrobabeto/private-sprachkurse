@@ -65,6 +65,7 @@
             :class="offerArrowLayout[offer.decorativeArrow]"
             :width="offer.decorativeArrow === 'offer-arrow-3' ? 112 : 175"
             :height="offer.decorativeArrow === 'offer-arrow-3' ? 248 : 264"
+            aria-hidden="true"
           />
         </template>
       </div>
@@ -94,7 +95,7 @@
             >
               <NuxtImg
                 :src="offer.image"
-                alt=""
+                :alt="t(offer.title)"
                 class="aspect-[567/393] w-full rounded-[30px] object-cover"
                 width="567"
                 height="393"
@@ -122,7 +123,7 @@
               >
                 <NuxtImg
                   :src="offer.image"
-                  alt=""
+                  :alt="t(offer.title)"
                   class="aspect-[567/393] w-full object-cover"
                   width="567"
                   height="393"
@@ -167,6 +168,7 @@
                   class="mt-0.5 h-6 w-6 shrink-0 brightness-0 invert"
                   width="24"
                   height="24"
+                  aria-hidden="true"
                 />
                 <span class="text-base leading-relaxed md:text-lg">
                   {{ t(feat.text) }}

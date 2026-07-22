@@ -17,11 +17,11 @@
 <template>
   <section class="px-[2.5%] pt-4 md:px-[2.5%] md:pt-6">
     <div
-      class="relative mx-auto min-h-[812px] max-w-[1276px] overflow-hidden rounded-[40px] md:min-h-[773px] md:rounded-[64px]"
+      class="relative mx-auto min-h-[560px] max-w-[1276px] overflow-hidden rounded-[40px] md:min-h-[773px] md:rounded-[64px]"
     >
       <NuxtImg
         :src="backgroundImage"
-        alt=""
+        :alt="t(title)"
         class="absolute inset-0 h-full w-full object-cover object-[center_35%] md:object-center"
         width="2540"
         height="1340"
@@ -30,7 +30,7 @@
         class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/10 md:bg-gradient-to-r md:from-black/55 md:via-black/30 md:to-transparent"
       />
       <div
-        class="relative flex min-h-[812px] items-end px-6 pb-10 md:min-h-[773px] md:items-center md:px-12 md:py-16 lg:px-16"
+        class="relative flex min-h-[560px] items-end px-6 pb-10 md:min-h-[773px] md:items-center md:px-12 md:py-16 lg:px-16"
       >
         <div class="max-w-[560px] text-white">
           <h1

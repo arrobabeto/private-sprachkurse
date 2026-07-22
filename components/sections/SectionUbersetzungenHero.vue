@@ -20,7 +20,7 @@
     >
       <NuxtImg
         :src="backgroundImage"
-        alt=""
+        :alt="`${t(titlePrefix)} ${t(titleHighlight)} ${t(titleSuffix)}`.trim()"
         class="absolute inset-0 h-full w-full object-cover"
         width="2576"
         height="1128"

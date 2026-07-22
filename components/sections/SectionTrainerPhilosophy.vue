@@ -28,12 +28,12 @@
 <template>
   <section id="philosophie" class="scroll-mt-24 px-[2.5%] py-6 md:py-8">
     <div
-      class="relative mx-auto min-h-[520px] max-w-[1276px] overflow-hidden rounded-[32px] md:min-h-[653px] md:rounded-[43px]"
+      class="relative mx-auto max-w-[1276px] overflow-hidden rounded-[32px] md:min-h-[653px] md:rounded-[43px]"
     >
       <template v-for="(slide, i) of slides" :key="i">
         <NuxtImg
           :src="slide.image"
-          alt=""
+          :alt="t(slide.title)"
           class="absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
           :class="i === current ? 'opacity-100' : 'opacity-0'"
           width="1276"
@@ -44,12 +44,14 @@
           :class="i === current ? 'opacity-100' : 'opacity-0'"
         />
         <div
-          class="absolute inset-0 flex items-center transition-opacity duration-500"
+          class="flex items-center transition-opacity duration-500"
           :class="
-            i === current ? 'opacity-100' : 'pointer-events-none opacity-0'
+            i === current
+              ? 'relative z-[1] opacity-100 md:absolute md:inset-0'
+              : 'pointer-events-none absolute inset-0 opacity-0'
           "
         >
-          <div class="w-full px-14 py-10 md:px-24 md:py-16">
+          <div class="w-full px-12 py-12 pb-16 md:px-24 md:py-16 md:pb-16">
             <div class="max-w-[775px] text-white">
               <h2
                 class="text-[1.65rem] font-bold leading-snug drop-shadow-sm md:text-[48px] md:leading-tight md:drop-shadow-none"
@@ -75,13 +77,12 @@
 
       <button
         type="button"
-        class="absolute left-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 shadow-md md:left-6 md:h-12 md:w-12"
+        class="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 shadow-md md:left-6 md:h-12 md:w-12"
         aria-label="Previous slide"
         @click="prev(slides.length)"
       >
         <svg
-          width="24"
-          height="24"
+          class="h-4 w-4 md:h-6 md:w-6"
           viewBox="0 0 24 24"
           fill="none"
           aria-hidden="true"
@@ -97,13 +98,12 @@
       </button>
       <button
         type="button"
-        class="absolute right-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 shadow-md md:right-6 md:h-12 md:w-12"
+        class="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 shadow-md md:right-6 md:h-12 md:w-12"
         aria-label="Next slide"
         @click="next(slides.length)"
       >
         <svg
-          width="24"
-          height="24"
+          class="h-4 w-4 md:h-6 md:w-6"
           viewBox="0 0 24 24"
           fill="none"
           aria-hidden="true"
@@ -119,7 +119,7 @@
       </button>
 
       <div
-        class="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-6"
+        class="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-6"
       >
         <button
           v-for="(_, i) of slides"

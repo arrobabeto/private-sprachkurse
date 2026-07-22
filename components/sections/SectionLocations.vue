@@ -77,6 +77,7 @@
               class="pointer-events-none absolute left-1/2 top-[58%] z-0 w-[13.5rem] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[17.5rem]"
               width="350"
               height="148"
+              aria-hidden="true"
             />
           </span>
           {{ splitTitle(t(title), t(titleHighlight)).after }}
@@ -100,6 +101,7 @@
               :class="isBlue ? 'brightness-0 invert' : ''"
               width="48"
               height="48"
+              aria-hidden="true"
             />
             <span v-else class="text-4xl">{{ loc.icon }}</span>
             <h3
@@ -128,6 +130,7 @@
           :class="isBlue ? 'opacity-90 brightness-0 invert' : ''"
           width="132"
           height="44"
+          aria-hidden="true"
         />
         <NuxtImg
           :src="
@@ -140,6 +143,7 @@
           :class="isBlue ? 'opacity-90 brightness-0 invert' : ''"
           width="132"
           height="44"
+          aria-hidden="true"
         />
       </div>
 
@@ -155,7 +159,7 @@
           >
             <NuxtImg
               :src="kurslokal.image"
-              alt=""
+              :alt="t(kurslokal.title)"
               class="size-full object-cover"
               width="320"
               height="320"

@@ -41,6 +41,7 @@
         width="280"
         height="266"
         loading="lazy"
+        aria-hidden="true"
       />
 
       <div
