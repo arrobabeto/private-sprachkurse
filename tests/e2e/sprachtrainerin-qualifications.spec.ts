@@ -21,7 +21,7 @@ test.describe("Sprachtrainerin qualifications carousel", () => {
       }),
     ).toBeVisible()
 
-    await page.getByRole("tab", { name: /first certificate Englisch/i }).click()
+    await page.getByRole("tab", { name: /Sprache im Beruf/i }).click()
     await expect(
       page.getByRole("heading", { name: /Sprache im Beruf/i }),
     ).toBeVisible()

@@ -252,8 +252,8 @@ export function buildSprachtrainerinSeed(): IPage {
           {
             number: "03",
             tabLabel: {
-              de: "first certificate Englisch?",
-              en: "First Certificate English?",
+              de: "Sprache im Beruf",
+              en: "Language at work",
             },
             title: { de: "Sprache im Beruf", en: "Language at work" },
             body: {
