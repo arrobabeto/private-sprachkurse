@@ -1,4 +1,5 @@
 import { defineEventHandler, getQuery } from "h3"
+import { ofetch } from "ofetch"
 
 export default defineEventHandler(async (event) => {
   const bindings = getQuery(event)
@@ -7,7 +8,7 @@ export default defineEventHandler(async (event) => {
   if (bindings.post_id) sql += " WHERE post_id = :post_id"
   sql += " ORDER BY created_at DESC"
 
-  return await $fetch(import.meta.env.ORBITYPE_API_SQL_URL, {
+  return await ofetch(import.meta.env.ORBITYPE_API_SQL_URL, {
     method: "POST",
     headers: { "X-API-KEY": import.meta.env.ORBITYPE_API_SQL_KEY },
     body: { sql, bindings },

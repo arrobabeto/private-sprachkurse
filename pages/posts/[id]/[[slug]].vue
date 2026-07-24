@@ -22,7 +22,7 @@
   const id = Array.isArray(rawId) ? rawId[0] : rawId
   const commentsEnabled = config.public.commentsEnabled
 
-  const post: IPost = await $fetch("/api/posts", { query: { id } })
+  const post = await $fetch<IPost>("/api/posts", { query: { id } })
   if (!post)
     throw showError({ statusCode: 404, statusMessage: "Post not found" })
   const localizedLead = t(post.lead as any)
@@ -45,7 +45,7 @@
     if (!commentsEnabled) return
 
     try {
-      const resp: IComment = await $fetch("/api/comments", {
+      const resp = await $fetch<IComment>("/api/comments", {
         method: "POST",
         body: newComment,
       })

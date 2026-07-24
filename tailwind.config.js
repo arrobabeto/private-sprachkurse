@@ -26,11 +26,22 @@ const tailwind = {
       },
       ps: {
         green: "#1B4C2E",
+        "green-dark": "#143A23",
         orange: "#FF9F1C",
         blue: "#0D94C0",
+        "blue-dark": "#0A7CA1",
+        "blue-light": "#E5F4F9",
+        "blue-mid": "#7FCBE0",
+        "blue-line": "#B8E2EF",
+        "blue-text": "#0A6B8A",
         cream: "#FFF7E4",
         "cream-alt": "#F2F1EC",
         muted: "#746E66",
+        hint: "#A8A29A",
+        line: "#E3E0D8",
+        "success-bg": "#E8F1EA",
+        "warn-line": "#F0C060",
+        "warn-text": "#7A5200",
         gray: "#444444",
         dark: "#000000",
       },
@@ -57,6 +68,23 @@ const tailwind = {
       borderColor: { DEFAULT: "currentColor" },
       gridTemplateColumns: {
         auto: "repeat(auto-fill, minmax(300px, 1fr))",
+      },
+      borderRadius: {
+        card: "12px",
+        sm: "8px",
+        pill: "50px",
+      },
+      maxWidth: {
+        widget: "560px",
+      },
+      keyframes: {
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(8px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in .3s ease",
       },
     },
   },
