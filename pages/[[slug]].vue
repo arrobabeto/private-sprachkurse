@@ -26,7 +26,7 @@
   const slug =
     route.path === "/en" && currentSlug === "en" ? "home" : currentSlug
 
-  const page: IPage = await $fetch("/api/pages", { query: { slug } })
+  const page = await $fetch<IPage>("/api/pages", { query: { slug } })
   if (!page)
     throw showError({ statusCode: 404, statusMessage: "Page not found" })
 

@@ -1,4 +1,5 @@
 import { createError, defineEventHandler, readBody } from "h3"
+import { ofetch } from "ofetch"
 import {
   CMS_SCHEMA_SQL_SAFE,
   type TCmsSchemaTable,
@@ -47,7 +48,7 @@ export default defineEventHandler(async (event) => {
 
   for (const table of requestedTables) {
     try {
-      await $fetch(import.meta.env.ORBITYPE_API_SQL_URL, {
+      await ofetch(import.meta.env.ORBITYPE_API_SQL_URL, {
         method: "POST",
         headers: { "X-API-KEY": import.meta.env.ORBITYPE_API_SQL_KEY },
         body: { sql: CMS_SCHEMA_SQL_SAFE[table], bindings: {} },

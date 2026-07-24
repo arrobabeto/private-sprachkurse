@@ -1,4 +1,5 @@
 import { defineEventHandler, getQuery } from "h3"
+import { ofetch } from "ofetch"
 
 export default defineEventHandler(async (event) => {
   const bindings = getQuery(event)
@@ -27,7 +28,7 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const rows: any = await $fetch(import.meta.env.ORBITYPE_API_SQL_URL, {
+    const rows: any = await ofetch(import.meta.env.ORBITYPE_API_SQL_URL, {
       method: "POST",
       headers: { "X-API-KEY": import.meta.env.ORBITYPE_API_SQL_KEY },
       body: { sql, bindings },

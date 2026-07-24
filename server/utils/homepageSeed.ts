@@ -367,6 +367,9 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
         ],
       },
       {
+        _orbi: { component: "SectionCalculator" },
+      },
+      {
         _orbi: { component: "SectionLocations" },
         title: {
           de: "Sie bestimmen wann und wo Sie lernen",

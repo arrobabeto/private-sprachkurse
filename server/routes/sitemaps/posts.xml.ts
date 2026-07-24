@@ -1,4 +1,5 @@
 import { appendResponseHeaders, defineEventHandler } from "h3"
+import { ofetch } from "ofetch"
 import toSlug from "slug"
 import { dedent } from "ts-dedent"
 import type { IPost } from "~/types/dto/IPost"
@@ -18,7 +19,7 @@ export default defineEventHandler(async (event) => {
   const siteUrl = process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   const baseUrl = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl
 
-  const posts: IPost[] = await $fetch(baseUrl + "/api/posts", {
+  const posts = await ofetch<IPost[]>(baseUrl + "/api/posts", {
     query: {
       status: "published",
     },

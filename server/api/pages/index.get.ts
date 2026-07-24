@@ -20,6 +20,7 @@ import {
   IMPRESSUM_PAGE_ID,
 } from "~/server/utils/impressumSeed"
 import { normalizeSections } from "~/utils/normalizeSections"
+import { ofetch } from "ofetch"
 
 type QueryValue = string | string[] | null | undefined
 type QueryBindings = Record<string, QueryValue>
@@ -142,7 +143,7 @@ export default defineEventHandler(async (event) => {
 
   let rows: IPage[]
   try {
-    rows = await $fetch(import.meta.env.ORBITYPE_API_SQL_URL, {
+    rows = await ofetch(import.meta.env.ORBITYPE_API_SQL_URL, {
       method: "POST",
       headers: { "X-API-KEY": import.meta.env.ORBITYPE_API_SQL_KEY },
       body: { sql, bindings },

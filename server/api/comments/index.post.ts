@@ -1,4 +1,5 @@
 import { createError, defineEventHandler, readBody } from "h3"
+import { ofetch } from "ofetch"
 
 export default defineEventHandler(async (event) => {
   const bindings = await readBody(event)
@@ -7,7 +8,7 @@ export default defineEventHandler(async (event) => {
   let sql = "INSERT INTO comments (text, post_id)"
   sql += " VALUES (:text, :post_id) RETURNING *"
 
-  const rows: any[] = await $fetch(import.meta.env.ORBITYPE_API_SQL_URL, {
+  const rows: any[] = await ofetch(import.meta.env.ORBITYPE_API_SQL_URL, {
     method: "POST",
     headers: { "X-API-KEY": import.meta.env.ORBITYPE_API_SQL_KEY },
     body: { sql, bindings },
