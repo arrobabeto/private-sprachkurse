@@ -7,6 +7,7 @@ test.describe("Sprachtrainerin qualifications carousel", () => {
 
   test("expands each card on click (desktop)", async ({ page }) => {
     await page.goto("/sprachtrainerin")
+    await page.waitForLoadState("networkidle")
 
     await expect(
       page.getByRole("heading", {

@@ -2,6 +2,7 @@
   import { computed } from "vue"
   import ButtonV from "~/components/common/ButtonV.vue"
   import type { I18nString } from "~/types/util/I18nString"
+  import { useCalculatorModal } from "~/composables/useCalculatorModal"
   import { useTranslate } from "~/composables/useTranslate"
 
   type Plan = {
@@ -16,6 +17,8 @@
     variant?: "default" | "blue" | "orange" | "green"
     cta: I18nString
     ctaUrl?: string
+    /** "calculator" opens the course configurator instead of following ctaUrl. */
+    ctaAction?: "calculator"
     tilt?: "left" | "right"
   }
 
@@ -32,6 +35,7 @@
   }>()
 
   const t = useTranslate()
+  const { open: openCalculator } = useCalculatorModal()
 
   const introHeadingText = computed(() =>
     t(
@@ -196,7 +200,19 @@
               </p>
             </div>
 
-            <NuxtLinkLocale :to="plan.ctaUrl ?? '/#kontakt'" class="mt-auto">
+            <ButtonV
+              v-if="plan.ctaAction === 'calculator'"
+              :variant="btnVariant(plan)"
+              class="mt-auto w-full px-4 py-2.5 text-sm font-semibold"
+              @click="openCalculator()"
+            >
+              {{ t(plan.cta) }}
+            </ButtonV>
+            <NuxtLinkLocale
+              v-else
+              :to="plan.ctaUrl ?? '/#kontakt'"
+              class="mt-auto"
+            >
               <ButtonV
                 :variant="btnVariant(plan)"
                 class="w-full px-4 py-2.5 text-sm font-semibold"

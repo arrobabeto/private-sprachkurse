@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed } from "vue"
-  import Icon from "~/components/sections/calculator/Icon.vue"
+  import Icon from "~/components/calculator/Icon.vue"
   import {
     CONFIRM,
     LANGS,

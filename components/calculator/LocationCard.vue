@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Icon from "~/components/sections/calculator/Icon.vue"
+  import Icon from "~/components/calculator/Icon.vue"
   import { LOCATION } from "~/composables/useConfigurator"
 </script>
 
