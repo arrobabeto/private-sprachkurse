@@ -1,3 +1,4 @@
+import { useRuntimeConfig } from "#imports"
 import { ofetch } from "ofetch"
 
 export type ContactPayload = {
@@ -10,8 +11,9 @@ export type ContactPayload = {
   message?: string
 }
 
-function env(name: string, fallback = "") {
-  const value = import.meta.env[name] ?? process.env[name]
+function readEnv(name: string, fallback = "") {
+  // Prefer process.env so Vercel runtime secrets win over build-time blanks.
+  const value = process.env[name] ?? import.meta.env[name] ?? fallback
   if (value == null) return fallback
   return String(value).trim()
 }
@@ -33,10 +35,19 @@ function row(label: string, value: string | undefined) {
 }
 
 export function getSendGridConfig() {
-  const apiKey = env("SENDGRID_API_KEY")
-  const fromEmail = env("SENDGRID_FROM_EMAIL", "it@bexolutions.ch")
-  const fromName = env("SENDGRID_FROM_NAME", "Private Sprachkurse")
-  const toEmail = env("SENDGRID_TO_EMAIL", "info@privatesprachkurse.ch")
+  const config = useRuntimeConfig()
+
+  const apiKey =
+    readEnv("SENDGRID_API_KEY") || String(config.sendgridApiKey || "")
+  const fromEmail =
+    readEnv("SENDGRID_FROM_EMAIL") ||
+    String(config.sendgridFromEmail || "info@privatesprachkurse.ch")
+  const fromName =
+    readEnv("SENDGRID_FROM_NAME") ||
+    String(config.sendgridFromName || "Private Sprachkurse")
+  const toEmail =
+    readEnv("SENDGRID_TO_EMAIL") ||
+    String(config.sendgridToEmail || "info@privatesprachkurse.ch")
 
   return { apiKey, fromEmail, fromName, toEmail }
 }

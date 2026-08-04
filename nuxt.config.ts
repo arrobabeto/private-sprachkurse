@@ -36,6 +36,12 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false,
   },
   runtimeConfig: {
+    sendgridApiKey: process.env.SENDGRID_API_KEY || "",
+    sendgridFromEmail:
+      process.env.SENDGRID_FROM_EMAIL || "info@privatesprachkurse.ch",
+    sendgridFromName: process.env.SENDGRID_FROM_NAME || "Private Sprachkurse",
+    sendgridToEmail:
+      process.env.SENDGRID_TO_EMAIL || "info@privatesprachkurse.ch",
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
       siteName: process.env.NUXT_PUBLIC_SITE_NAME ?? "Private Sprachkurse",
