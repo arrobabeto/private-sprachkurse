@@ -2,7 +2,10 @@ import { appendResponseHeaders, defineEventHandler } from "h3"
 import { dedent } from "ts-dedent"
 import { formatSitemapLastmod, resolveSiteUrl } from "~/server/utils/siteUrl"
 
-/** Alias of /sitemap.xml (legacy path kept for robots.txt compatibility). */
+/**
+ * Primary sitemap index for Google Search Console.
+ * Submit: https://privatesprachkurse.ch/sitemap.xml
+ */
 export default defineEventHandler((event) => {
   const baseUrl = resolveSiteUrl(event)
   const lastmod = formatSitemapLastmod()
