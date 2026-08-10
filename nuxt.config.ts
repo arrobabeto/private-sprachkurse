@@ -2,59 +2,9 @@ import type { NuxtConfig } from "nuxt/config"
 import { defineNuxtConfig } from "nuxt/config"
 
 const gtmId = process.env.NUXT_PUBLIC_GTM_ID ?? ""
-const gaId = process.env.NUXT_PUBLIC_GA_ID ?? ""
-
-function buildAnalyticsScripts() {
-  const scripts: NonNullable<NonNullable<NuxtConfig["app"]>["head"]>["script"] =
-    []
-
-  if (!gaId && !gtmId) return scripts
-
-  // Consent Mode defaults (denied until CookieBanner grants).
-  scripts.push({
-    innerHTML: `
-              (function () {
-                window.dataLayer = window.dataLayer || [];
-                window.gtag = function gtag(){dataLayer.push(arguments);}
-                window.gtag('consent', 'default', {
-                  'ad_storage': 'denied',
-                  'ad_user_data': 'denied',
-                  'ad_personalization': 'denied',
-                  'analytics_storage': 'denied'
-                });
-              })()
-            `,
-  })
-
-  if (gaId) {
-    scripts.push({
-      src: `https://www.googletagmanager.com/gtag/js?id=${gaId}`,
-      async: true,
-    })
-    scripts.push({
-      innerHTML: `
-                window.dataLayer = window.dataLayer || [];
-                window.gtag = window.gtag || function gtag(){dataLayer.push(arguments);};
-                window.gtag('js', new Date());
-                window.gtag('config', '${gaId}');
-            `,
-    })
-  }
-
-  if (gtmId) {
-    scripts.push({
-      innerHTML: `
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','${gtmId}');
-            `,
-    })
-  }
-
-  return scripts
-}
+// GA measurement IDs are public; default so production builds include the tag
+// even if the Vercel env var is missing.
+const gaId = process.env.NUXT_PUBLIC_GA_ID ?? "G-6FW4CTVNW8"
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -184,7 +134,6 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
         },
       ],
-      script: buildAnalyticsScripts(),
     },
   },
 } as NuxtConfig)
