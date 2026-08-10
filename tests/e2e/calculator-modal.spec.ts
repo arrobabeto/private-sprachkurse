@@ -53,4 +53,25 @@ test.describe("Course calculator modal", () => {
     await page.keyboard.press("Escape")
     await expect(dialog).toBeHidden()
   })
+
+  test("opens from language carousel with that language preselected", async ({
+    page,
+  }) => {
+    await page.goto("/#sprachkurse")
+    await page.waitForLoadState("networkidle")
+
+    const cta = page.getByRole("button", {
+      name: "Ich möchte Deutsch lernen",
+    })
+    await cta.scrollIntoViewIfNeeded()
+    await cta.click()
+
+    const dialog = page.getByRole("dialog", { name: "Kurs-Konfigurator" })
+    await expect(dialog).toBeVisible()
+    await expect(
+      dialog.getByText("Welche Sprache möchtest du lernen?"),
+    ).toBeHidden()
+    await expect(dialog.getByText("Was kannst du schon?")).toBeVisible()
+    await expect(dialog.getByText(/Sehr gut — Deutsch/)).toBeVisible()
+  })
 })

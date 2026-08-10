@@ -1,13 +1,16 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted, ref } from "vue"
   import ButtonV from "~/components/common/ButtonV.vue"
+  import type { LangCode } from "~/data/types"
   import type { I18nString } from "~/types/util/I18nString"
+  import { useCalculatorModal } from "~/composables/useCalculatorModal"
   import { useTranslate } from "~/composables/useTranslate"
 
   const props = defineProps<{
     backgroundImage: string
     overlayTitle: I18nString
     languages: {
+      langCode?: LangCode
       name: I18nString
       description: I18nString
       availability?: I18nString
@@ -17,6 +20,7 @@
   }>()
 
   const t = useTranslate()
+  const { open: openCalculator } = useCalculatorModal()
   const active = ref(0)
   const viewportRef = ref<HTMLElement | null>(null)
   const viewportWidth = ref(654)
@@ -252,7 +256,10 @@
                   </p>
 
                   <div class="mt-1 flex justify-center">
-                    <ButtonV variant="orange">
+                    <ButtonV
+                      variant="orange"
+                      @click="openCalculator(lang.langCode)"
+                    >
                       {{ t(lang.cta) }}
                     </ButtonV>
                   </div>
