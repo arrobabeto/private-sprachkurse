@@ -36,6 +36,7 @@ ORBITYPE_API_SQL_URL="https://core.orbitype.com/api/sql/v1"
 ORBITYPE_API_SQL_KEY="your-api-key"
 NUXT_PUBLIC_SITE_URL="https://your-client-domain.com"
 NUXT_PUBLIC_GTM_ID=""
+NUXT_PUBLIC_GA_ID=""
 ```
 
 Then run:
