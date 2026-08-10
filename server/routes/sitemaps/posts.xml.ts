@@ -1,66 +1,71 @@
 import { appendResponseHeaders, defineEventHandler } from "h3"
-import { ofetch } from "ofetch"
 import toSlug from "slug"
 import { dedent } from "ts-dedent"
 import type { IPost } from "~/types/dto/IPost"
 import type { I18nString } from "~/types/util/I18nString"
+import {
+  formatSitemapLastmod,
+  resolveSiteUrl,
+  toAbsoluteUrl,
+} from "~/server/utils/siteUrl"
 
-type TLang = keyof I18nString
-type TIndexable = {
-  id: string
-  slug?: string
-  updated_at?: string
-  created_at?: string
+type TLang = "de" | "en"
+
+const langs: TLang[] = ["de", "en"]
+
+function localizeTitle(title: I18nString | string, lang: TLang): string {
+  if (typeof title === "string") return title
+  return title[lang] || title.de || title.en || ""
 }
 
-const langs: TLang[] = ["en", "de"]
+function postPath(post: IPost, lang: TLang): string {
+  const slug = toSlug(localizeTitle(post.title as I18nString, lang))
+  const base = `/posts/${post.id}/${slug}`
+  return lang === "de" ? base : `/en${base}`
+}
+
+function buildUrlEntry(baseUrl: string, post: IPost): string {
+  const lastmod = formatSitemapLastmod(post.updated_at ?? post.created_at)
+  const href = (lang: TLang) => toAbsoluteUrl(baseUrl, postPath(post, lang))
+
+  const alternates = [
+    ...langs.map(
+      (lang) =>
+        `    <xhtml:link rel="alternate" hreflang="${lang}" href="${href(lang)}" />`,
+    ),
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${href("de")}" />`,
+  ].join("\n")
+
+  return langs
+    .map(
+      (lang) => dedent`
+        <url>
+          <loc>${href(lang)}</loc>
+          <lastmod>${lastmod}</lastmod>
+        ${alternates}
+        </url>
+      `,
+    )
+    .join("\n")
+}
 
 export default defineEventHandler(async (event) => {
-  const siteUrl = process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-  const baseUrl = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl
+  const baseUrl = resolveSiteUrl(event)
 
-  const posts = await ofetch<IPost[]>(baseUrl + "/api/posts", {
-    query: {
-      status: "published",
-    },
-  })
-
-  function toUrl(obj: TIndexable, folder = "", lang: TLang) {
-    const code = lang !== langs[0] ? lang : null
-    const id = obj.slug ? null : obj.id
-    let slug = obj.slug ?? toSlug(obj[Object.keys(obj)[1]][lang])
-    if (slug === "home") slug = ""
-    return [baseUrl, code, folder, id, slug].filter((x) => x).join("/")
-  }
-
-  function toXml(obj: TIndexable, folder = "") {
-    const lastmod = obj.updated_at ?? obj.created_at ?? ""
-    let xml = ""
-    for (const lang of langs) {
-      // prettier-ignore
-      xml += dedent`
-        <url>
-          <loc>${toUrl(obj, folder, lang)}</loc>
-          <lastmod>${lastmod}</lastmod>
-          ${langs.map((l) => dedent`
-            <xhtml:link
-              rel="alternate"
-              hreflang="${l}"
-              href="${toUrl(obj, folder, l)}"
-            />`).join("\n")}
-        </url>\n
-      `
-    }
-    return xml
-  }
+  const posts = await $fetch<IPost[]>("/api/posts", {
+    query: { status: "published", limit: "500" },
+  }).catch(() => [] as IPost[])
 
   appendResponseHeaders(event, {
     "Content-Type": "application/xml; charset=utf-8",
+    "Cache-Control":
+      "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
   })
+
   return dedent`
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-      ${posts.map((x) => toXml(x, "posts")).join("\n")}
+      ${posts.map((post) => buildUrlEntry(baseUrl, post)).join("\n")}
     </urlset>
   `
 })
