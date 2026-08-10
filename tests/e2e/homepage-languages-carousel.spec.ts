@@ -9,12 +9,14 @@ const languagesSection = {
   },
   languages: [
     {
+      langCode: "de",
       name: { de: "Deutsch", en: "German" },
       description: { de: "Deutsch Beschreibung", en: "German description" },
       cta: { de: "Deutsch CTA", en: "German CTA" },
       icon: "/images/home/flagDe.png",
     },
     {
+      langCode: "en",
       name: { de: "Englisch", en: "English" },
       description: { de: "Englisch Beschreibung", en: "English description" },
       cta: { de: "Englisch CTA", en: "English CTA" },

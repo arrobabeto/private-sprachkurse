@@ -24,6 +24,7 @@ const IMG = {
 
 const LANGUAGES = [
   {
+    langCode: "de" as const,
     name: { de: "Deutsch", en: "German" },
     description: {
       de: "Von A1 bis C2 – lernen Sie Deutsch für den Alltag, den Beruf oder zur Prüfungsvorbereitung. Verbessern Sie Ihre Sprechsicherheit und Grammatikkenntnisse.",
@@ -37,6 +38,7 @@ const LANGUAGES = [
     icon: IMG.flagDe,
   },
   {
+    langCode: "en" as const,
     name: { de: "Englisch", en: "English" },
     description: {
       de: "Englisch für Beruf, Reisen und Alltag — praxisnah und auf Ihr Niveau abgestimmt.",
@@ -50,6 +52,7 @@ const LANGUAGES = [
     icon: IMG.flagEn,
   },
   {
+    langCode: "fr" as const,
     name: { de: "Französisch", en: "French" },
     description: {
       de: "Französisch mit Freude lernen — von den ersten Worten bis zur flüssigen Konversation.",
@@ -63,6 +66,7 @@ const LANGUAGES = [
     icon: IMG.flagFr,
   },
   {
+    langCode: "it" as const,
     name: { de: "Italienisch", en: "Italian" },
     description: {
       de: "Entdecken Sie die italienische Sprache und Kultur — lebendig und ohne Druck.",
@@ -76,6 +80,7 @@ const LANGUAGES = [
     icon: IMG.flagIt,
   },
   {
+    langCode: "es" as const,
     name: { de: "Spanisch", en: "Spanish" },
     description: {
       de: "Sprechen Sie Spanisch – die Sprache von über 20 Ländern! Vom Anfänger- bis zum Fortgeschrittenenniveau.",
