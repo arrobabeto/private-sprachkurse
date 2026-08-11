@@ -67,6 +67,10 @@
     return "bg-[#E8E8E8] text-ps-dark"
   }
 
+  function isExternalUrl(url: string) {
+    return /^https?:\/\//i.test(url)
+  }
+
   function btnVariant(plan: Plan) {
     return plan.variant === "green" ? "orange" : "green"
   }
@@ -208,6 +212,20 @@
             >
               {{ t(plan.cta) }}
             </ButtonV>
+            <a
+              v-else-if="plan.ctaUrl && isExternalUrl(plan.ctaUrl)"
+              :href="plan.ctaUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-auto"
+            >
+              <ButtonV
+                :variant="btnVariant(plan)"
+                class="w-full px-4 py-2.5 text-sm font-semibold"
+              >
+                {{ t(plan.cta) }}
+              </ButtonV>
+            </a>
             <NuxtLinkLocale
               v-else
               :to="plan.ctaUrl ?? '/#kontakt'"
