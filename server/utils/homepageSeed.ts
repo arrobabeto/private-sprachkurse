@@ -301,6 +301,8 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
                 unit: { de: "Pro Lektion", en: "Per lesson" },
                 duration: { de: "55 Min.", en: "55 min." },
                 cta: { de: "Termin vereinbaren", en: "Book an appointment" },
+                ctaUrl:
+                  "https://calendly.com/privatesprachkurse-info/privatstunde-online",
                 tilt: "left",
               },
               {
@@ -342,6 +344,8 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
                 unit: { de: "Pro Lektion", en: "Per lesson" },
                 duration: { de: "55 Min.", en: "55 min." },
                 cta: { de: "Termin vereinbaren", en: "Book an appointment" },
+                ctaUrl:
+                  "https://calendly.com/privatesprachkurse-info/privatstunde-vor-ort",
                 tilt: "left",
               },
               {
