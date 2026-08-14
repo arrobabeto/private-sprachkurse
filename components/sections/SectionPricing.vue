@@ -127,7 +127,7 @@
         </div>
         <NuxtImg
           src="/images/home/icon-pricing-arrow.svg"
-          alt=""
+          alt="Privater Sprachunterricht Schweiz flexibel"
           class="absolute bottom-5 right-5 h-8 w-8 opacity-90 md:bottom-6 md:right-8 md:h-10 md:w-10"
           width="40"
           height="40"
@@ -143,7 +143,7 @@
         <div class="mb-6 flex flex-col items-center gap-2 md:mb-8">
           <NuxtImg
             src="/images/home/icon-pricing-category.svg"
-            alt=""
+            alt="Englischkurs privat Schweiz online"
             class="h-10 w-10 md:h-12 md:w-12"
             width="48"
             height="48"

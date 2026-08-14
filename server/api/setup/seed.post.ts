@@ -93,6 +93,8 @@ async function updatePage(page: IPage, existingId: string) {
   const bindings = {
     id: existingId,
     title: JSON.stringify(page.title),
+    lead: JSON.stringify(page.lead),
+    img: page.img ?? "",
     sections: JSON.stringify(page.sections),
     keywords: JSON.stringify(page.keywords),
   }
@@ -102,7 +104,12 @@ async function updatePage(page: IPage, existingId: string) {
     headers: { "X-API-KEY": import.meta.env.ORBITYPE_API_SQL_KEY },
     body: {
       sql: `UPDATE pages
-            SET title = :title, sections = :sections, keywords = :keywords, updated_at = CURRENT_TIMESTAMP
+            SET title = :title,
+                lead = :lead,
+                img = :img,
+                sections = :sections,
+                keywords = :keywords,
+                updated_at = CURRENT_TIMESTAMP
             WHERE id = :id
             RETURNING *`,
       bindings,
@@ -117,17 +124,19 @@ async function insertPage(page: IPage) {
     id: page.id,
     title: JSON.stringify(page.title),
     slug: page.slug,
+    lead: JSON.stringify(page.lead),
+    img: page.img ?? "",
     sections: JSON.stringify(page.sections),
     keywords: JSON.stringify(page.keywords),
-    head: JSON.stringify(page.head),
+    head: JSON.stringify(page.head ?? {}),
   }
 
   const rows = await $fetch<IPage[]>(import.meta.env.ORBITYPE_API_SQL_URL, {
     method: "POST",
     headers: { "X-API-KEY": import.meta.env.ORBITYPE_API_SQL_KEY },
     body: {
-      sql: `INSERT INTO pages (id, title, slug, sections, keywords, head)
-            VALUES (:id, :title, :slug, :sections, :keywords, :head)
+      sql: `INSERT INTO pages (id, title, slug, lead, img, sections, keywords, head)
+            VALUES (:id, :title, :slug, :lead, :img, :sections, :keywords, :head)
             RETURNING *`,
       bindings,
     },

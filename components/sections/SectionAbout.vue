@@ -42,7 +42,7 @@
           >
             <NuxtImg
               :src="image"
-              :alt="t(name)"
+              :alt="'Sprachtrainerin privater Sprachkurs Schweiz'"
               class="h-full w-full object-cover object-[50%_22%]"
               width="1024"
               height="638"
@@ -71,7 +71,7 @@
             <div class="mt-2 flex items-center gap-2.5">
               <NuxtImg
                 src="/images/home/icon-trainer.svg"
-                alt=""
+                alt="Sprachtrainerin privater Sprachkurs Schweiz"
                 class="h-7 w-7 shrink-0"
                 width="28"
                 height="28"

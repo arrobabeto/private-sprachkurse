@@ -25,7 +25,7 @@ function buildUrlEntry(baseUrl: string, page: IPage): string {
   const alternates = [
     ...langs.map(
       (lang) =>
-        `    <xhtml:link rel="alternate" hreflang="${lang}" href="${href(lang)}" />`,
+        `    <xhtml:link rel="alternate" hreflang="${lang === "de" ? "de-CH" : lang}" href="${href(lang)}" />`,
     ),
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${href("de")}" />`,
   ].join("\n")

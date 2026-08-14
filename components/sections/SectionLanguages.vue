@@ -126,7 +126,7 @@
       >
         <NuxtImg
           :src="backgroundImage"
-          :alt="t(overlayTitle)"
+          :alt="'Privater Sprachunterricht Schweiz flexibel'"
           class="absolute inset-0 h-full w-full object-cover"
           width="1200"
           height="600"
@@ -233,7 +233,7 @@
                     >
                       <NuxtImg
                         :src="lang.icon"
-                        :alt="t(lang.name)"
+                        :alt="`${t(lang.name)}kurs privat Schweiz online`"
                         class="h-full w-full rounded-full object-contain"
                         width="80"
                         height="80"

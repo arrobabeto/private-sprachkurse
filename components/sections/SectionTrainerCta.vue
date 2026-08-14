@@ -58,7 +58,7 @@
               <span class="relative z-10">{{ titleParts.highlight }}</span>
               <NuxtImg
                 :src="circleSrc"
-                alt=""
+                alt="Sprachtrainerin privater Sprachkurs Schweiz"
                 class="pointer-events-none absolute left-1/2 top-[58%] z-0 w-[10.5rem] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[17rem]"
                 width="272"
                 height="87"

@@ -66,7 +66,7 @@
           >
             <NuxtImg
               :src="pillar.tabIcon"
-              alt=""
+              alt="Privater Sprachunterricht Schweiz flexibel"
               class="h-14 w-14 shrink-0"
               :class="pillar.tabTheme === 'cream' ? '' : 'brightness-0 invert'"
               width="56"

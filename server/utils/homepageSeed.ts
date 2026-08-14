@@ -99,8 +99,8 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
   return {
     id: HOMEPAGE_ID,
     title: {
-      de: "Private Sprachkurse",
-      en: "Private Language Courses",
+      de: "Private Sprachkurse Schweiz | Individuell & Flexibel",
+      en: "Private Language Courses Switzerland | Flexible",
     },
     slug: "home",
     img: IMG.hero,
@@ -112,8 +112,8 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
       "viviane baier",
     ],
     lead: {
-      de: "Persönlicher Sprachunterricht für Alltag und Beruf – individuell, flexibel und mit Freude am Lernen.",
-      en: "Personal language lessons for everyday life and work — individual, flexible, and enjoyable.",
+      de: "Private Sprachkurse in der Schweiz — individuell, flexibel, effektiv. Englisch, Französisch, Deutsch und mehr. Lernen Sie wann und wo Sie wollen.",
+      en: "Private language courses in Switzerland — individual, flexible, effective. English, French, German and more. Learn when and where you want.",
     },
     sections: [
       {

@@ -61,10 +61,17 @@
   }
 
   useHead({
-    titleTemplate: (x) =>
-      x ? `${x} | ${config.public.siteName}` : config.public.siteName,
+    titleTemplate: (x) => {
+      const siteName = String(config.public.siteName || "").trim()
+      const pageTitle = String(x || "").trim()
+      if (!pageTitle) return siteName
+      // Never append when the page title already carries the brand or a pipe.
+      if (siteName && pageTitle.includes(siteName)) return pageTitle
+      if (pageTitle.includes("|")) return pageTitle
+      return `${pageTitle} | ${siteName}`
+    },
     htmlAttrs: {
-      lang: locale.value,
+      lang: locale.value === "de" ? "de-CH" : locale.value,
       class: "h-full",
     },
     bodyAttrs: {
@@ -117,6 +124,20 @@
                 "@type": "ImageObject",
                 url: config.public.organizationLogo,
               },
+              telephone: config.public.organizationTelephone,
+              email: config.public.organizationEmail,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: config.public.organizationStreetAddress,
+                postalCode: config.public.organizationPostalCode,
+                addressLocality: config.public.organizationLocality,
+                addressCountry: config.public.organizationCountry,
+              },
+              areaServed: config.public.organizationAreaServed,
+              ...(Array.isArray(config.public.organizationSameAs) &&
+              config.public.organizationSameAs.length > 0
+                ? { sameAs: config.public.organizationSameAs }
+                : {}),
             },
             {
               "@type": "WebSite",
@@ -124,7 +145,7 @@
               name: config.public.siteName,
               url: config.public.siteUrl,
               description: config.public.siteDescription,
-              inLanguage: locale.value === "de" ? "de" : "en",
+              inLanguage: locale.value === "de" ? "de-CH" : "en",
               publisher: {
                 "@id": `${config.public.siteUrl}/#organization`,
               },

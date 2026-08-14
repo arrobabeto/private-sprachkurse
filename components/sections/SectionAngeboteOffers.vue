@@ -60,7 +60,7 @@
           <NuxtImg
             v-if="offer.decorativeArrow && i < offers.length - 1"
             :src="`/images/angebote/${offer.decorativeArrow}.svg`"
-            alt=""
+            alt="Englischkurs privat Schweiz online"
             class="absolute max-w-none"
             :class="offerArrowLayout[offer.decorativeArrow]"
             :width="offer.decorativeArrow === 'offer-arrow-3' ? 112 : 175"
@@ -164,7 +164,7 @@
               >
                 <NuxtImg
                   :src="feat.icon"
-                  alt=""
+                  alt="Englischkurs privat Schweiz online"
                   class="mt-0.5 h-6 w-6 shrink-0 brightness-0 invert"
                   width="24"
                   height="24"

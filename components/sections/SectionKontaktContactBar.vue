@@ -48,7 +48,7 @@
 
     <NuxtImg
       :src="dottedArcImage"
-      alt=""
+      alt="Privater Sprachunterricht Schweiz flexibel"
       class="pointer-events-none absolute bottom-0 right-[12%] z-10 hidden h-auto w-[62px] translate-y-1/2 md:block"
       width="62"
       height="131"

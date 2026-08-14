@@ -58,7 +58,34 @@ export default defineNuxtConfig({
       defaultLocale:
         process.env.NUXT_PUBLIC_DEFAULT_LOCALE ??
         process.env.NUXT_PUBLIC_SITE_LOCALE ??
-        "de_DE",
+        "de_CH",
+      organizationTelephone:
+        process.env.NUXT_PUBLIC_ORGANIZATION_TELEPHONE ?? "+41789433963",
+      organizationEmail:
+        process.env.NUXT_PUBLIC_ORGANIZATION_EMAIL ??
+        "info@privatesprachkurse.ch",
+      organizationStreetAddress:
+        process.env.NUXT_PUBLIC_ORGANIZATION_STREET_ADDRESS ??
+        "Amtshausgasse 12",
+      organizationPostalCode:
+        process.env.NUXT_PUBLIC_ORGANIZATION_POSTAL_CODE ?? "4410",
+      organizationLocality:
+        process.env.NUXT_PUBLIC_ORGANIZATION_LOCALITY ?? "Liestal",
+      organizationCountry: process.env.NUXT_PUBLIC_ORGANIZATION_COUNTRY ?? "CH",
+      organizationAreaServed:
+        process.env.NUXT_PUBLIC_ORGANIZATION_AREA_SERVED ?? "Schweiz",
+      organizationSameAs: (process.env.NUXT_PUBLIC_ORGANIZATION_SAME_AS ?? "")
+        .split(",")
+        .map((url) => url.trim())
+        .filter((url) => {
+          if (!url) return false
+          try {
+            const parsed = new URL(url)
+            return Boolean(parsed.pathname && parsed.pathname !== "/")
+          } catch {
+            return false
+          }
+        }),
       twitterSite: process.env.NUXT_PUBLIC_TWITTER_SITE ?? "@orbitype",
       twitterCreator: process.env.NUXT_PUBLIC_TWITTER_CREATOR ?? "@orbitype",
       ogImageEnabled: process.env.NUXT_PUBLIC_OG_IMAGE_ENABLED !== "false",
