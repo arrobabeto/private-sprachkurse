@@ -33,7 +33,11 @@
   const sections = normalizeSections(page.sections)
 
   const title = fn.truncateText(t(page.title), 60)
-  const description = fn.truncateText(fn.removeHtml(t(page.lead)), 160)
+  const rawLead = fn.removeHtml(t(page.lead))
+  const description = fn.truncateText(
+    rawLead === "..." ? String(config.public.siteDescription || "") : rawLead,
+    148,
+  )
   const keywords = Array.isArray(page.keywords) ? page.keywords.join(", ") : ""
   const isGermanPage =
     route.path === "/" ||
@@ -62,7 +66,7 @@
     ogImage,
     ogUrl: canonicalUrl,
     ogSiteName: config.public.siteName,
-    ogLocale: locale.value === "de" ? "de_DE" : "en_US",
+    ogLocale: locale.value === "de" ? "de_CH" : "en_US",
     twitterCard: "summary_large_image",
     twitterTitle: t(page.title),
     twitterDescription: description,
@@ -90,7 +94,7 @@
           description,
           datePublished: page.created_at,
           dateModified: page.updated_at,
-          inLanguage: locale.value === "de" ? "de" : "en",
+          inLanguage: locale.value === "de" ? "de-CH" : "en",
           url: canonicalUrl,
           image: {
             "@type": "ImageObject",

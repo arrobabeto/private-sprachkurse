@@ -84,7 +84,7 @@
     ogImage,
     ogUrl: canonicalUrl,
     ogSiteName: config.public.siteName,
-    ogLocale: locale.value === "de" ? "de_DE" : "en_US",
+    ogLocale: locale.value === "de" ? "de_CH" : "en_US",
     articlePublishedTime: post.created_at,
     articleModifiedTime: post.updated_at,
     twitterCard: "summary_large_image",
@@ -112,7 +112,7 @@
           description,
           datePublished: post.created_at,
           dateModified: post.updated_at,
-          inLanguage: locale.value === "de" ? "de" : "en",
+          inLanguage: locale.value === "de" ? "de-CH" : "en",
           url: canonicalUrl,
           image: {
             "@type": "ImageObject",

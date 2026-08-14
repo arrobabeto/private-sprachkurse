@@ -22,7 +22,7 @@
     >
       <NuxtImg
         src="/images/angebote/icon-arrow-up-right.svg"
-        alt=""
+        alt="Privater Sprachunterricht Schweiz flexibel"
         class="h-5 w-5 brightness-0 invert"
         width="20"
         height="20"

@@ -43,7 +43,7 @@
         >
           <NuxtImg
             :src="feature.icon"
-            alt=""
+            alt="Online Sprachkurs individuell Schweiz"
             class="mb-4 h-12 w-12 brightness-0 invert md:h-14 md:w-14"
             width="56"
             height="56"

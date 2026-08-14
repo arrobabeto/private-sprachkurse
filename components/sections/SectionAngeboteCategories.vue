@@ -48,7 +48,7 @@
           <NuxtImg
             v-else-if="cat.icon"
             :src="cat.icon"
-            alt=""
+            alt="Englischkurs privat Schweiz online"
             class="h-12 w-12 brightness-0 invert md:h-14 md:w-14"
             width="67"
             height="67"

@@ -21,7 +21,7 @@
     >
       <NuxtImg
         :src="backgroundImage"
-        alt=""
+        alt="Online Sprachkurs individuell Schweiz"
         class="absolute inset-0 h-full w-full object-cover"
         width="2544"
         height="636"

@@ -92,7 +92,7 @@
               </span>
               <NuxtImg
                 src="/images/home/loop-orange.svg"
-                alt=""
+                alt="Privater Sprachunterricht Schweiz flexibel"
                 class="pointer-events-none absolute left-1/2 top-[42%] z-0 w-[min(100vw,22rem)] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[26rem]"
                 width="481"
                 height="124"
@@ -131,7 +131,7 @@
         >
           <NuxtImg
             :src="card.icon"
-            alt=""
+            alt="Privater Sprachunterricht Schweiz flexibel"
             class="h-11 w-11 object-contain"
             width="48"
             height="48"
@@ -155,7 +155,7 @@
             >
               <NuxtImg
                 :src="card.icon"
-                alt=""
+                alt="Privater Sprachunterricht Schweiz flexibel"
                 class="h-12 w-12 object-contain"
                 width="48"
                 height="48"
@@ -175,7 +175,7 @@
               <NuxtImg
                 v-if="i === 0 || i === 2"
                 src="/images/home/hero/arrow1.svg"
-                alt=""
+                alt="Privater Sprachunterricht Schweiz flexibel"
                 class="pointer-events-none absolute bottom-1 left-1/2 w-[8.25rem] max-w-none -translate-x-1/2"
                 width="132"
                 height="44"
@@ -185,7 +185,7 @@
               <NuxtImg
                 v-if="i === 1"
                 src="/images/home/hero/arrow3.svg"
-                alt=""
+                alt="Privater Sprachunterricht Schweiz flexibel"
                 class="pointer-events-none absolute -top-1 left-1/2 w-[8.25rem] max-w-none -translate-x-1/2"
                 width="132"
                 height="44"

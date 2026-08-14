@@ -54,7 +54,7 @@
         >
           <NuxtImg
             src="/images/angebote/icon-gallery-back.svg"
-            alt=""
+            alt="Englischkurs privat Schweiz online"
             class="size-full"
             width="48"
             height="48"
@@ -73,7 +73,7 @@
         >
           <NuxtImg
             src="/images/angebote/icon-gallery-forward.svg"
-            alt=""
+            alt="Englischkurs privat Schweiz online"
             class="size-full"
             width="48"
             height="48"

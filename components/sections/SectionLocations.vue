@@ -73,7 +73,7 @@
             </span>
             <NuxtImg
               src="/images/home/loop-orange.svg"
-              alt=""
+              alt="Privater Sprachunterricht Schweiz flexibel"
               class="pointer-events-none absolute left-1/2 top-[58%] z-0 w-[13.5rem] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[17.5rem]"
               width="350"
               height="148"
@@ -96,7 +96,7 @@
             <NuxtImg
               v-if="isIconPath(loc.icon)"
               :src="loc.icon"
-              alt=""
+              :alt="`Online Sprachkurs individuell Schweiz — ${t(loc.title)}`"
               class="h-12 w-12"
               :class="isBlue ? 'brightness-0 invert' : ''"
               width="48"
@@ -125,7 +125,7 @@
               ? '/images/home/location-arrow-1.svg'
               : '/images/home/location-arrow-1.svg'
           "
-          alt=""
+          alt="Privater Sprachunterricht Schweiz flexibel"
           class="pointer-events-none absolute left-[26%] top-0 hidden w-[126px] md:block"
           :class="isBlue ? 'opacity-90 brightness-0 invert' : ''"
           width="132"
@@ -138,7 +138,7 @@
               ? '/images/home/location-arrow-2.svg'
               : '/images/home/location-arrow-2.svg'
           "
-          alt=""
+          alt="Privater Sprachunterricht Schweiz flexibel"
           class="pointer-events-none absolute left-[62%] top-[52%] hidden w-[126px] -translate-y-1/2 md:block"
           :class="isBlue ? 'opacity-90 brightness-0 invert' : ''"
           width="132"
@@ -159,7 +159,7 @@
           >
             <NuxtImg
               :src="kurslokal.image"
-              :alt="t(kurslokal.title)"
+              :alt="'Privater Sprachunterricht Schweiz flexibel'"
               class="size-full object-cover"
               width="320"
               height="320"

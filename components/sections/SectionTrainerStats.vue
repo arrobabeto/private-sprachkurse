@@ -26,7 +26,7 @@
       <NuxtImg
         v-if="arrowImage"
         :src="arrowImage"
-        alt=""
+        alt="Sprachtrainerin privater Sprachkurs Schweiz"
         class="pointer-events-none absolute right-6 top-6 hidden w-40 md:block lg:right-10 lg:top-8 lg:w-48"
         width="281"
         height="197"
