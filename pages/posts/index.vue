@@ -3,16 +3,22 @@
   import type { IPost } from "~/types/dto/IPost"
   import ButtonV from "~/components/common/ButtonV.vue"
   import { dt } from "~/functions/dt"
-  import { useHead } from "#imports"
+  import { useHead, useRuntimeConfig } from "#imports"
   import { useTranslate } from "~/composables/useTranslate"
   import slug from "slug"
   import { useI18n } from "#i18n"
   import { Store } from "~/services/Store"
+  import { buildBreadcrumbList, jsonLdScript } from "~/utils/jsonLd"
   import Widget from "./_Widget.vue"
 
   const t = useTranslate()
 
   const { locale, locales, setLocale } = useI18n()
+  const config = useRuntimeConfig()
+  const siteUrl = String(config.public.siteUrl || "").replace(/\/$/, "")
+  const postsListPath = locale.value === "en" ? "/en/posts" : "/posts"
+  const postsListUrl = `${siteUrl}${postsListPath}`
+  const postsListName = locale.value === "de" ? "Beiträge" : "Posts"
 
   const posts = ref<IPost[]>([])
   const pagination = ref(0)
@@ -58,7 +64,31 @@
   await load()
   watch(pagination, load)
 
-  useHead({ title: "posts" })
+  useHead({
+    title: "posts",
+    script: [
+      jsonLdScript("posts-breadcrumb", {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "@id": `${postsListUrl}#webpage`,
+            name: postsListName,
+            url: postsListUrl,
+            isPartOf: { "@id": `${siteUrl}/#website` },
+            breadcrumb: { "@id": `${postsListUrl}#breadcrumb` },
+          },
+          {
+            "@id": `${postsListUrl}#breadcrumb`,
+            ...buildBreadcrumbList([
+              { name: "Home", url: `${siteUrl}/` },
+              { name: postsListName, url: postsListUrl },
+            ]),
+          },
+        ],
+      }),
+    ],
+  })
 </script>
 
 <template>
