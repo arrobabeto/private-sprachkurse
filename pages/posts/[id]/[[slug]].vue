@@ -12,6 +12,7 @@
   import { reactive } from "vue"
   import SafeHtml from "~/components/common/SafeHtml.vue"
   import { generateOGImageUrl } from "~/utils/ogImageGenerator"
+  import { buildBreadcrumbList, jsonLdScript } from "~/utils/jsonLd"
 
   const t = useTranslate()
   const { locale } = useI18n()
@@ -62,7 +63,8 @@
     : route.path
   const dePath = enPath === "/" ? "/de" : `/de${enPath}`
   const canonicalPath = isGermanPage ? dePath : enPath
-  const canonicalUrl = `${config.public.siteUrl}${canonicalPath}`
+  const siteUrl = String(config.public.siteUrl || "").replace(/\/$/, "")
+  const canonicalUrl = `${siteUrl}${canonicalPath}`
   const title = t(post.title)
   const description = fn.truncateText(plainLead, 160)
   const ogImage = config.public.ogImageEnabled
@@ -73,6 +75,10 @@
         type: "post",
       })
     : post.img
+  const orgId = `${siteUrl}/#organization`
+  const postsListPath = route.path.startsWith("/en") ? "/en/posts" : "/posts"
+  const postsListUrl = `${siteUrl}${postsListPath}`
+  const postsListName = locale.value === "de" ? "Beiträge" : "Posts"
 
   useSeoMeta({
     title,
@@ -103,38 +109,39 @@
       xDefaultPath: enPath,
     }),
     script: [
-      {
-        type: "application/ld+json",
-        innerHTML: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: title,
-          description,
-          datePublished: post.created_at,
-          dateModified: post.updated_at,
-          inLanguage: locale.value === "de" ? "de-CH" : "en",
-          url: canonicalUrl,
-          image: {
-            "@type": "ImageObject",
-            url: ogImage,
-            width: "1200",
-            height: "630",
-          },
-          author: {
-            "@type": "Organization",
-            name: config.public.organizationName,
-          },
-          publisher: {
-            "@type": "Organization",
-            name: config.public.organizationName,
-            logo: {
+      jsonLdScript("article-breadcrumb", {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Article",
+            "@id": `${canonicalUrl}#article`,
+            headline: title,
+            description,
+            datePublished: post.created_at,
+            dateModified: post.updated_at,
+            inLanguage: locale.value === "de" ? "de-CH" : "en",
+            url: canonicalUrl,
+            image: {
               "@type": "ImageObject",
-              url: config.public.organizationLogo,
+              url: ogImage,
+              width: "1200",
+              height: "630",
             },
+            author: { "@id": orgId },
+            publisher: { "@id": orgId },
+            mainEntityOfPage: canonicalUrl,
+            breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
           },
-          mainEntityOfPage: canonicalUrl,
-        }),
-      },
+          {
+            "@id": `${canonicalUrl}#breadcrumb`,
+            ...buildBreadcrumbList([
+              { name: "Home", url: `${siteUrl}/` },
+              { name: postsListName, url: postsListUrl },
+              { name: title, url: canonicalUrl },
+            ]),
+          },
+        ],
+      }),
     ],
   })
 </script>

@@ -2,6 +2,12 @@ import type { IPage } from "~/types/dto/IPage"
 
 export const IMPRESSUM_PAGE_ID = "private-sprachkurse-impressum"
 
+const contactBlockDe = `<p>Private Sprachkurse<br />Viviane Baier<br />Amtshausgasse 12<br />4410 Liestal<br />Schweiz</p>
+<p>Kontakt<br />E-Mail: <a href="mailto:info@privatesprachkurse.ch">info@privatesprachkurse.ch</a><br />Telefon: <a href="tel:+41789433963">+41 78 943 39 63</a></p>`
+
+const contactBlockEn = `<p>Private Sprachkurse<br />Viviane Baier<br />Amtshausgasse 12<br />4410 Liestal<br />Switzerland</p>
+<p>Contact<br />Email: <a href="mailto:info@privatesprachkurse.ch">info@privatesprachkurse.ch</a><br />Phone: <a href="tel:+41789433963">+41 78 943 39 63</a></p>`
+
 const impressumBlockDe = `<p>Private Sprachkurse ist ein Angebot für Sprachunterricht in Deutsch, Französisch, Italienisch, Englisch und Spanisch. Wir bieten maßgeschneiderte Kurse für Einzelne und kleine Gruppen an, die ihre Sprachfähigkeiten verbessern möchten.</p>
 <p>Für Fragen, Anfragen oder weitere Informationen zu unseren Sprachkursen kontaktieren Sie uns bitte direkt. Wir stehen Ihnen gerne zur Verfügung und beantworten alle Ihre Fragen zum Unterricht, zu den Kursinhalten und zu den verfügbaren Terminen.</p>
 <p>Diese Webseite wird betrieben und verantwortet von Private Sprachkurse. Alle Inhalte, Texte und Materialien auf dieser Seite sind Eigentum von Private Sprachkurse und unterliegen dem Urheberrecht. Eine Vervielfältigung oder Verwendung ohne ausdrückliche Genehmigung ist nicht gestattet.</p>
@@ -14,8 +20,8 @@ const impressumBlockEn = `<p>Private Sprachkurse offers language tuition in Germ
 <p>The information on this website is updated regularly. We make every effort to keep all details correct and up to date. Nevertheless, we cannot guarantee the completeness or accuracy of all information.</p>
 <p>For technical questions or problems with the website you are also welcome to contact us. We will take care of a quick solution and ensure that your experience on our site runs smoothly.</p>`
 
-const bodyDe = impressumBlockDe + impressumBlockDe + impressumBlockDe
-const bodyEn = impressumBlockEn + impressumBlockEn + impressumBlockEn
+const bodyDe = contactBlockDe + impressumBlockDe
+const bodyEn = contactBlockEn + impressumBlockEn
 
 export function buildImpressumSeed(): IPage {
   return {

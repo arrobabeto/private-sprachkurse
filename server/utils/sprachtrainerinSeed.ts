@@ -8,10 +8,8 @@ const IMG = {
   philosophy2: "/images/sprachtrainerin/philosophy-2.png",
   philosophy3: "/images/sprachtrainerin/philosophy-3.png",
   philosophy4: "/images/sprachtrainerin/philosophy-4.png",
-  certSveb1: "/images/sprachtrainerin/cert-sveb1.png",
-  // Interim stand-ins until final certificate assets arrive:
-  // Eurolta — photo with framed Eurolta/SVEB certificates on the wall
-  certEurolta: "/images/sprachtrainerin/cert-eurolta.png",
+  certSveb1: "/images/sprachtrainerin/cert-sveb1-v2.png",
+  certEurolta: "/images/sprachtrainerin/cert-eurolta-v2.png",
   // Sprache im Beruf — corporate training session
   certFce: "/images/sprachtrainerin/cert-fce.png",
   arrow: "/images/sprachtrainerin/arrow-1.svg",

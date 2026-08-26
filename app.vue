@@ -1,11 +1,16 @@
 <script setup lang="ts">
   import { useHead, useRuntimeConfig } from "#imports"
   import { useI18n } from "#i18n"
+  import { absoluteUrl, jsonLdScript } from "~/utils/jsonLd"
 
   const { locale } = useI18n()
   const config = useRuntimeConfig()
   const gaId = String(config.public.gaId || "")
   const gtmId = String(config.public.gtmId || "")
+  const siteUrl = String(config.public.siteUrl || "").replace(/\/$/, "")
+  const organizationSameAs = Array.isArray(config.public.organizationSameAs)
+    ? config.public.organizationSameAs
+    : []
 
   const analyticsScripts: {
     key: string
@@ -110,49 +115,46 @@
       },
     ],
     script: [
-      {
-        type: "application/ld+json",
-        innerHTML: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Organization",
-              "@id": `${config.public.siteUrl}/#organization`,
-              name: config.public.organizationName,
-              url: config.public.siteUrl,
-              logo: {
-                "@type": "ImageObject",
-                url: config.public.organizationLogo,
-              },
-              telephone: config.public.organizationTelephone,
-              email: config.public.organizationEmail,
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: config.public.organizationStreetAddress,
-                postalCode: config.public.organizationPostalCode,
-                addressLocality: config.public.organizationLocality,
-                addressCountry: config.public.organizationCountry,
-              },
-              areaServed: config.public.organizationAreaServed,
-              ...(Array.isArray(config.public.organizationSameAs) &&
-              config.public.organizationSameAs.length > 0
-                ? { sameAs: config.public.organizationSameAs }
-                : {}),
+      jsonLdScript("organization-website", {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": `${siteUrl}/#organization`,
+            name: config.public.organizationName,
+            url: siteUrl,
+            logo: {
+              "@type": "ImageObject",
+              url: absoluteUrl(siteUrl, String(config.public.organizationLogo)),
             },
-            {
-              "@type": "WebSite",
-              "@id": `${config.public.siteUrl}/#website`,
-              name: config.public.siteName,
-              url: config.public.siteUrl,
-              description: config.public.siteDescription,
-              inLanguage: locale.value === "de" ? "de-CH" : "en",
-              publisher: {
-                "@id": `${config.public.siteUrl}/#organization`,
-              },
+            telephone: config.public.organizationTelephone,
+            email: config.public.organizationEmail,
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: config.public.organizationStreetAddress,
+              postalCode: config.public.organizationPostalCode,
+              addressLocality: config.public.organizationLocality,
+              addressRegion: config.public.organizationRegion,
+              addressCountry: config.public.organizationCountry,
             },
-          ],
-        }),
-      },
+            areaServed: config.public.organizationAreaServed,
+            ...(organizationSameAs.length > 0
+              ? { sameAs: organizationSameAs }
+              : {}),
+          },
+          {
+            "@type": "WebSite",
+            "@id": `${siteUrl}/#website`,
+            name: config.public.siteName,
+            url: siteUrl,
+            description: config.public.siteDescription,
+            inLanguage: locale.value === "de" ? "de-CH" : "en",
+            publisher: {
+              "@id": `${siteUrl}/#organization`,
+            },
+          },
+        ],
+      }),
       ...analyticsScripts,
     ],
   })

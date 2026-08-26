@@ -71,6 +71,8 @@ export default defineNuxtConfig({
         process.env.NUXT_PUBLIC_ORGANIZATION_POSTAL_CODE ?? "4410",
       organizationLocality:
         process.env.NUXT_PUBLIC_ORGANIZATION_LOCALITY ?? "Liestal",
+      organizationRegion:
+        process.env.NUXT_PUBLIC_ORGANIZATION_REGION ?? "Basel-Landschaft",
       organizationCountry: process.env.NUXT_PUBLIC_ORGANIZATION_COUNTRY ?? "CH",
       organizationAreaServed:
         process.env.NUXT_PUBLIC_ORGANIZATION_AREA_SERVED ?? "Schweiz",

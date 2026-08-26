@@ -11,6 +11,7 @@
   import { useCanonicalLinks } from "~/composables/useCanonicalLinks"
   import { fn } from "~/functions/fn"
   import type { IPage } from "~/types/dto/IPage"
+  import { buildBreadcrumbList, jsonLdScript } from "~/utils/jsonLd"
   import { generateOGImageUrl } from "~/utils/ogImageGenerator"
   import { normalizeSections } from "~/utils/normalizeSections"
 
@@ -45,7 +46,11 @@
   const dePath = page.slug === "home" ? "/" : `/${page.slug}`
   const enPath = page.slug === "home" ? "/en" : `/en/${page.slug}`
   const canonicalPath = isGermanPage ? dePath : enPath
-  const canonicalUrl = `${config.public.siteUrl}${canonicalPath}`
+  const siteUrl = String(config.public.siteUrl || "").replace(/\/$/, "")
+  const canonicalUrl = `${siteUrl}${canonicalPath}`
+  const homeUrl = `${siteUrl}/`
+  const pageName = t(page.title)
+  const isHome = page.slug === "home"
   const ogImage = config.public.ogImageEnabled
     ? generateOGImageUrl({
         title: t(page.title),
@@ -54,6 +59,7 @@
         type: "page",
       })
     : page.img
+  const orgId = `${siteUrl}/#organization`
 
   useSeoMeta({
     title,
@@ -75,6 +81,56 @@
     twitterCreator: config.public.twitterCreator,
   })
 
+  const pageGraph: Record<string, unknown>[] = [
+    {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
+      name: pageName,
+      headline: pageName,
+      description,
+      datePublished: page.created_at,
+      dateModified: page.updated_at,
+      inLanguage: locale.value === "de" ? "de-CH" : "en",
+      url: canonicalUrl,
+      image: {
+        "@type": "ImageObject",
+        url: ogImage,
+        width: "1200",
+        height: "630",
+      },
+      mainEntity: {
+        "@type": "Article",
+        headline: pageName,
+        description,
+        datePublished: page.created_at,
+        dateModified: page.updated_at,
+        keywords,
+        author: { "@id": orgId },
+        publisher: { "@id": orgId },
+      },
+      isPartOf: {
+        "@id": `${siteUrl}/#website`,
+      },
+      ...(isHome
+        ? {}
+        : {
+            breadcrumb: {
+              "@id": `${canonicalUrl}#breadcrumb`,
+            },
+          }),
+    },
+  ]
+
+  if (!isHome) {
+    pageGraph.push({
+      "@id": `${canonicalUrl}#breadcrumb`,
+      ...buildBreadcrumbList([
+        { name: "Home", url: homeUrl },
+        { name: pageName, url: canonicalUrl },
+      ]),
+    })
+  }
+
   useHead({
     ...page.head,
     link: useCanonicalLinks({
@@ -84,51 +140,10 @@
       xDefaultPath: dePath,
     }),
     script: [
-      {
-        type: "application/ld+json",
-        innerHTML: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: t(page.title),
-          headline: t(page.title),
-          description,
-          datePublished: page.created_at,
-          dateModified: page.updated_at,
-          inLanguage: locale.value === "de" ? "de-CH" : "en",
-          url: canonicalUrl,
-          image: {
-            "@type": "ImageObject",
-            url: ogImage,
-            width: "1200",
-            height: "630",
-          },
-          mainEntity: {
-            "@type": "Article",
-            headline: t(page.title),
-            description,
-            datePublished: page.created_at,
-            dateModified: page.updated_at,
-            keywords,
-            author: {
-              "@type": "Organization",
-              name: config.public.organizationName,
-            },
-            publisher: {
-              "@type": "Organization",
-              name: config.public.organizationName,
-              logo: {
-                "@type": "ImageObject",
-                url: config.public.organizationLogo,
-              },
-            },
-          },
-          isPartOf: {
-            "@type": "WebSite",
-            name: config.public.siteName,
-            url: config.public.siteUrl,
-          },
-        }),
-      },
+      jsonLdScript("webpage-breadcrumb", {
+        "@context": "https://schema.org",
+        "@graph": pageGraph,
+      }),
     ],
   })
 </script>

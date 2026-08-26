@@ -151,10 +151,10 @@
             </div>
 
             <div
-              class="flex min-w-0 flex-1 flex-col gap-6 overflow-y-auto p-5 md:p-8 lg:p-10"
+              class="flex min-h-0 min-w-0 flex-1 flex-col gap-6 overflow-hidden p-5 md:p-8 lg:p-10"
               :class="themeClasses(qual.theme).bg"
             >
-              <div class="min-w-0">
+              <div class="min-w-0 shrink-0">
                 <h3
                   class="text-xl font-bold leading-tight md:text-[40px]"
                   :class="themeClasses(qual.theme).text"
@@ -168,13 +168,14 @@
                   {{ t(qual.body) }}
                 </p>
               </div>
-              <NuxtImg
-                :src="qual.image"
-                :alt="t(qual.title)"
-                class="h-auto w-full min-w-0 max-w-[544px] self-start rounded-[30px] object-cover"
-                width="544"
-                height="400"
-              />
+              <div class="flex min-h-0 flex-1 items-stretch justify-start">
+                <NuxtImg
+                  :src="qual.image"
+                  :alt="t(qual.title)"
+                  class="h-full w-auto max-w-full object-contain"
+                  width="544"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -228,9 +229,8 @@
             <NuxtImg
               :src="qual.image"
               :alt="t(qual.title)"
-              class="w-full rounded-2xl object-cover"
+              class="mx-auto h-auto max-h-[70vh] w-auto max-w-full object-contain"
               width="544"
-              height="400"
             />
           </div>
         </article>
