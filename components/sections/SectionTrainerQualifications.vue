@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from "vue"
+  import { onMounted, onUnmounted, ref, watch } from "vue"
   import type { I18nString } from "~/types/util/I18nString"
   import { useTranslate } from "~/composables/useTranslate"
 
@@ -12,7 +12,7 @@
     theme: "orange" | "cream" | "green"
   }
 
-  const props = defineProps<{
+  defineProps<{
     title: I18nString
     qualifications: Qualification[]
   }>()
@@ -20,6 +20,7 @@
   const t = useTranslate()
   const activeIndex = ref(0)
   const mobileOpen = ref<number | null>(0)
+  const lightbox = ref<{ src: string; alt: string } | null>(null)
 
   function isActive(index: number) {
     return index === activeIndex.value
@@ -72,6 +73,31 @@
       activate(index)
     }
   }
+
+  function openLightbox(src: string, alt: string) {
+    lightbox.value = { src, alt }
+  }
+
+  function closeLightbox() {
+    lightbox.value = null
+  }
+
+  function lockScroll(locked: boolean) {
+    document.body.style.overflow = locked ? "hidden" : ""
+  }
+
+  function onGlobalKeydown(event: KeyboardEvent) {
+    if (event.key === "Escape" && lightbox.value) closeLightbox()
+  }
+
+  watch(lightbox, (value) => lockScroll(Boolean(value)))
+
+  onMounted(() => document.addEventListener("keydown", onGlobalKeydown))
+
+  onUnmounted(() => {
+    document.removeEventListener("keydown", onGlobalKeydown)
+    lockScroll(false)
+  })
 </script>
 
 <template>
@@ -169,12 +195,22 @@
                 </p>
               </div>
               <div class="flex min-h-0 flex-1 items-stretch justify-start">
-                <NuxtImg
-                  :src="qual.image"
-                  :alt="t(qual.title)"
-                  class="h-full w-auto max-w-full object-contain"
-                  width="544"
-                />
+                <button
+                  type="button"
+                  class="h-full max-w-full cursor-zoom-in border-0 bg-transparent p-0 text-left"
+                  :aria-label="`Bild vergrössern: ${t(qual.title)}`"
+                  @click="openLightbox(qual.image, t(qual.title))"
+                >
+                  <NuxtImg
+                    :src="qual.image"
+                    :alt="t(qual.title)"
+                    class="pointer-events-none h-full w-auto max-w-full object-contain"
+                    :class="qual.number === '01' ? 'rounded-[20px]' : ''"
+                    width="804"
+                    sizes="804px"
+                    densities="1x 2x"
+                  />
+                </button>
               </div>
             </div>
           </div>
@@ -226,15 +262,73 @@
             >
               {{ t(qual.body) }}
             </p>
-            <NuxtImg
-              :src="qual.image"
-              :alt="t(qual.title)"
-              class="mx-auto h-auto max-h-[70vh] w-auto max-w-full object-contain"
-              width="544"
-            />
+            <button
+              type="button"
+              class="mx-auto block max-w-full cursor-zoom-in border-0 bg-transparent p-0"
+              :aria-label="`Bild vergrössern: ${t(qual.title)}`"
+              @click="openLightbox(qual.image, t(qual.title))"
+            >
+              <NuxtImg
+                :src="qual.image"
+                :alt="t(qual.title)"
+                class="pointer-events-none mx-auto h-auto max-h-[70vh] w-auto max-w-full object-contain"
+                :class="qual.number === '01' ? 'rounded-[20px]' : ''"
+                width="804"
+                sizes="804px"
+                densities="1x 2x"
+              />
+            </button>
           </div>
         </article>
       </div>
     </div>
+
+    <Teleport to="body">
+      <Transition
+        enter-active-class="transition-opacity duration-200"
+        enter-from-class="opacity-0"
+        leave-active-class="transition-opacity duration-150"
+        leave-to-class="opacity-0"
+      >
+        <div
+          v-if="lightbox"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 md:p-8"
+          role="dialog"
+          aria-modal="true"
+          :aria-label="lightbox.alt"
+          @click.self="closeLightbox"
+        >
+          <button
+            type="button"
+            class="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-ps-dark shadow-md transition hover:bg-white md:right-6 md:top-6"
+            aria-label="Schliessen"
+            @click="closeLightbox"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 6L18 18M18 6L6 18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <NuxtImg
+            :src="lightbox.src"
+            :alt="lightbox.alt"
+            class="max-h-[90vh] max-w-[min(100%,900px)] object-contain shadow-2xl"
+            width="1200"
+            sizes="900px"
+            densities="1x 2x"
+          />
+        </div>
+      </Transition>
+    </Teleport>
   </section>
 </template>

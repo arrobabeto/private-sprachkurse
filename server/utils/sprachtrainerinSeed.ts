@@ -8,8 +8,8 @@ const IMG = {
   philosophy2: "/images/sprachtrainerin/philosophy-2.png",
   philosophy3: "/images/sprachtrainerin/philosophy-3.png",
   philosophy4: "/images/sprachtrainerin/philosophy-4.png",
-  certSveb1: "/images/sprachtrainerin/cert-sveb1-v2.png",
-  certEurolta: "/images/sprachtrainerin/cert-eurolta-v2.png",
+  certSveb1: "/images/sprachtrainerin/cert-sveb1-v3.png",
+  certEurolta: "/images/sprachtrainerin/cert-eurolta-v3.png",
   // Sprache im Beruf — corporate training session
   certFce: "/images/sprachtrainerin/cert-fce.png",
   arrow: "/images/sprachtrainerin/arrow-1.svg",
