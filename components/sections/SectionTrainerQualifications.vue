@@ -35,15 +35,11 @@
     return index < activeIndex.value ? index + 1 : index
   }
 
-  function collapsedBasis(number: string) {
-    return number === "03" ? "98px" : "87px"
-  }
-
-  function panelStyle(index: number, qual: Qualification) {
+  function panelStyle(index: number, _qual: Qualification) {
     const active = isActive(index)
     return {
       order: panelOrder(index),
-      flexBasis: active ? "0%" : collapsedBasis(qual.number),
+      flexBasis: active ? "0%" : "87px",
       flexGrow: active ? 1 : 0,
       flexShrink: active ? 1 : 0,
     }

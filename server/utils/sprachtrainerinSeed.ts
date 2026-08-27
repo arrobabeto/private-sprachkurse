@@ -10,8 +10,6 @@ const IMG = {
   philosophy4: "/images/sprachtrainerin/philosophy-4.png",
   certSveb1: "/images/sprachtrainerin/cert-sveb1-v3.png",
   certEurolta: "/images/sprachtrainerin/cert-eurolta-v3.png",
-  // Sprache im Beruf — corporate training session
-  certFce: "/images/sprachtrainerin/cert-fce.png",
   arrow: "/images/sprachtrainerin/arrow-1.svg",
   arrow2: "/images/sprachtrainerin/arrow-2.svg",
   ctaCircle: "/images/sprachtrainerin/cta-circle.svg",
@@ -246,20 +244,6 @@ export function buildSprachtrainerinSeed(): IPage {
             },
             image: IMG.certEurolta,
             theme: "cream",
-          },
-          {
-            number: "03",
-            tabLabel: {
-              de: "Sprache im Beruf",
-              en: "Language at work",
-            },
-            title: { de: "Sprache im Beruf", en: "Language at work" },
-            body: {
-              de: "Ich habe mit über 500 Unternehmen zusammengearbeitet und weiß, wie Sprache in echten Arbeitssituationen funktioniert.",
-              en: "I have worked with over 500 companies and know how language works in real work situations.",
-            },
-            image: IMG.certFce,
-            theme: "green",
           },
         ],
       },
