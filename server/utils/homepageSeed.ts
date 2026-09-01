@@ -1,4 +1,5 @@
 import type { IPage } from "~/types/dto/IPage"
+import { homepageFaqSection } from "~/utils/homepageFaq"
 
 export const HOMEPAGE_ID = "private-sprachkurse-home"
 
@@ -483,6 +484,7 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
           en: "Something went wrong. Please try again.",
         },
       },
+      homepageFaqSection,
     ],
     head: {},
     created_at: new Date(0).toISOString(),

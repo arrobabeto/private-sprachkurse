@@ -11,9 +11,40 @@
   import { useCanonicalLinks } from "~/composables/useCanonicalLinks"
   import { fn } from "~/functions/fn"
   import type { IPage } from "~/types/dto/IPage"
-  import { buildBreadcrumbList, jsonLdScript } from "~/utils/jsonLd"
+  import type { Section } from "~/types/util/Section"
+  import type { I18nString } from "~/types/util/I18nString"
+  import {
+    buildBreadcrumbList,
+    buildFaqPage,
+    jsonLdScript,
+  } from "~/utils/jsonLd"
+  import { homepageFaqItems } from "~/utils/homepageFaq"
   import { generateOGImageUrl } from "~/utils/ogImageGenerator"
   import { normalizeSections } from "~/utils/normalizeSections"
+
+  type FaqSection = Section & {
+    items?: { question: I18nString; answer: I18nString }[]
+  }
+
+  function extractFaqSchemaItems(
+    sections: Section[],
+    translate: (text?: I18nString) => string,
+    includeHomeFallback: boolean,
+  ) {
+    const faqSection = sections.find(
+      (section) => section._orbi?.component === "SectionFaq",
+    ) as FaqSection | undefined
+    const items = faqSection?.items?.length
+      ? faqSection.items
+      : includeHomeFallback
+        ? homepageFaqItems
+        : []
+
+    return items.map((item) => ({
+      question: translate(item.question),
+      answer: translate(item.answer),
+    }))
+  }
 
   const t = useTranslate()
   const { locale } = useI18n()
@@ -60,6 +91,7 @@
       })
     : page.img
   const orgId = `${siteUrl}/#organization`
+  const faqItems = extractFaqSchemaItems(sections, t, isHome)
 
   useSeoMeta({
     title,
@@ -128,6 +160,13 @@
         { name: "Home", url: homeUrl },
         { name: pageName, url: canonicalUrl },
       ]),
+    })
+  }
+
+  if (faqItems.length > 0) {
+    pageGraph.push({
+      "@id": `${canonicalUrl}#faq`,
+      ...buildFaqPage(faqItems),
     })
   }
 
