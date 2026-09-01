@@ -25,6 +25,26 @@ export function buildBreadcrumbList(items: BreadcrumbItem[]) {
   }
 }
 
+export type FaqSchemaItem = {
+  question: string
+  answer: string
+}
+
+/** schema.org FAQPage for rich results */
+export function buildFaqPage(items: FaqSchemaItem[]) {
+  return {
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  }
+}
+
 export function absoluteUrl(baseUrl: string, pathOrUrl: string): string {
   if (!pathOrUrl) return baseUrl
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl
