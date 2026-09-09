@@ -28,8 +28,8 @@
       en: " are alive and",
     },
     line2: {
-      de: "genau so lernt man sie",
-      en: "that's exactly how you learn them",
+      de: " genau so lernt man sie",
+      en: " that's exactly how you learn them",
     },
   } satisfies { line1Tail: I18nString; line2: I18nString }
 
@@ -101,6 +101,7 @@
             </span>
             <span>{{ t(resolvedHeadline.line1Tail) }}</span>
           </span>
+          {{ " " }}
           <span class="mt-1 block">{{ t(resolvedHeadline.line2) }}</span>
         </h1>
 
