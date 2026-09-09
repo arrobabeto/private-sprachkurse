@@ -369,7 +369,7 @@ export function buildAngeboteSeed(): IPage {
       },
       {
         _orbi: { component: "SectionAngeboteGallery" },
-        images: [IMG.gallery1, IMG.gallery2, IMG.gallery3],
+        images: [IMG.gallery3, IMG.gallery2, IMG.gallery1],
       },
       {
         _orbi: { component: "SectionAngeboteContactCta" },

@@ -131,7 +131,7 @@
           width="1200"
           height="600"
         />
-        <div class="absolute inset-0 bg-black/50" />
+        <div class="absolute inset-0 bg-black/20" />
 
         <div
           class="relative flex flex-col items-center gap-8 px-4 py-12 md:gap-10 md:px-8 md:py-16"
