@@ -2,6 +2,7 @@
   import BookingAction from "~/components/common/BookingAction.vue"
   import ButtonV from "~/components/common/ButtonV.vue"
   import type { I18nString } from "~/types/util/I18nString"
+  import { useCalculatorModal } from "~/composables/useCalculatorModal"
   import { useTranslate } from "~/composables/useTranslate"
 
   type Feature = {
@@ -18,6 +19,8 @@
     ctaLabel: I18nString
     ctaUrl: string
     ctaVariant?: "orange" | "blue"
+    /** "calculator" opens the course configurator instead of following ctaUrl. */
+    ctaAction?: "calculator"
     layout: "image-left" | "image-right"
     showBookingAction?: boolean
     imageTilt?: "left" | "right"
@@ -29,6 +32,7 @@
   }>()
 
   const t = useTranslate()
+  const { open: openCalculator } = useCalculatorModal()
 
   /** Figma Frame 483 (2420:627) — fixed positions for connector arrows. */
   const offerArrowLayout: Record<
@@ -177,7 +181,14 @@
             </ul>
 
             <div v-if="offer.showBookingAction === false" class="pt-2">
-              <NuxtLinkLocale :to="offer.ctaUrl">
+              <ButtonV
+                v-if="offer.ctaAction === 'calculator'"
+                :variant="offer.ctaVariant ?? 'blue'"
+                @click="openCalculator()"
+              >
+                {{ t(offer.ctaLabel) }}
+              </ButtonV>
+              <NuxtLinkLocale v-else :to="offer.ctaUrl">
                 <ButtonV :variant="offer.ctaVariant ?? 'blue'">
                   {{ t(offer.ctaLabel) }}
                 </ButtonV>

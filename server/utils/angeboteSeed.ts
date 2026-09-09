@@ -212,6 +212,7 @@ export function buildAngeboteSeed(): IPage {
             image: IMG.kleingruppe,
             ctaLabel: { de: "Zur Buchung", en: "Book now" },
             ctaUrl: "/#kontakt",
+            ctaAction: "calculator",
             ctaVariant: "blue",
             layout: "image-right",
             showBookingAction: false,
