@@ -2,17 +2,21 @@
   import ButtonV from "~/components/common/ButtonV.vue"
   import type { I18nString } from "~/types/util/I18nString"
   import { useTranslate } from "~/composables/useTranslate"
+  import { useCalculatorModal } from "~/composables/useCalculatorModal"
 
   defineProps<{
     title: I18nString
     subtitle: I18nString
     primaryCtaLabel: I18nString
     primaryCtaUrl: string
+    /** "calculator" opens the course configurator instead of following primaryCtaUrl. */
+    primaryCtaAction?: "calculator"
     secondaryCtaLabel: I18nString
     secondaryCtaUrl: string
   }>()
 
   const t = useTranslate()
+  const { open: openCalculator } = useCalculatorModal()
 </script>
 
 <template>
@@ -29,7 +33,14 @@
         {{ t(subtitle) }}
       </p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <NuxtLinkLocale :to="primaryCtaUrl">
+        <ButtonV
+          v-if="primaryCtaAction === 'calculator'"
+          variant="orange"
+          @click="openCalculator()"
+        >
+          {{ t(primaryCtaLabel) }}
+        </ButtonV>
+        <NuxtLinkLocale v-else :to="primaryCtaUrl">
           <ButtonV variant="orange">{{ t(primaryCtaLabel) }}</ButtonV>
         </NuxtLinkLocale>
         <NuxtLinkLocale :to="secondaryCtaUrl">

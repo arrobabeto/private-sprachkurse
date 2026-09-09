@@ -3,14 +3,15 @@ import type { IPage } from "~/types/dto/IPage"
 export const ANGEBOTE_ID = "private-sprachkurse-angebote"
 
 const IMG = {
-  einzel: "/images/angebote/angebote-einzel-v2.png",
-  kleingruppe: "/images/angebote/angebote-kleingruppe.png",
+  einzel: "/images/angebote/angebote-einzel-v3.png",
+  kleingruppe: "/images/angebote/angebote-kleingruppe-v2.png",
   sprechtraining: "/images/angebote/angebote-sprechtraining-v2.png",
   spezial: "/images/angebote/angebote-spezial.png",
-  tileUnterricht: "/images/angebote/angebote-tile-unterricht.png",
-  tileSprech: "/images/angebote/angebote-tile-sprech.png",
+  tileUnterricht: "/images/angebote/angebote-tile-unterricht-v2.png",
+  tileSprech: "/images/angebote/angebote-tile-sprech-v2.png",
   gallery1: "/images/angebote/angebote-gallery-1.png",
-  gallery2: "/images/angebote/angebote-gallery-2.png",
+  gallery2: "/images/angebote/angebote-gallery-2-v2.jpg",
+  gallery3: "/images/angebote/angebote-gallery-3-v2.jpg",
   iconPerson: "/images/angebote/icon-person.svg",
   iconTrip: "/images/angebote/icon-trip.svg",
   iconSpeed: "/images/angebote/icon-speed.svg",
@@ -60,6 +61,7 @@ export function buildAngeboteSeed(): IPage {
         },
         primaryCtaLabel: { de: "Zu den Kursen", en: "View courses" },
         primaryCtaUrl: "#kurse",
+        primaryCtaAction: "calculator",
         secondaryCtaLabel: { de: "Für Unternehmen", en: "For companies" },
         secondaryCtaUrl: "/in-unternehmen",
       },
@@ -156,7 +158,8 @@ export function buildAngeboteSeed(): IPage {
             ],
             image: IMG.einzel,
             ctaLabel: { de: "Zur Buchung", en: "Book now" },
-            ctaUrl: "/#kontakt",
+            ctaUrl:
+              "https://calendly.com/privatesprachkurse-info/privatstunde-vor-ort",
             ctaVariant: "orange",
             layout: "image-left",
             showBookingAction: true,
@@ -365,7 +368,7 @@ export function buildAngeboteSeed(): IPage {
       },
       {
         _orbi: { component: "SectionAngeboteGallery" },
-        images: [IMG.gallery1, IMG.gallery2],
+        images: [IMG.gallery1, IMG.gallery2, IMG.gallery3],
       },
       {
         _orbi: { component: "SectionAngeboteContactCta" },

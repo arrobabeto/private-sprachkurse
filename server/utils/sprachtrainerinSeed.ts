@@ -45,7 +45,7 @@ export function buildSprachtrainerinSeed(): IPage {
           en: "I teach private and corporate clients with tailored lessons, passion, and fun. Learn from someone who doesn't just teach language — she lives it.",
         },
         ctaLabel: { de: "Mehr Erfahren", en: "Learn more" },
-        ctaUrl: "#stats",
+        ctaUrl: "#methoden",
       },
       {
         _orbi: { component: "SectionTrainerQuote" },

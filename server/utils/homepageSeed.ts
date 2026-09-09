@@ -300,7 +300,7 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
                 name: { de: "Privatkurs", en: "Private course" },
                 price: "88",
                 unit: { de: "Pro Lektion", en: "Per lesson" },
-                duration: { de: "55 Min.", en: "55 min." },
+                duration: { de: "50 Min.", en: "50 min." },
                 cta: { de: "Jetzt buchen", en: "Book now" },
                 ctaUrl:
                   "https://calendly.com/privatesprachkurse-info/privatstunde-online",
