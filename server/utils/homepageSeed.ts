@@ -125,8 +125,8 @@ export function buildHomepageSeed(_hasSqlKeyConfigured = false): IPage {
           en: " are alive and",
         },
         headlineLine2: {
-          de: "genau so lernt man sie",
-          en: "that's exactly how you learn them",
+          de: " genau so lernt man sie",
+          en: " that's exactly how you learn them",
         },
         subtext: {
           de: "Persönlicher Sprachunterricht für Alltag und Beruf – individuell, flexibel und mit Freude am Lernen",

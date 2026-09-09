@@ -170,6 +170,26 @@
     })
   }
 
+  const pageScripts = [
+    jsonLdScript("webpage-schema", {
+      "@context": "https://schema.org",
+      "@graph": pageGraph,
+    }),
+  ]
+
+  // Standalone BreadcrumbList — some SEO scanners miss @graph-only breadcrumbs.
+  if (!isHome) {
+    pageScripts.push(
+      jsonLdScript("breadcrumb-list", {
+        "@context": "https://schema.org",
+        ...buildBreadcrumbList([
+          { name: "Home", url: homeUrl },
+          { name: pageName, url: canonicalUrl },
+        ]),
+      }),
+    )
+  }
+
   useHead({
     ...page.head,
     link: useCanonicalLinks({
@@ -178,12 +198,7 @@
       dePath,
       xDefaultPath: dePath,
     }),
-    script: [
-      jsonLdScript("webpage-breadcrumb", {
-        "@context": "https://schema.org",
-        "@graph": pageGraph,
-      }),
-    ],
+    script: pageScripts,
   })
 </script>
 

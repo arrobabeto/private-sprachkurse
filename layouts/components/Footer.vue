@@ -92,8 +92,12 @@
     </div>
 
     <div class="bg-white px-[2.5%] py-5">
-      <p id="site-copyright" class="text-center text-sm text-ps-dark/80">
-        © 2026 Private Sprachkurse
+      <p
+        id="site-copyright"
+        class="text-center text-sm text-ps-dark/80"
+        data-seo-copyright="© 2026 Private Sprachkurse"
+      >
+        &copy; 2026 Private Sprachkurse
       </p>
     </div>
   </footer>
