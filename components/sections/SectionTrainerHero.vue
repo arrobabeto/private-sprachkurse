@@ -1,9 +1,10 @@
 <script setup lang="ts">
+  import { computed } from "vue"
   import ButtonV from "~/components/common/ButtonV.vue"
   import type { I18nString } from "~/types/util/I18nString"
   import { useTranslate } from "~/composables/useTranslate"
 
-  defineProps<{
+  const props = defineProps<{
     backgroundImage: string
     title: I18nString
     body: I18nString
@@ -12,6 +13,17 @@
   }>()
 
   const t = useTranslate()
+
+  const isHashLink = computed(() => props.ctaUrl.startsWith("#"))
+
+  function scrollToSection() {
+    const id = props.ctaUrl.slice(1)
+    if (!id) return
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
 </script>
 
 <template>
@@ -44,7 +56,14 @@
             {{ t(body) }}
           </p>
           <div class="mt-8">
-            <NuxtLinkLocale :to="ctaUrl">
+            <ButtonV
+              v-if="isHashLink"
+              variant="orange"
+              @click="scrollToSection"
+            >
+              {{ t(ctaLabel) }}
+            </ButtonV>
+            <NuxtLinkLocale v-else :to="ctaUrl">
               <ButtonV variant="orange">{{ t(ctaLabel) }}</ButtonV>
             </NuxtLinkLocale>
           </div>

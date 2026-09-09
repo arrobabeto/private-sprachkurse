@@ -44,6 +44,7 @@
       />
 
       <div
+        v-if="images.length > 1"
         class="absolute left-8 top-1/2 z-20 size-14 -translate-y-1/2 md:left-9 md:size-12"
       >
         <button
@@ -63,6 +64,7 @@
         </button>
       </div>
       <div
+        v-if="images.length > 1"
         class="absolute right-8 top-1/2 z-20 size-14 -translate-y-1/2 md:right-3 md:size-12"
       >
         <button
@@ -82,7 +84,10 @@
         </button>
       </div>
 
-      <div class="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+      <div
+        v-if="images.length > 1"
+        class="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2"
+      >
         <span
           v-for="(_, i) of images"
           :key="i"
