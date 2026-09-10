@@ -34,11 +34,14 @@ const IMG = {
 export function buildAngeboteSeed(): IPage {
   return {
     id: ANGEBOTE_ID,
-    title: { de: "Angebote", en: "Offers" },
+    title: {
+      de: "Sprachkursangebote Schweiz | Private Sprachkurse Liestal",
+      en: "Language course offers Switzerland | Private Sprachkurse Liestal",
+    },
     slug: "angebote",
     lead: {
-      de: "Sprachkurse, Sprechtraining und Coachings – individuell, flexibel und mit Freude am Lernen.",
-      en: "Language courses, conversation training, and coaching — individual, flexible, and enjoyable.",
+      de: "Englisch, Französisch, Deutsch, Spanisch und Italienisch privat lernen. Flexible Einzelkurse ab CHF 88 pro Lektion. Jetzt Angebot ansehen und Termin buchen.",
+      en: "Learn English, French, German, Spanish and Italian privately. Flexible one-to-one courses from CHF 88 per lesson. View offers and book an appointment.",
     },
     img: IMG.einzel,
     keywords: [

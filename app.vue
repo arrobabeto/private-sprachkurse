@@ -138,6 +138,13 @@
               addressCountry: config.public.organizationCountry,
             },
             areaServed: config.public.organizationAreaServed,
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "5.0",
+              reviewCount: "6",
+              bestRating: "5",
+              worstRating: "1",
+            },
             ...(organizationSameAs.length > 0
               ? { sameAs: organizationSameAs }
               : {}),

@@ -14,8 +14,10 @@
   import type { Section } from "~/types/util/Section"
   import type { I18nString } from "~/types/util/I18nString"
   import {
+    buildAngeboteCourseSchemas,
     buildBreadcrumbList,
     buildFaqPage,
+    buildPersonSchema,
     jsonLdScript,
   } from "~/utils/jsonLd"
   import { homepageFaqItems } from "~/utils/homepageFaq"
@@ -68,7 +70,7 @@
   const rawLead = fn.removeHtml(t(page.lead))
   const description = fn.truncateText(
     rawLead === "..." ? String(config.public.siteDescription || "") : rawLead,
-    148,
+    160,
   )
   const keywords = Array.isArray(page.keywords) ? page.keywords.join(", ") : ""
   const isGermanPage =
@@ -186,6 +188,24 @@
           { name: "Home", url: homeUrl },
           { name: pageName, url: canonicalUrl },
         ]),
+      }),
+    )
+  }
+
+  if (page.slug === "sprachtrainerin") {
+    pageScripts.push(
+      jsonLdScript("person-viviane", {
+        "@context": "https://schema.org",
+        ...buildPersonSchema(siteUrl),
+      }),
+    )
+  }
+
+  if (page.slug === "angebote") {
+    pageScripts.push(
+      jsonLdScript("angebote-courses", {
+        "@context": "https://schema.org",
+        "@graph": buildAngeboteCourseSchemas(siteUrl),
       }),
     )
   }

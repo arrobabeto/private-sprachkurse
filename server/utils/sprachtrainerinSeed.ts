@@ -18,11 +18,14 @@ const IMG = {
 export function buildSprachtrainerinSeed(): IPage {
   return {
     id: SPRACHTRAINERIN_ID,
-    title: { de: "Sprachtrainerin", en: "Language trainer" },
+    title: {
+      de: "Viviane Baier | Ihre Sprachtrainerin in Liestal",
+      en: "Viviane Baier | Your language trainer in Liestal",
+    },
     slug: "sprachtrainerin",
     lead: {
-      de: "Lernen Sie Viviane Baier-Angi kennen – Ihre Sprachlehrerin mit Leidenschaft, Erfahrung und Herz.",
-      en: "Meet Viviane Baier-Angi — your language teacher with passion, experience, and heart.",
+      de: "Viviane Baier ist zertifizierte Sprachtrainerin mit langjähriger Erfahrung. Persönlicher Unterricht auf Ihr Tempo und Ihre Ziele abgestimmt.",
+      en: "Viviane Baier is a certified language trainer with many years of experience. Personal lessons tailored to your pace and goals.",
     },
     img: IMG.hero,
     keywords: [
