@@ -28,8 +28,8 @@
       en: " are alive and",
     },
     line2: {
-      de: " genau so lernt man sie",
-      en: " that's exactly how you learn them",
+      de: "genau so lernt man sie",
+      en: "that's exactly how you learn them",
     },
   } satisfies { line1Tail: I18nString; line2: I18nString }
 
@@ -54,16 +54,29 @@
   }
 
   const resolvedHeadline = computed(() => {
+    let line1Tail: I18nString = defaultHeadlineLines.line1Tail
+    let line2: I18nString = defaultHeadlineLines.line2
+
     if (props.headlineLine1Tail && props.headlineLine2) {
-      return {
-        line1Tail: props.headlineLine1Tail,
-        line2: props.headlineLine2,
-      }
+      line1Tail = props.headlineLine1Tail
+      line2 = props.headlineLine2
+    } else if (props.headlineSuffix) {
+      const split = splitLegacySuffix(props.headlineSuffix)
+      line1Tail = split.line1Tail
+      line2 = split.line2
     }
-    if (props.headlineSuffix) {
-      return splitLegacySuffix(props.headlineSuffix)
+
+    // Exactly one space between line1 ("…und") and line2 ("genau…") when flattened.
+    return {
+      line1Tail: {
+        de: String(line1Tail.de ?? "").replace(/\s+$/, ""),
+        en: String(line1Tail.en ?? "").replace(/\s+$/, ""),
+      },
+      line2: {
+        de: ` ${String(line2.de ?? "").trim()}`,
+        en: ` ${String(line2.en ?? "").trim()}`,
+      },
     }
-    return defaultHeadlineLines
   })
 
   const cardTilt = [
@@ -101,7 +114,6 @@
             </span>
             <span>{{ t(resolvedHeadline.line1Tail) }}</span>
           </span>
-          {{ " " }}
           <span class="mt-1 block">{{ t(resolvedHeadline.line2) }}</span>
         </h1>
 
