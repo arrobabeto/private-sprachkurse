@@ -70,11 +70,14 @@ const contactFormOptions = {
 export function buildKontaktSeed(): IPage {
   return {
     id: KONTAKT_PAGE_ID,
-    title: { de: "Kontakt", en: "Contact" },
+    title: {
+      de: "Kontakt | Private Sprachkurse Viviane Baier Liestal",
+      en: "Contact | Private Sprachkurse Viviane Baier Liestal",
+    },
     slug: "kontakt",
     lead: {
-      de: "Kontaktieren Sie mich für Sprachkurse, Übersetzungen und Trainings.",
-      en: "Contact me for language courses, translations, and training.",
+      de: "Kontakt aufnehmen oder Erstberatung buchen. Private Sprachkurse in Liestal, Basel-Landschaft. Tel. +41 78 943 39 63 · info@privatesprachkurse.ch",
+      en: "Get in touch or book an initial consultation. Private language courses in Liestal, Basel-Landschaft. Tel. +41 78 943 39 63 · info@privatesprachkurse.ch",
     },
     img: IMG.hero,
     keywords: [

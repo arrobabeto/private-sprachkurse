@@ -19,11 +19,14 @@ const IMG = {
 export function buildInUnternehmenSeed(): IPage {
   return {
     id: IN_UNTERNEHMEN_PAGE_ID,
-    title: { de: "In Unternehmen", en: "For companies" },
+    title: {
+      de: "Sprachkurse für Unternehmen | Private Sprachkurse Schweiz",
+      en: "Language courses for companies | Private Sprachkurse Switzerland",
+    },
     slug: "in-unternehmen",
     lead: {
-      de: "Praxisnahe Sprachkurse und Trainings für internationale Teams und Unternehmen.",
-      en: "Practical language courses and training for international teams and companies.",
+      de: "Sprachtraining direkt im Unternehmen oder online. Massgeschneiderte Firmenkurse in Englisch, Französisch und weiteren Sprachen. Kostenlose Erstberatung.",
+      en: "Language training at your company or online. Tailored corporate courses in English, French and other languages. Free initial consultation.",
     },
     img: IMG.offerSprachkurse,
     keywords: [
