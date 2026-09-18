@@ -113,12 +113,10 @@
           class="flex flex-wrap items-center gap-1.5 text-[13px] font-semibold leading-[1.4] text-ps-green"
         >
           <span
-            v-if="course.startRaw === 'ongoing'"
             class="inline-block rounded-[10px] bg-ps-success-bg px-2 py-px text-[11px] font-semibold text-ps-green"
           >
             Laufender Kurs — Einstieg jederzeit
           </span>
-          <template v-else>{{ course.start }}</template>
         </div>
       </div>
     </div>

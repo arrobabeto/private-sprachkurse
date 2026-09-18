@@ -86,12 +86,12 @@ export function buildAngeboteSeed(): IPage {
           },
           {
             title: {
-              de: "Unterricht in Kleingruppe",
-              en: "Small group lessons",
+              de: "Kleingruppe",
+              en: "Small group",
             },
             description: {
-              de: "Spass am gemeinsamen Sprachen lernen mit professioneller Anleitung",
-              en: "Enjoy learning languages together with professional guidance",
+              de: "Spass am gemeinsamen Sprachen lernen",
+              en: "Enjoy learning languages together",
             },
             tileType: "image",
             image: IMG.tileUnterricht,
@@ -99,8 +99,8 @@ export function buildAngeboteSeed(): IPage {
           {
             title: { de: "Sprechtraining", en: "Conversation training" },
             description: {
-              de: "Üben Sie fliessend sprechen oder frischen Sie ihre Sprachkenntnisse auf",
-              en: "Practise speaking fluently or refresh your language skills",
+              de: "Fliessend sprechen und Sprachkenntnisse auffrischen",
+              en: "Speak fluently and refresh your language skills",
             },
             tileType: "image",
             image: IMG.tileSprech,
@@ -108,8 +108,8 @@ export function buildAngeboteSeed(): IPage {
           {
             title: { de: "Spezialcoachings", en: "Special coaching" },
             description: {
-              de: "Business, Präsentationen und Prüfungsvorbereitung.",
-              en: "Business, presentations, and exam preparation.",
+              de: "Business, Präsentationen und Prüfungsvorbereitung",
+              en: "Business, presentations, and exam preparation",
             },
             tileType: "blue",
             icon: IMG.iconTrip,
