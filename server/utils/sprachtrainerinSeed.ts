@@ -270,6 +270,7 @@ export function buildSprachtrainerinSeed(): IPage {
           en: "View course offers",
         },
         primaryCtaUrl: "/angebote",
+        primaryCtaAction: "calculator",
         secondaryCtaLabel: { de: "Kontakt", en: "Contact" },
         secondaryCtaUrl: "/#kontakt",
       },
