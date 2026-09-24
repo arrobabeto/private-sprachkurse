@@ -156,6 +156,35 @@ export function buildKontaktSeed(): IPage {
           },
         ],
       },
+      {
+        _orbi: { component: "SectionFaq" },
+        title: {
+          de: "Häufig gestellte Fragen",
+          en: "Frequently asked questions",
+        },
+        items: [
+          {
+            question: {
+              de: "Wie schnell erhalten Sie eine Antwort?",
+              en: "How quickly will you receive a reply?",
+            },
+            answer: {
+              de: "In der Regel innerhalb von 24 Stunden.",
+              en: "Usually within 24 hours.",
+            },
+          },
+          {
+            question: {
+              de: "Bieten Sie ein erstes Gespräch gratis an?",
+              en: "Do you offer a free first conversation?",
+            },
+            answer: {
+              de: "Ja, das erste Kennenlernen ist kostenlos und unverbindlich.",
+              en: "Yes, the first get-to-know conversation is free and non-binding.",
+            },
+          },
+        ],
+      },
     ],
     head: {},
     created_at: new Date(0).toISOString(),

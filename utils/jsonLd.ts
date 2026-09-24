@@ -153,6 +153,24 @@ export function buildAngeboteCourseSchemas(siteUrl: string) {
   }))
 }
 
+/** Service schema for corporate language training (/in-unternehmen) */
+export function buildInUnternehmenServiceSchema(siteUrl: string) {
+  const base = siteUrl.replace(/\/$/, "")
+  return {
+    "@type": "Service",
+    "@id": `${base}/in-unternehmen#service`,
+    serviceType: "Betrieblicher Sprachkurs",
+    name: "Sprachkurse für Unternehmen",
+    provider: {
+      "@id": `${base}/#organization`,
+    },
+    areaServed: "Schweiz",
+    description:
+      "Maßgeschneiderte Sprachkurse für Unternehmen — Englisch, Französisch, Deutsch, Spanisch und Italienisch.",
+    url: `${base}/in-unternehmen`,
+  }
+}
+
 export function absoluteUrl(baseUrl: string, pathOrUrl: string): string {
   if (!pathOrUrl) return baseUrl
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl
