@@ -375,6 +375,45 @@ export function buildAngeboteSeed(): IPage {
         images: [IMG.gallery3, IMG.gallery2, IMG.gallery1],
       },
       {
+        _orbi: { component: "SectionFaq" },
+        title: {
+          de: "Häufig gestellte Fragen",
+          en: "Frequently asked questions",
+        },
+        items: [
+          {
+            question: {
+              de: "Wie läuft ein Probekurs ab?",
+              en: "How does a trial lesson work?",
+            },
+            answer: {
+              de: "Der erste Kurs ist ein Kennenlerngespräch ohne Verpflichtung — wir klären Ihre Ziele, Ihr Niveau und Ihren Wunschtermin.",
+              en: "The first lesson is a get-to-know conversation with no obligation — we clarify your goals, level, and preferred schedule.",
+            },
+          },
+          {
+            question: {
+              de: "Kann ich die Sprache während des Kurses wechseln?",
+              en: "Can I switch languages during the course?",
+            },
+            answer: {
+              de: "Ja, Sie können jederzeit eine andere Sprache hinzufügen.",
+              en: "Yes, you can add another language at any time.",
+            },
+          },
+          {
+            question: {
+              de: "Gibt es Gruppenrabatte?",
+              en: "Are there group discounts?",
+            },
+            answer: {
+              de: "Für Unternehmen bieten wir spezielle Konditionen an.",
+              en: "For companies we offer special conditions.",
+            },
+          },
+        ],
+      },
+      {
         _orbi: { component: "SectionAngeboteContactCta" },
         title: {
           de: "Kann es losgehen oder haben Sie noch Fragen?",

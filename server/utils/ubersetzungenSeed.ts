@@ -30,11 +30,14 @@ const IMG = {
 export function buildUbersetzungenSeed(): IPage {
   return {
     id: UBERSETZUNGEN_PAGE_ID,
-    title: { de: "Übersetzungen", en: "Translations" },
+    title: {
+      de: "Übersetzungen Englisch Französisch | Private Sprachkurse Liestal",
+      en: "Translations English French | Private Sprachkurse Liestal",
+    },
     slug: "ubersetzungen",
     lead: {
-      de: "Sorgfältige Übersetzungen und sprachliche Überarbeitung in fünf Sprachen.",
-      en: "Careful translations and language editing in five languages.",
+      de: "Übersetzungen in 5 Sprachen: Englisch, Französisch, Deutsch, Spanisch und Italienisch. Professionell, zuverlässig und persönlich — von Viviane Baier, Liestal.",
+      en: "Translations in 5 languages: English, French, German, Spanish and Italian. Professional, reliable and personal — by Viviane Baier, Liestal.",
     },
     img: IMG.hero,
     keywords: [

@@ -17,6 +17,7 @@
     buildAngeboteCourseSchemas,
     buildBreadcrumbList,
     buildFaqPage,
+    buildInUnternehmenServiceSchema,
     buildPersonSchema,
     jsonLdScript,
   } from "~/utils/jsonLd"
@@ -66,7 +67,7 @@
 
   const sections = normalizeSections(page.sections)
 
-  const title = fn.truncateText(t(page.title), 60)
+  const title = fn.truncateText(t(page.title), 65)
   const rawLead = fn.removeHtml(t(page.lead))
   const description = fn.truncateText(
     rawLead === "..." ? String(config.public.siteDescription || "") : rawLead,
@@ -179,18 +180,7 @@
     }),
   ]
 
-  // Standalone BreadcrumbList — some SEO scanners miss @graph-only breadcrumbs.
-  if (!isHome) {
-    pageScripts.push(
-      jsonLdScript("breadcrumb-list", {
-        "@context": "https://schema.org",
-        ...buildBreadcrumbList([
-          { name: "Home", url: homeUrl },
-          { name: pageName, url: canonicalUrl },
-        ]),
-      }),
-    )
-  }
+  // Standalone BreadcrumbList removed — keep a single BreadcrumbList in @graph only.
 
   if (page.slug === "sprachtrainerin") {
     pageScripts.push(
@@ -206,6 +196,15 @@
       jsonLdScript("angebote-courses", {
         "@context": "https://schema.org",
         "@graph": buildAngeboteCourseSchemas(siteUrl),
+      }),
+    )
+  }
+
+  if (page.slug === "in-unternehmen") {
+    pageScripts.push(
+      jsonLdScript("in-unternehmen-service", {
+        "@context": "https://schema.org",
+        ...buildInUnternehmenServiceSchema(siteUrl),
       }),
     )
   }

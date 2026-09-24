@@ -50,7 +50,7 @@ export default defineNuxtConfig({
       siteName: process.env.NUXT_PUBLIC_SITE_NAME ?? "Private Sprachkurse",
       siteDescription:
         process.env.NUXT_PUBLIC_SITE_DESCRIPTION ??
-        "Persönlicher Sprachunterricht für Alltag und Beruf – individuell, flexibel und mit Freude am Lernen.",
+        "Private Sprachkurse in der Schweiz — individuell, flexibel und effektiv. Englisch, Französisch, Deutsch, Spanisch und Italienisch.",
       organizationName:
         process.env.NUXT_PUBLIC_ORGANIZATION_NAME ?? "Private Sprachkurse",
       organizationLogo:

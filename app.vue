@@ -119,7 +119,7 @@
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "Organization",
+            "@type": ["Organization", "LanguageSchool"],
             "@id": `${siteUrl}/#organization`,
             name: config.public.organizationName,
             url: siteUrl,
@@ -154,7 +154,10 @@
             "@id": `${siteUrl}/#website`,
             name: config.public.siteName,
             url: siteUrl,
-            description: config.public.siteDescription,
+            description:
+              locale.value === "de"
+                ? "Private Sprachkurse in der Schweiz — individuell, flexibel und effektiv. Englisch, Französisch, Deutsch, Spanisch und Italienisch."
+                : String(config.public.siteDescription || ""),
             inLanguage: locale.value === "de" ? "de-CH" : "en",
             publisher: {
               "@id": `${siteUrl}/#organization`,
