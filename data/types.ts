@@ -1,6 +1,6 @@
 export type LangCode = "fr" | "en" | "de" | "it" | "es"
 export type NiveauCode = "A1" | "A1+" | "A2" | "B1" | "B2+"
-export type TagCode = "mo" | "di" | "mi" | "do" | "fr"
+export type TagCode = "mo" | "di" | "mi" | "do" | "fr" | "sa"
 export type StartRaw = "fixed" | "ongoing"
 
 export interface ICourse {
