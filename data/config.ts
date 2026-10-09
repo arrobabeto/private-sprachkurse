@@ -71,6 +71,7 @@ export const configData: IConfigData = {
     mi: "Mittwoch",
     do: "Donnerstag",
     fr: "Freitag",
+    sa: "Samstag",
   },
   confirm: {
     lang: {
