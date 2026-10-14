@@ -210,7 +210,7 @@ export const coursesData: ICoursesData = {
     },
     {
       id: 16,
-      isActive: true,
+      isActive: false,
       lang: "it",
       niveau: "A1",
       tag: "fr",
