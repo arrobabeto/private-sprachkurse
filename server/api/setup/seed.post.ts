@@ -19,6 +19,26 @@ import {
   buildImpressumSeed,
   IMPRESSUM_PAGE_ID,
 } from "~/server/utils/impressumSeed"
+import {
+  buildDeutschkursSeed,
+  DEUTSCHKURS_PAGE_ID,
+} from "~/server/utils/deutschkursSeed"
+import {
+  buildEnglischkursSeed,
+  ENGLISCHKURS_PAGE_ID,
+} from "~/server/utils/englischkursSeed"
+import {
+  buildFranzoesischkursSeed,
+  FRANZOESISCHKURS_PAGE_ID,
+} from "~/server/utils/franzoesischkursSeed"
+import {
+  buildItalienischkursSeed,
+  ITALIENISCHKURS_PAGE_ID,
+} from "~/server/utils/italienischkursSeed"
+import {
+  buildSpanischkursSeed,
+  SPANISCHKURS_PAGE_ID,
+} from "~/server/utils/spanischkursSeed"
 
 type TSeedBody = {
   force?: boolean
@@ -30,6 +50,11 @@ type TSeedBody = {
     | "in-unternehmen"
     | "ubersetzungen"
     | "impressum"
+    | "deutschkurs"
+    | "englischkurs"
+    | "franzoesischkurs"
+    | "italienischkurs"
+    | "spanischkurs"
   )[]
 }
 
@@ -60,6 +85,31 @@ const SEED_PAGES = {
     id: IMPRESSUM_PAGE_ID,
     slug: "impressum",
     build: buildImpressumSeed,
+  },
+  deutschkurs: {
+    id: DEUTSCHKURS_PAGE_ID,
+    slug: "deutschkurs",
+    build: buildDeutschkursSeed,
+  },
+  englischkurs: {
+    id: ENGLISCHKURS_PAGE_ID,
+    slug: "englischkurs",
+    build: buildEnglischkursSeed,
+  },
+  franzoesischkurs: {
+    id: FRANZOESISCHKURS_PAGE_ID,
+    slug: "franzoesischkurs",
+    build: buildFranzoesischkursSeed,
+  },
+  italienischkurs: {
+    id: ITALIENISCHKURS_PAGE_ID,
+    slug: "italienischkurs",
+    build: buildItalienischkursSeed,
+  },
+  spanischkurs: {
+    id: SPANISCHKURS_PAGE_ID,
+    slug: "spanischkurs",
+    build: buildSpanischkursSeed,
   },
 } as const
 
@@ -203,6 +253,11 @@ export default defineEventHandler(async (event) => {
         "in-unternehmen",
         "ubersetzungen",
         "impressum",
+        "deutschkurs",
+        "englischkurs",
+        "franzoesischkurs",
+        "italienischkurs",
+        "spanischkurs",
       ] as const)
 
   if (

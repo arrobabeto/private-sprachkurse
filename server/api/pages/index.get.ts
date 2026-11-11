@@ -19,6 +19,26 @@ import {
   buildImpressumSeed,
   IMPRESSUM_PAGE_ID,
 } from "~/server/utils/impressumSeed"
+import {
+  buildDeutschkursSeed,
+  DEUTSCHKURS_PAGE_ID,
+} from "~/server/utils/deutschkursSeed"
+import {
+  buildEnglischkursSeed,
+  ENGLISCHKURS_PAGE_ID,
+} from "~/server/utils/englischkursSeed"
+import {
+  buildFranzoesischkursSeed,
+  FRANZOESISCHKURS_PAGE_ID,
+} from "~/server/utils/franzoesischkursSeed"
+import {
+  buildItalienischkursSeed,
+  ITALIENISCHKURS_PAGE_ID,
+} from "~/server/utils/italienischkursSeed"
+import {
+  buildSpanischkursSeed,
+  SPANISCHKURS_PAGE_ID,
+} from "~/server/utils/spanischkursSeed"
 import { normalizeSections } from "~/utils/normalizeSections"
 import { ofetch } from "ofetch"
 
@@ -62,6 +82,20 @@ function getFallbackPage(bindings: QueryBindings) {
   // AUTO-PAGES:START
   const kontakt = buildKontaktSeed()
   if (slug === "kontakt" || id === KONTAKT_PAGE_ID) return kontakt
+  const deutschkurs = buildDeutschkursSeed()
+  if (slug === "deutschkurs" || id === DEUTSCHKURS_PAGE_ID) return deutschkurs
+  const englischkurs = buildEnglischkursSeed()
+  if (slug === "englischkurs" || id === ENGLISCHKURS_PAGE_ID)
+    return englischkurs
+  const franzoesischkurs = buildFranzoesischkursSeed()
+  if (slug === "franzoesischkurs" || id === FRANZOESISCHKURS_PAGE_ID)
+    return franzoesischkurs
+  const italienischkurs = buildItalienischkursSeed()
+  if (slug === "italienischkurs" || id === ITALIENISCHKURS_PAGE_ID)
+    return italienischkurs
+  const spanischkurs = buildSpanischkursSeed()
+  if (slug === "spanischkurs" || id === SPANISCHKURS_PAGE_ID)
+    return spanischkurs
   // AUTO-PAGES:END
   if (
     id &&
@@ -71,7 +105,12 @@ function getFallbackPage(bindings: QueryBindings) {
     id !== IN_UNTERNEHMEN_PAGE_ID &&
     id !== UBERSETZUNGEN_PAGE_ID &&
     id !== IMPRESSUM_PAGE_ID &&
-    id !== KONTAKT_PAGE_ID
+    id !== KONTAKT_PAGE_ID &&
+    id !== DEUTSCHKURS_PAGE_ID &&
+    id !== ENGLISCHKURS_PAGE_ID &&
+    id !== FRANZOESISCHKURS_PAGE_ID &&
+    id !== ITALIENISCHKURS_PAGE_ID &&
+    id !== SPANISCHKURS_PAGE_ID
   )
     return null
   if (
@@ -82,7 +121,12 @@ function getFallbackPage(bindings: QueryBindings) {
     slug !== "sprachtrainerin" &&
     slug !== "in-unternehmen" &&
     slug !== "ubersetzungen" &&
-    slug !== "impressum"
+    slug !== "impressum" &&
+    slug !== "deutschkurs" &&
+    slug !== "englischkurs" &&
+    slug !== "franzoesischkurs" &&
+    slug !== "italienischkurs" &&
+    slug !== "spanischkurs"
   )
     return null
 
@@ -97,6 +141,11 @@ function getFallbackPage(bindings: QueryBindings) {
         impressum,
         // AUTO-PAGES:START
         kontakt,
+        deutschkurs,
+        englischkurs,
+        franzoesischkurs,
+        italienischkurs,
+        spanischkurs,
         // AUTO-PAGES:END
       ]
 }
