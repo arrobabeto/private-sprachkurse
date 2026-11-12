@@ -43,33 +43,31 @@ export const wissenGroups: WissenGroup[] = [
     columns: 3,
     cards: [
       {
-        slug: "sprachkurs-in-liestal-finden",
+        slug: "sprachkurs-liestal-finden",
         title: "Sprachkurs in Liestal finden: Privat, Kleingruppe oder online?",
         excerpt:
-          "Die zwei Grössen, an denen sich die Formatwahl entscheidet, mit Preisen und einer Checkliste für den Anbietervergleich.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-sprachkurs.png",
+          "Privatunterricht, Kleingruppe oder online? So rechnen Sie aus, welcher Sprachkurs in Liestal zu Ihnen passt. Mit Preisen, Vergleich und Checkliste.",
+        readingTime: "8 Min. Lesezeit",
+        image: "/images/wissen/sprachkurs-liestal-finden.jpg",
         tone: "cream",
       },
       {
-        slug: "a1-bis-c2-erklaert",
+        slug: "sprachniveau-a1-c2-einschaetzen",
         title: "A1 bis C2 erklärt: Welches Sprachniveau haben Sie?",
         excerpt:
-          "Was die Stufen bedeuten, warum eine einzelne Angabe in die Irre führt und wie das Selbstbeurteilungsraster funktioniert.",
+          "Was die Stufen A1 bis C2 bedeuten, warum eine einzelne Angabe in die Irre führt und wie Sie Ihr Niveau getrennt nach Fertigkeiten selbst einschätzen.",
         readingTime: "7 Min. Lesezeit",
-        image: "/images/wissen/card-niveau.png",
+        image: "/images/wissen/sprachniveau-a1-c2-einschaetzen.jpg",
         tone: "cream",
-        crop: { height: "273%", top: "-37%" },
       },
       {
-        slug: "wie-lange-dauert-eine-sprache",
+        slug: "wie-lange-dauert-sprache-lernen",
         title: "Wie lange dauert es wirklich, eine Sprache zu lernen?",
         excerpt:
-          "Warum die meistzitierten Stundenzahlen veraltet und nicht übertragbar sind, und wie sich die Dauer für die eigene Wochenzeit ausrechnen lässt.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-dauer.png",
+          "Die meistzitierten Stundenzahlen stammen aus einem Vollzeitprogramm und sind veraltet. So rechnen Sie die Dauer für Ihre tatsächliche Wochenzeit aus.",
+        readingTime: "6 Min. Lesezeit",
+        image: "/images/wissen/wie-lange-dauert-sprache-lernen.jpg",
         tone: "cream",
-        crop: { height: "273%", top: "-73%" },
       },
     ],
   },
@@ -78,22 +76,22 @@ export const wissenGroups: WissenGroup[] = [
     columns: 2,
     cards: [
       {
-        slug: "deutschkurs-in-baselland",
+        slug: "deutschkurs-baselland-niveau",
         title: "Deutschkurs in Baselland: Welches Niveau verlangt Ihr Ziel?",
         excerpt:
-          "Die Anforderungen für Niederlassungsbewilligung und Einbürgerung, welche Nachweise gelten und wann gar kein Test nötig ist.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-deutsch-niveau.png",
+          "Einbürgerung, C-Bewilligung oder Beruf? Welches Deutschniveau Ihr Vorhaben in Baselland verlangt, welche Nachweise gelten und wie Sie dorthin kommen.",
+        readingTime: "7 Min. Lesezeit",
+        image: "/images/wissen/deutschkurs-baselland-niveau.jpg",
         tone: "green",
       },
       {
-        slug: "schweizerdeutsch-verstehen",
+        slug: "schweizerdeutsch-verstehen-baselland",
         title:
           "Schweizerdeutsch verstehen: was Deutschlernende in Baselland wissen sollten",
         excerpt:
-          "Warum der Nachweis Hochdeutsch prüft und der Alltag auf Dialekt läuft, und warum Baseldeutsch dabei die günstigere Ausgangslage ist.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-schweizerdeutsch.png",
+          "Der Sprachnachweis prüft Hochdeutsch, der Alltag läuft auf Dialekt. Warum Baseldeutsch dem Hochdeutschen näher steht und wie Sie Hörverstehen aufbauen.",
+        readingTime: "7 Min. Lesezeit",
+        image: "/images/wissen/schweizerdeutsch-verstehen-baselland.jpg",
         tone: "blue",
       },
     ],
@@ -103,55 +101,53 @@ export const wissenGroups: WissenGroup[] = [
     columns: 3,
     cards: [
       {
-        slug: "business-english-in-der-schweiz",
+        slug: "business-english-schweiz-arbeitssituationen",
         title:
           "Business English in der Schweiz: die Situationen, in denen es klemmt",
         excerpt:
-          "Englisch ist hier meist ein Einschub in einen deutschsprachigen Tag. Was das für das Training bedeutet.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-business.png",
+          "23 Prozent sprechen bei der Arbeit Englisch, nur 3,1 Prozent ausschliesslich. Warum der Wechsel schwieriger ist als die Sprache und was sich trainieren lässt.",
+        readingTime: "7 Min. Lesezeit",
+        image: "/images/wissen/business-english-schweiz-arbeitssituationen.jpg",
         tone: "cream",
-        crop: { height: "273%", top: "-143%" },
       },
       {
-        slug: "englischkurs-in-baselland",
+        slug: "englischkurs-baselland-ziel",
         title:
           "Englischkurs in Baselland: Welches Englisch brauchen Sie wirklich?",
         excerpt:
-          "Für Englisch gibt es keine gesetzliche Vorgabe. Wie Sie das Zielniveau aus der Situation ableiten und wann ein Zertifikat nötig ist.",
+          "Für Englisch schreibt niemand ein Niveau vor. So leiten Sie Ihr Zielniveau aus der Situation ab, und so entscheiden Sie, ob Sie ein Zertifikat brauchen.",
         readingTime: "7 Min. Lesezeit",
-        image: "/images/wissen/card-englisch.png",
+        image: "/images/wissen/englischkurs-baselland-ziel.jpg",
         tone: "cream",
       },
       {
-        slug: "firmensprachkurse-in-der-schweiz",
+        slug: "firmensprachkurse-schweiz-kosten",
         title:
           "Firmensprachkurse in der Schweiz: Wer zahlt, und was das steuerlich bedeutet",
         excerpt:
-          "Die drei Finanzierungsvarianten, ihre steuerlichen Folgen und was in eine Vereinbarung zwischen Betrieb und Mitarbeitenden gehört.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-firma.png",
+          "Zahlt der Betrieb den Sprachkurs, ist er kein steuerbarer Lohn. Zahlt die Person selbst, greift ein begrenzter Abzug. Was KMU vor der Buchung klären sollten.",
+        readingTime: "7 Min. Lesezeit",
+        image: "/images/wissen/firmensprachkurse-schweiz-kosten.jpg",
         tone: "cream",
       },
       {
-        slug: "franzoesisch-in-der-nordwestschweiz",
+        slug: "franzoesisch-nordwestschweiz-auffrischen",
         title:
           "Französisch in der Nordwestschweiz: lohnt sich die Auffrischung noch?",
         excerpt:
-          "Französisch verliert am Arbeitsplatz Anteile an Englisch und wird gerade dadurch zum Unterscheidungsmerkmal.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-franzoesisch.png",
+          "Deutsch mit Englisch liegt bei 8,3 Prozent, Deutsch mit Französisch bei 2,5. Warum Französisch dadurch wertvoller wird und wie Reaktivierung funktioniert.",
+        readingTime: "7 Min. Lesezeit",
+        image: "/images/wissen/franzoesisch-nordwestschweiz-auffrischen.jpg",
         tone: "cream",
       },
       {
-        slug: "italienisch-lernen-als-erwachsener",
+        slug: "italienisch-lernen-deutschschweiz",
         title: "Italienisch lernen als Erwachsener: was Sie schon mitbringen",
         excerpt:
-          "Warum das Ausgangsprofil bei Italienisch dem von Schulfranzösisch entgegengesetzt ist.",
+          "Wortschatz aus dem Alltag, aber kein Satz möglich? Warum das Ausgangsprofil bei Italienisch anders ist als bei Schulfranzösisch und wo Sie ansetzen.",
         readingTime: "7 Min. Lesezeit",
-        image: "/images/wissen/card-italienisch.png",
+        image: "/images/wissen/italienisch-lernen-deutschschweiz.jpg",
         tone: "cream",
-        crop: { height: "121%", top: "-1.5%" },
       },
     ],
   },
@@ -160,24 +156,22 @@ export const wissenGroups: WissenGroup[] = [
     columns: 2,
     cards: [
       {
-        slug: "sprechhemmungen-ueberwinden",
+        slug: "sprechhemmungen-fremdsprache",
         title: "Sprechhemmungen in einer Fremdsprache überwinden",
         excerpt:
-          "Was seit 1986 darüber bekannt ist, wo die Forschung offen bleibt und welche Faktoren der Sprechsituation sich verändern lassen.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-sprechhemmungen.png",
+          "Sie verstehen alles und sagen nichts? Was die Forschung seit 1986 über fremdsprachliche Sprechhemmung weiss und welche Stellschrauben sich ändern lassen.",
+        readingTime: "7 Min. Lesezeit",
+        image: "/images/wissen/sprechhemmungen-fremdsprache.jpg",
         tone: "green",
-        crop: { height: "185%", top: "-21.5%" },
       },
       {
-        slug: "maschinenuebersetzung-oder-uebersetzerin",
+        slug: "maschinenuebersetzung-oder-uebersetzer",
         title: "Maschinenübersetzung oder Übersetzerin: wann was reicht",
         excerpt:
-          "Die drei normierten Bearbeitungsstufen und die drei Fragen, die über den nötigen Aufwand entscheiden.",
-        readingTime: "5 Min. Lesezeit",
-        image: "/images/wissen/card-uebersetzung.png",
+          "Drei normierte Stufen von der Rohübersetzung bis zur Humanübersetzung. Welche Ihr Text braucht, entscheiden Verwendungszweck, Reichweite und Haftung.",
+        readingTime: "8 Min. Lesezeit",
+        image: "/images/wissen/maschinenuebersetzung-oder-uebersetzer.jpg",
         tone: "blue",
-        crop: { height: "415%", top: "-171%" },
       },
     ],
   },
