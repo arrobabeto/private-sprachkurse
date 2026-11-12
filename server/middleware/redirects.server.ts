@@ -33,7 +33,7 @@ const redirects = [
   },
   {
     from: "/blog",
-    to: "/posts",
+    to: "/wissen",
   },
 ]
 

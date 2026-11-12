@@ -28,6 +28,10 @@ export const siteNavLinks = [
     url: "/ubersetzungen",
   },
   {
+    name: { de: "Wissen", en: "Knowledge" },
+    url: "/wissen",
+  },
+  {
     name: { de: "Kontakt", en: "Contact" },
     url: "/kontakt",
   },
