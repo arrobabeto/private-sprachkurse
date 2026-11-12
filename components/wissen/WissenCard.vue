@@ -34,18 +34,8 @@
       <NuxtImg
         :src="card.image"
         :alt="card.title"
-        width="626"
-        height="226"
-        class="absolute left-0 w-full max-w-none object-cover"
-        :style="
-          card.crop
-            ? {
-                height: card.crop.height,
-                top: card.crop.top,
-                left: card.crop.left || '0',
-              }
-            : { height: '100%', top: '0' }
-        "
+        width="1200"
+        class="h-full w-full object-cover"
       />
     </div>
     <div class="flex flex-1 flex-col gap-2 px-[18px] pb-6 pt-6">

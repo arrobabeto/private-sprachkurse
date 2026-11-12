@@ -1,5 +1,6 @@
 import { appendResponseHeaders, defineEventHandler } from "h3"
 import { dedent } from "ts-dedent"
+import { wissenGroups } from "~/data/wissen"
 import type { IPage } from "~/types/dto/IPage"
 import {
   formatSitemapLastmod,
@@ -43,11 +44,41 @@ function buildUrlEntry(baseUrl: string, page: IPage): string {
     .join("\n")
 }
 
+function buildStaticEntry(baseUrl: string, path: string): string {
+  const href = (lang: TLang) =>
+    toAbsoluteUrl(baseUrl, lang === "en" ? `/en${path}` : path)
+  const alternates = [
+    ...langs.map(
+      (lang) =>
+        `    <xhtml:link rel="alternate" hreflang="${lang === "de" ? "de-CH" : lang}" href="${href(lang)}" />`,
+    ),
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${href("de")}" />`,
+  ].join("\n")
+
+  return langs
+    .map(
+      (lang) => dedent`
+        <url>
+          <loc>${href(lang)}</loc>
+          <lastmod>2026-09-14</lastmod>
+        ${alternates}
+        </url>
+      `,
+    )
+    .join("\n")
+}
+
 export default defineEventHandler(async (event) => {
   const baseUrl = resolveSiteUrl(event)
 
   const pages = await $fetch<IPage[]>("/api/pages").catch(() => [] as IPage[])
   const published = pages.filter(isPublished)
+  const wissenPaths = [
+    "/wissen",
+    ...wissenGroups.flatMap((group) =>
+      group.cards.map((card) => `/wissen/${card.slug}`),
+    ),
+  ]
 
   appendResponseHeaders(event, {
     "Content-Type": "application/xml; charset=utf-8",
@@ -60,6 +91,7 @@ export default defineEventHandler(async (event) => {
     <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
       ${published.map((page) => buildUrlEntry(baseUrl, page)).join("\n")}
+      ${wissenPaths.map((path) => buildStaticEntry(baseUrl, path)).join("\n")}
     </urlset>
   `
 })
