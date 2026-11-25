@@ -111,6 +111,13 @@
     url: article.ctaUrl,
     image: "/images/wissen/article-cta.png",
   }
+
+  const heroObjectPosition =
+    {
+      "firmensprachkurse-schweiz-kosten": "center top",
+      "sprechhemmungen-fremdsprache": "center 18%",
+      "englischkurs-baselland-ziel": "center 12%",
+    }[article.slug] ?? "center"
 </script>
 
 <template>
@@ -121,6 +128,7 @@
         :alt="article.imageAlt"
         width="1600"
         class="mx-auto h-[280px] w-full max-w-[1266px] rounded-[30px] object-cover md:h-[405px]"
+        :style="{ objectPosition: heroObjectPosition }"
       />
     </section>
 
@@ -136,7 +144,16 @@
         class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-[10px] border border-[#eeeeee] bg-white px-3 py-1.5 text-base font-medium leading-[1.5] text-[#a5a5a5]"
       >
         <span class="inline-flex items-center gap-2">
-          <span class="h-6 w-6 rounded-full bg-[#d9d9d9]" aria-hidden="true" />
+          <span
+            class="relative h-8 w-8 shrink-0 overflow-hidden rounded-full bg-[#d9d9d9]"
+          >
+            <NuxtImg
+              src="/images/wissen/PRS_PrivateSprachschuleVB_web-0.jpg"
+              alt=""
+              class="absolute left-1/2 h-[280%] w-[280%] max-w-none -translate-x-1/2 object-cover"
+              style="top: -42%"
+            />
+          </span>
           {{ article.author }}
         </span>
         <span class="hidden h-6 w-px bg-[#eeeeee] sm:block" />
