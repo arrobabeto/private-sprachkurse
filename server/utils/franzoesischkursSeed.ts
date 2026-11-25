@@ -10,7 +10,7 @@ const IMG = {
 }
 
 const CALENDLY =
-  "https://calendly.com/privatesprachkurse-info/privatstunde-vor-ort"
+  "https://calendly.com/privatesprachkurse-info/privatstunde-online"
 
 export function buildFranzoesischkursSeed(): IPage {
   return {
@@ -152,7 +152,7 @@ export function buildFranzoesischkursSeed(): IPage {
             name: { de: "Privatkurs", en: "Private course" },
             price: "88",
             detailPrimary: { de: "pro Lektion", en: "per lesson" },
-            detailSecondary: { de: "55 Min.", en: "55 min." },
+            detailSecondary: { de: "50 Min.", en: "50 min." },
             tilt: -10.26,
             cta: { de: "Termin buchen", en: "Book an appointment" },
             ctaUrl: CALENDLY,
@@ -163,7 +163,7 @@ export function buildFranzoesischkursSeed(): IPage {
             detailPrimary: { de: "CHF 87", en: "CHF 87" },
             detailSecondary: { de: "pro lektion", en: "per lesson" },
             tilt: -0.43,
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: "/#kontakt",
           },
           {
@@ -173,7 +173,7 @@ export function buildFranzoesischkursSeed(): IPage {
             detailSecondary: { de: "pro lektion", en: "per lesson" },
             variant: "blue",
             tilt: -6.2,
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: "/#kontakt",
           },
           {

@@ -3,7 +3,7 @@ import type { IPage } from "~/types/dto/IPage"
 export const ENGLISCHKURS_PAGE_ID = "private-sprachkurse-englischkurs"
 
 const CALENDLY =
-  "https://calendly.com/privatesprachkurse-info/privatstunde-vor-ort"
+  "https://calendly.com/privatesprachkurse-info/privatstunde-online"
 
 const IMG = {
   circle: "/images/englischkurs/circle.svg",
@@ -171,7 +171,7 @@ export function buildEnglischkursSeed(): IPage {
             name: { de: "Privatkurs", en: "Private course" },
             price: "88",
             detailPrimary: { de: "pro Lektion", en: "per lesson" },
-            detailSecondary: { de: "55 Min.", en: "55 min." },
+            detailSecondary: { de: "50 Min.", en: "50 min." },
             variant: "gray",
             tiltDeg: -10.26,
             cta: { de: "Termin buchen", en: "Book an appointment" },
@@ -184,7 +184,7 @@ export function buildEnglischkursSeed(): IPage {
             detailSecondary: { de: "pro lektion", en: "per lesson" },
             variant: "gray",
             tiltDeg: -0.43,
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: "/#kontakt",
           },
           {
@@ -194,7 +194,7 @@ export function buildEnglischkursSeed(): IPage {
             detailSecondary: { de: "pro lektion", en: "per lesson" },
             variant: "blue",
             tiltDeg: -6.2,
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: "/#kontakt",
           },
           {

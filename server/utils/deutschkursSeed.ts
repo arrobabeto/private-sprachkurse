@@ -16,7 +16,7 @@ const IMG = {
 }
 
 const CALENDLY =
-  "https://calendly.com/privatesprachkurse-info/privatstunde-vor-ort"
+  "https://calendly.com/privatesprachkurse-info/privatstunde-online"
 
 export function buildDeutschkursSeed(): IPage {
   return {
@@ -159,7 +159,7 @@ export function buildDeutschkursSeed(): IPage {
             price: "88",
             lines: [
               { de: "pro Lektion", en: "per lesson" },
-              { de: "55 Min.", en: "55 min." },
+              { de: "50 Min.", en: "50 min." },
             ],
             cta: { de: "Termin buchen", en: "Book an appointment" },
             ctaUrl: CALENDLY,
@@ -173,7 +173,7 @@ export function buildDeutschkursSeed(): IPage {
               { de: "CHF 87", en: "CHF 87" },
               { de: "pro lektion", en: "per lesson" },
             ],
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: "/#kontakt",
             variant: "gray",
             tilt: "flat",
@@ -185,7 +185,7 @@ export function buildDeutschkursSeed(): IPage {
               { de: "CHF 85", en: "CHF 85" },
               { de: "pro lektion", en: "per lesson" },
             ],
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: "/#kontakt",
             variant: "blue",
             tilt: "left",
