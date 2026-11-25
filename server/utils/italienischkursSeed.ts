@@ -16,7 +16,7 @@ const IMG = {
 }
 
 const CALENDLY =
-  "https://calendly.com/privatesprachkurse-info/privatstunde-vor-ort"
+  "https://calendly.com/privatesprachkurse-info/privatstunde-online"
 const KONTAKT = "/#kontakt"
 
 const subtitle = {
@@ -173,7 +173,7 @@ export function buildItalienischkursSeed(): IPage {
             name: { de: "Privatkurs", en: "Private course" },
             price: "88",
             detailTop: { de: "pro Lektion", en: "per lesson" },
-            detailBottom: { de: "55 Min.", en: "55 min." },
+            detailBottom: { de: "50 Min.", en: "50 min." },
             tone: "gray",
             tilt: "-10.26",
             cta: { de: "Termin buchen", en: "Book an appointment" },
@@ -187,7 +187,7 @@ export function buildItalienischkursSeed(): IPage {
             detailBottom: { de: "pro lektion", en: "per lesson" },
             tone: "gray",
             tilt: "-0.43",
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: KONTAKT,
           },
           {
@@ -197,7 +197,7 @@ export function buildItalienischkursSeed(): IPage {
             detailBottom: { de: "pro lektion", en: "per lesson" },
             tone: "blue",
             tilt: "-6.2",
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: KONTAKT,
           },
           {

@@ -16,7 +16,7 @@ const IMG = {
 }
 
 const CALENDLY =
-  "https://calendly.com/privatesprachkurse-info/privatstunde-vor-ort"
+  "https://calendly.com/privatesprachkurse-info/privatstunde-online"
 
 export function buildSpanischkursSeed(): IPage {
   return {
@@ -159,7 +159,7 @@ export function buildSpanischkursSeed(): IPage {
             name: { de: "Privatkurs", en: "Private course" },
             price: "88",
             line1: { de: "pro Lektion", en: "per lesson" },
-            line2: { de: "55 Min.", en: "55 min." },
+            line2: { de: "50 Min.", en: "50 min." },
             variant: "gray",
             rotate: -10.26,
             cta: { de: "Termin buchen", en: "Book an appointment" },
@@ -172,7 +172,7 @@ export function buildSpanischkursSeed(): IPage {
             line2: { de: "pro lektion", en: "per lesson" },
             variant: "gray",
             rotate: -0.43,
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: "/#kontakt",
           },
           {
@@ -182,7 +182,7 @@ export function buildSpanischkursSeed(): IPage {
             line2: { de: "pro lektion", en: "per lesson" },
             variant: "blue",
             rotate: -6.2,
-            cta: { de: "Jetzt buchen", en: "Book now" },
+            cta: { de: "Termin vereinbaren", en: "Book an appointment" },
             ctaUrl: "/#kontakt",
           },
           {
