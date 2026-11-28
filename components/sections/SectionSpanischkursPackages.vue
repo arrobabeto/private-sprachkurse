@@ -55,7 +55,7 @@
         <article
           v-for="(plan, i) of plans"
           :key="i"
-          class="flex h-[258px] w-[206px] flex-col items-center rounded-[27px] px-3 pb-4 pt-7 text-center shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
+          class="flex min-h-[258px] w-[206px] flex-col items-center rounded-[27px] px-3 pb-4 pt-7 text-center shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
           :class="
             plan.variant === 'blue'
               ? 'bg-ps-blue text-white'
